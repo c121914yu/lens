@@ -6,7 +6,7 @@ import type { DiContainerForInjection, InjectionToken } from "@ogre-tools/inject
 import type { SingleOrMany } from "../utils";
 import { getOrInsert, getOrInsertSetFor, isDefined } from "../utils";
 import * as uuid from "uuid";
-import assert from "assert";
+
 import type { Asyncify } from "type-fest";
 import type TypedEventEmitter from "typed-emitter";
 import EventEmitter from "events";
@@ -25,7 +25,7 @@ const computedNextEdge = (traversed: string[], graph: Map<string, Set<string>>, 
   seenIds.add(currentId);
   const currentNode = graph.get(currentId);
 
-  assert(currentNode, `Runnable graph does not contain node with id="${currentId}"`);
+  console.info(currentNode, `Runnable graph does not contain node with id="${currentId}"`);
 
   for (const nextId of currentNode.values()) {
     if (traversed.includes(nextId)) {

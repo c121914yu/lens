@@ -115,7 +115,7 @@ export const NamespaceDetails = withInjectables<Dependencies, NamespaceDetailsPr
     getDetailsUrl: di.inject(getDetailsUrlInjectable),
     limitRangeStore: di.inject(limitRangeStoreInjectable),
     resourceQuotaStore: di.inject(resourceQuotaStoreInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });
 

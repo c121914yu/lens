@@ -6,8 +6,8 @@ import { getInjectable } from "@ogre-tools/injectable";
 import GlobToRegExp from "glob-to-regexp";
 import type { IComputedValue, ObservableMap } from "mobx";
 import { computed, observable } from "mobx";
-import path from "path";
-import { inspect } from "util";
+
+
 import type { CatalogEntity } from "../../../common/catalog";
 import type { Cluster } from "../../../common/cluster/cluster";
 import statInjectable from "../../../common/fs/stat.injectable";
@@ -84,7 +84,7 @@ const watchKubeconfigFileChangesInjectable = getInjectable({
 
               if (!cleanup) {
                 // file was previously ignored, do nothing
-                return void logger.debug(`${inspect(childFilePath)} that should have been previously ignored has changed. Doing nothing`);
+                return void console.info(`${JSON.stringify(childFilePath)} that should have been previously ignored has changed. Doing nothing`);
               }
 
               cleanup();
@@ -101,7 +101,7 @@ const watchKubeconfigFileChangesInjectable = getInjectable({
 
                 for (const ignoreGlob of ignoreGlobs) {
                   if (ignoreGlob.matcher.test(fileName)) {
-                    return void logger.info(`ignoring ${inspect(childFilePath)} due to ignore glob: ${ignoreGlob.rawGlob}`);
+                    return void logger.info(`ignoring ${JSON.stringify(childFilePath)} due to ignore glob: ${ignoreGlob.rawGlob}`);
                   }
                 }
               }

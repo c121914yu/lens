@@ -9,7 +9,7 @@ import { platform } from "process";
 const main: webpack.Configuration = ({
   name: "lens-app-main",
   context: __dirname,
-  target: "electron-main",
+  target: "web",
   mode: isDevelopment ? "development" : "production",
   devtool: isDevelopment ? "cheap-module-source-map" : "source-map",
   cache: isDevelopment ? { type: "filesystem" } : false,

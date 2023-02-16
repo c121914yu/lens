@@ -206,7 +206,7 @@ export const PodContainerPort = withInjectables<Dependencies, PodContainerPortPr
     aboutPortForwarding: di.inject(aboutPortForwardingInjectable),
     notifyErrorPortForwarding: di.inject(notifyErrorPortForwardingInjectable),
     openPortForward: di.inject(openPortForwardInjectable),
-    logger: di.inject(loggerInjectable),
+    
     showErrorNotification: di.inject(showErrorNotificationInjectable),
   }),
 });

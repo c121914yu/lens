@@ -13,7 +13,7 @@ const clusterFrameHandlerInjectable = getInjectable({
   instantiate: (di) => new ClusterFrameHandler({
     emitClusterVisibility: di.inject(emitClusterVisibilityInjectable),
     getClusterById: di.inject(getClusterByIdInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });
 

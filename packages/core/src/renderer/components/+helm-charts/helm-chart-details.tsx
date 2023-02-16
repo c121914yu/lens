@@ -24,7 +24,7 @@ import readmeOfSelectHelmChartInjectable from "./details/readme-of-selected-helm
 import versionsOfSelectedHelmChartInjectable from "./details/versions-of-selected-helm-chart.injectable";
 import type { HelmChartDetailsVersionSelection } from "./details/versions/helm-chart-details-version-selection.injectable";
 import helmChartDetailsVersionSelectionInjectable from "./details/versions/helm-chart-details-version-selection.injectable";
-import assert from "assert";
+
 
 export interface HelmChartDetailsProps {
   hideDetails(): void;
@@ -58,7 +58,7 @@ class NonInjectedHelmChartDetails extends Component<HelmChartDetailsProps & Depe
   install() {
     const chart = this.props.versionSelection.value.get();
 
-    assert(chart);
+    console.info(chart);
 
     this.props.createInstallChartTab(chart);
     this.props.hideDetails();

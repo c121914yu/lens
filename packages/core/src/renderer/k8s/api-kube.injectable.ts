@@ -3,7 +3,7 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import assert from "assert";
+
 import { apiKubePrefix } from "../../common/vars";
 import { apiKubeInjectionToken } from "../../common/k8s-api/api-kube";
 import { storesAndApisCanBeCreatedInjectionToken } from "../../common/k8s-api/stores-apis-can-be-created.token";
@@ -16,7 +16,7 @@ import { apiBaseServerAddressInjectionToken } from "../../common/k8s-api/api-bas
 const apiKubeInjectable = getInjectable({
   id: "api-kube",
   instantiate: (di) => {
-    assert(di.inject(storesAndApisCanBeCreatedInjectionToken), "apiKube is only available in certain environments");
+    console.info(di.inject(storesAndApisCanBeCreatedInjectionToken), "apiKube is only available in certain environments");
     const createKubeJsonApi = di.inject(createKubeJsonApiInjectable);
     const apiBaseServerAddress = di.inject(apiBaseServerAddressInjectionToken);
     const isDevelopment = di.inject(isDevelopmentInjectable);

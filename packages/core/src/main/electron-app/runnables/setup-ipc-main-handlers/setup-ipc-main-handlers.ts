@@ -2,8 +2,6 @@
  * Copyright (c) OpenLens Authors. All rights reserved.
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
-import type { IpcMainInvokeEvent } from "electron";
-import { BrowserWindow, Menu } from "electron";
 import { clusterFrameMap } from "../../../../common/cluster-frames";
 import { clusterActivateHandler, clusterSetFrameIdHandler, clusterDisconnectHandler, clusterStates } from "../../../../common/ipc/cluster";
 import type { ClusterId } from "../../../../common/cluster-types";
@@ -38,7 +36,7 @@ export const setupIpcMainHandlers = ({
       ?.activate(force);
   });
 
-  ipcMainHandle(clusterSetFrameIdHandler, (event: IpcMainInvokeEvent, clusterId: ClusterId) => {
+  ipcMainHandle(clusterSetFrameIdHandler, (event, clusterId: ClusterId) => {
     const cluster = getClusterById(clusterId);
 
     if (cluster) {

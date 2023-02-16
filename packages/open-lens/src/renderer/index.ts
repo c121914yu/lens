@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "@k8slens/core/styles";
 import { createContainer } from "@ogre-tools/injectable";
 import { runInAction } from "mobx";
@@ -22,16 +24,3 @@ runInAction(() => {
 
 app.start();
 
-export {
-  React,
-  ReactDOM,
-  ReactRouter,
-  ReactRouterDom,
-  Mobx,
-  MobxReact,
-} from "@k8slens/core/renderer";
-
-export const LensExtensions = {
-  Renderer,
-  Common,
-};

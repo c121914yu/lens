@@ -13,7 +13,7 @@ const installOnDropInjectable = getInjectable({
 
   instantiate: (di): InstallOnDrop => {
     const attemptInstalls = di.inject(attemptInstallsInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return (files) => {
       logger.info("Install from D&D");

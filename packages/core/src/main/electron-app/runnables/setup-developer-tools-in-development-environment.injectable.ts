@@ -11,7 +11,7 @@ const setupDeveloperToolsInDevelopmentEnvironmentInjectable = getInjectable({
   id: "setup-developer-tools-in-development-environment",
 
   instantiate: (di) => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const nodeEnv = di.inject(nodeEnvInjectionToken);
 
     return {

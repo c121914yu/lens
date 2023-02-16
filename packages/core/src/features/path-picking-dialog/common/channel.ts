@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import type { OpenDialogOptions } from "electron";
 import type { RequestChannel } from "../../../common/utils/channel/request-channel-listener-injection-token";
 
 export type PathPickingResponse = {
@@ -13,6 +12,6 @@ export type PathPickingResponse = {
   paths: string[];
 };
 
-export const openPathPickingDialogChannel: RequestChannel<OpenDialogOptions, PathPickingResponse> = {
+export const openPathPickingDialogChannel: RequestChannel<null, PathPickingResponse> = {
   id: "open-path-picking-dialog",
 };

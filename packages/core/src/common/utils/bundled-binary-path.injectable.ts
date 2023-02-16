@@ -14,7 +14,7 @@ const bundledBinaryPathInjectable = getInjectable({
     const binaryName = di.inject(binaryNameInjectable, name);
     const baseBundledBinariesDirectory = di.inject(baseBundledBinariesDirectoryInjectable);
 
-    return joinPaths(baseBundledBinariesDirectory, binaryName);
+    return "";
   },
   lifecycle: lifecycleEnum.keyedSingleton({
     getInstanceKey: (di, binaryName: string) => binaryName,

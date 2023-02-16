@@ -17,7 +17,7 @@ const downloadPlatformUpdateInjectable = getInjectable({
 
   instantiate: (di): DownloadPlatformUpdate => {
     const electronUpdater = di.inject(electronUpdaterInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return async (onDownloadProgress) => {
       onDownloadProgress({ percentage: 0 });

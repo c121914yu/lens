@@ -13,7 +13,7 @@ const staticFilesDirectoryInjectable = getInjectable({
     const joinPaths = di.inject(joinPathsInjectable);
     const currentAppDir = di.inject(appPathsInjectable).currentApp;
 
-    return joinPaths(currentAppDir, "static");
+    return ""
   },
 });
 

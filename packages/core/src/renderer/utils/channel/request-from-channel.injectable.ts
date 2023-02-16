@@ -13,7 +13,7 @@ const requestFromChannelInjectable = getInjectable({
   instantiate: (di) => {
     const ipcRenderer = di.inject(ipcRendererInjectable);
 
-    return ((channel, request) => ipcRenderer.invoke(channel.id, request)) as RequestFromChannel;
+    return ((channel, request) => {}) as RequestFromChannel;
   },
 
   injectionToken: requestFromChannelInjectionToken,

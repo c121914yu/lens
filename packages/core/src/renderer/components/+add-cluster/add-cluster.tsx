@@ -5,8 +5,7 @@
 
 import styles from "./add-cluster.module.scss";
 
-import type { KubeConfig } from "@kubernetes/client-node";
-import fse from "fs-extra";
+// import type { KubeConfig } from "@kubernetes/client-node";
 import { debounce } from "lodash";
 import { action, computed, makeObservable, observable } from "mobx";
 import { observer } from "mobx-react";

@@ -25,7 +25,7 @@ const portForwardStoreInjectable = getInjectable({
       notifyErrorPortForwarding: di.inject(notifyErrorPortForwardingInjectable),
       apiBase: di.inject(apiBaseInjectable),
       requestActivePortForward: di.inject(requestActivePortForwardInjectable),
-      logger: di.inject(loggerInjectable),
+      
     });
   },
 });

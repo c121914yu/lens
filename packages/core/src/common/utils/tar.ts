@@ -5,8 +5,7 @@
 
 // Helper for working with tarball files (.tar, .tgz)
 // Docs: https://github.com/npm/node-tar
-import tar from "tar";
-import path from "path";
+
 import { parse } from "./json";
 import type { JsonValue } from "type-fest";
 

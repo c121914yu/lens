@@ -29,7 +29,7 @@ const installExtensionFromInputInjectable = getInjectable({
     const readFileNotify = di.inject(readFileNotifyInjectable);
     const getBasenameOfPath = di.inject(getBasenameOfPathInjectable);
     const showErrorNotification = di.inject(showErrorNotificationInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const downloadBinary = di.inject(downloadBinaryInjectable);
 
     return async (input) => {

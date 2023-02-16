@@ -10,8 +10,7 @@ import type { Disposer } from "../../../../common/utils";
 import { noop } from "../../../../common/utils";
 import { extensionDisplayName } from "../../../../extensions/lens-extension";
 import { getMessageFromError } from "../get-message-from-error/get-message-from-error";
-import path from "path";
-import fse from "fs-extra";
+
 import { when } from "mobx";
 import React from "react";
 import type { InstallRequestValidated } from "./create-temp-files-and-validate.injectable";
@@ -29,7 +28,7 @@ const unpackExtensionInjectable = getInjectable({
     const getExtensionDestFolder = di.inject(getExtensionDestFolderInjectable);
     const extensionInstallationStateStore = di.inject(extensionInstallationStateStoreInjectable);
     const extractTar = di.inject(extractTarInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const showInfoNotification = di.inject(showInfoNotificationInjectable);
     const showErrorNotification = di.inject(showErrorNotificationInjectable);
 

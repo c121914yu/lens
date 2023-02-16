@@ -67,7 +67,7 @@ class NonInjectedServiceDetailsEndpoint extends React.Component<ServiceDetailsEn
 export const ServiceDetailsEndpoint = withInjectables<Dependencies, ServiceDetailsEndpointProps>(NonInjectedServiceDetailsEndpoint, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
     showDetails: di.inject(showDetailsInjectable),
   }),
 });

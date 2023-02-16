@@ -9,14 +9,12 @@ import winstonLoggerInjectable from "./winston-logger.injectable";
 const loggerInjectable = getInjectable({
   id: "logger",
   instantiate: (di): Logger => {
-    const baseLogger = di.inject(winstonLoggerInjectable);
-
     return {
-      debug: (message, ...data) => baseLogger.debug(message, ...data),
-      info: (message, ...data) => baseLogger.info(message, ...data),
-      warn: (message, ...data) => baseLogger.warn(message, ...data),
-      error: (message, ...data) => baseLogger.error(message, ...data),
-      silly: (message, ...data) => baseLogger.silly(message, ...data),
+      debug: (message, ...data) => console.info(message, ...data),
+      info: (message, ...data) => console.info(message, ...data),
+      warn: (message, ...data) => console.warn(message, ...data),
+      error: (message, ...data) => console.error(message, ...data),
+      silly: (message, ...data) => console.info(message, ...data),
     };
   },
 });

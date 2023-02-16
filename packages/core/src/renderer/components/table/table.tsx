@@ -21,7 +21,7 @@ import type { TableModel } from "./table-model/table-model";
 import { withInjectables } from "@ogre-tools/injectable-react";
 import tableModelInjectable from "./table-model/table-model.injectable";
 import type { ItemObject } from "../../../common/item.store";
-import assert from "assert";
+
 import orderByUrlParamInjectable from "./order-by-url-param.injectable";
 import sortByUrlParamInjectable from "./sort-by-url-param.injectable";
 
@@ -169,7 +169,7 @@ class NonInjectedTable<Item extends ItemObject> extends React.Component<TablePro
   }
 
   protected onSort({ sortBy, orderBy }: TableSortParams) {
-    assert(this.props.tableId);
+    console.info(this.props.tableId);
     this.props.model.setSortParams(this.props.tableId, { sortBy, orderBy });
     const { sortSyncWithUrl, onSort } = this.props;
 
@@ -232,7 +232,7 @@ class NonInjectedTable<Item extends ItemObject> extends React.Component<TablePro
     }
 
     if (virtual) {
-      assert(customRowHeights && rowLineHeight && rowPadding);
+      console.info(customRowHeights && rowLineHeight && rowPadding);
       const rowHeights = sortedItems.map(item => customRowHeights(item, rowLineHeight, rowPadding * 2));
 
       return (

@@ -9,7 +9,7 @@ import type { IChartInstallData, InstallChartTabStore } from "./store";
 import type { HelmChart } from "../../../../common/k8s-api/endpoints/helm-charts.api";
 import React from "react";
 import { action, computed, observable, runInAction } from "mobx";
-import assert from "assert";
+
 import type { RequestCreateHelmRelease } from "../../../../common/k8s-api/endpoints/helm-releases.api/request-create.injectable";
 import requestCreateHelmReleaseInjectable from "../../../../common/k8s-api/endpoints/helm-releases.api/request-create.injectable";
 import type { HelmReleaseUpdateDetails } from "../../../../common/k8s-api/endpoints/helm-releases.api";
@@ -99,7 +99,7 @@ export class InstallChartModel {
   readonly installed = observable.box<HelmReleaseUpdateDetails | undefined>();
 
   private save = (data: Partial<IChartInstallData>) => {
-    assert(this.chart);
+    console.info(this.chart);
 
     const chart = { ...this.chart, ...data };
 
@@ -110,7 +110,7 @@ export class InstallChartModel {
     value: computed(() => this.chart?.version),
 
     onChange: async (version: string | undefined) => {
-      assert(this.chart);
+      console.info(this.chart);
 
       if (!version) {
         return;
@@ -183,7 +183,7 @@ export class InstallChartModel {
   private get chart() {
     const chart = this.dependencies.store.getData(this.dependencies.tabId);
 
-    assert(chart);
+    console.info(chart);
 
     return chart;
   }
@@ -230,13 +230,13 @@ export class InstallChartModel {
   }
 
   private get name() {
-    assert(this.chart);
+    console.info(this.chart);
 
     return this.chart.name;
   }
 
   private get repository() {
-    assert(this.chart);
+    console.info(this.chart);
 
     return this.chart.repo;
   }
@@ -267,7 +267,7 @@ export class InstallChartModel {
   navigateToInstalledRelease = () => {
     const installed = this.installed.get();
 
-    assert(installed);
+    console.info(installed);
 
     const release = installed.release;
 

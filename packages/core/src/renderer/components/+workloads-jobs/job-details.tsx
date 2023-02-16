@@ -124,7 +124,7 @@ export const JobDetails = withInjectables<Dependencies, JobDetailsProps>(NonInje
     subscribeStores: di.inject(subscribeStoresInjectable),
     podStore: di.inject(podStoreInjectable),
     jobStore: di.inject(jobStoreInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });
 

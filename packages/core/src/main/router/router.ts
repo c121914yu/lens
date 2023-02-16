@@ -4,7 +4,6 @@
  */
 
 import Call from "@hapi/call";
-import type http from "http";
 import type { Cluster } from "../../common/cluster/cluster";
 import type { LensApiRequest, Route } from "./route";
 import type { ServerIncomingMessage } from "../lens-proxy/lens-proxy";

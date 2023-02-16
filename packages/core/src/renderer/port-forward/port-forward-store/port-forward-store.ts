@@ -9,7 +9,6 @@ import type { StorageLayer } from "../../utils";
 import { autoBind, disposer } from "../../utils";
 import type { ForwardedPort } from "../port-forward-item";
 import { PortForwardItem } from "../port-forward-item";
-import { waitUntilFree } from "tcp-port-used";
 import type { Logger } from "../../../common/logger";
 import type { JsonApi } from "../../../common/k8s-api/json-api";
 import type { RequestActivePortForward } from "./request-active-port-forward.injectable";

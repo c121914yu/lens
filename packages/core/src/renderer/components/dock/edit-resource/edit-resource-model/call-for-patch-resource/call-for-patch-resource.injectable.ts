@@ -7,7 +7,7 @@ import type { AsyncResult } from "../../../../../../common/utils/async-result";
 import apiManagerInjectable from "../../../../../../common/k8s-api/api-manager/manager.injectable";
 import type { JsonPatch } from "../../../../../../common/k8s-api/kube-object.store";
 import type { KubeObject } from "../../../../../../common/k8s-api/kube-object";
-import assert from "assert";
+
 import { getErrorMessage } from "../../../../../../common/utils/get-error-message";
 
 export type CallForPatchResource = (
@@ -23,7 +23,7 @@ const callForPatchResourceInjectable = getInjectable({
     return async (item, patch) => {
       const store = apiManager.getStore(item.selfLink);
 
-      assert(store);
+      console.info(store);
 
       let kubeObject: KubeObject;
 

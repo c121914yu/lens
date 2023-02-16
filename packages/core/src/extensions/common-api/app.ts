@@ -24,6 +24,7 @@ export const App = {
   },
   getEnabledExtensions: asLegacyGlobalFunctionForExtensionApi(getEnabledExtensionsInjectable),
   get version() {
+    console.log('version====');
     const di = getLegacyGlobalDiForExtensionApi();
 
     return di.inject(buildVersionInjectionToken).get();

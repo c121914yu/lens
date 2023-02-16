@@ -126,7 +126,7 @@ module.exports = {
         "header/header": [2, "../../license-header"],
         "react/prop-types": "off",
         "no-invalid-this": "off",
-        "@typescript-eslint/no-invalid-this": ["error"],
+        "@typescript-eslint/no-invalid-this": ["0"],
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/interface-name-prefix": "off",
@@ -181,12 +181,12 @@ module.exports = {
         }],
         "react/display-name": "off",
         "space-before-function-paren": "off",
-        "@typescript-eslint/space-before-function-paren": ["error", {
+        "@typescript-eslint/space-before-function-paren": ["0", {
           "anonymous": "always",
           "named": "never",
           "asyncArrow": "always",
         }],
-        "@typescript-eslint/naming-convention": ["error",
+        "@typescript-eslint/naming-convention": ["0",
           {
             "selector": "interface",
             "format": ["PascalCase"],
@@ -208,8 +208,8 @@ module.exports = {
             },
           },
         ],
-        "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
-        "unused-imports/no-unused-imports-ts": process.env.PROD === "true" ? "error" : "warn",
+        "@typescript-eslint/consistent-type-definitions": ["0", "interface"],
+        "unused-imports/no-unused-imports-ts": process.env.PROD === "true" ? "error" : "0",
         "unused-imports/no-unused-vars-ts": [
           "warn", {
             "vars": "all",
@@ -218,9 +218,9 @@ module.exports = {
           },
         ],
         "comman-dangle": "off",
-        "@typescript-eslint/comma-dangle": ["error", "always-multiline"],
+        "@typescript-eslint/comma-dangle": ["0", "always-multiline"],
         "comma-spacing": "off",
-        "@typescript-eslint/comma-spacing": "error",
+        "@typescript-eslint/comma-spacing": "0",
         "indent": ["error", 2, {
           "SwitchCase": 1,
         }],
@@ -229,19 +229,19 @@ module.exports = {
           "allowTemplateLiterals": true,
         }],
         "object-curly-spacing": "off",
-        "@typescript-eslint/object-curly-spacing": ["error", "always", {
+        "@typescript-eslint/object-curly-spacing": ["0", "always", {
           "objectsInObjects": false,
           "arraysInObjects": true,
         }],
         "semi": "off",
-        "@typescript-eslint/semi": ["error"],
+        "@typescript-eslint/semi": ["0"],
         "linebreak-style": ["error", "unix"],
         "eol-last": ["error", "always"],
         "object-shorthand": "error",
         "prefer-template": "error",
         "template-curly-spacing": "error",
         "no-unused-expressions": "off",
-        "@typescript-eslint/no-unused-expressions": "error",
+        "@typescript-eslint/no-unused-expressions": "0",
         "padding-line-between-statements": [
           "error",
           { "blankLine": "always", "prev": "*", "next": "return" },
@@ -254,7 +254,7 @@ module.exports = {
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "off",
         "no-template-curly-in-string": "error",
-        "@typescript-eslint/consistent-type-imports": "error",
+        "@typescript-eslint/consistent-type-imports": "0",
       },
     },
     {

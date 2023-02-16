@@ -235,6 +235,6 @@ class NonInjectedPodSecurityPolicyDetails extends React.Component<PodSecurityPol
 export const PodSecurityPolicyDetails = withInjectables<Dependencies, PodSecurityPolicyDetailsProps>(NonInjectedPodSecurityPolicyDetails, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

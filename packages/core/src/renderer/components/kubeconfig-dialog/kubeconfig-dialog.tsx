@@ -15,7 +15,6 @@ import { Icon } from "../icon";
 import type { ShowNotification } from "../notifications";
 import { Wizard, WizardStep } from "../wizard";
 import { MonacoEditor } from "../monaco-editor";
-import { clipboard } from "electron";
 import { withInjectables } from "@ogre-tools/injectable-react";
 import showSuccessNotificationInjectable from "../notifications/show-success-notification.injectable";
 import kubeconfigDialogStateInjectable from "./state.injectable";

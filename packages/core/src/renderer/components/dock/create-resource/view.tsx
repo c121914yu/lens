@@ -179,7 +179,7 @@ export const CreateResource = withInjectables<Dependencies, CreateResourceProps>
     createResourceTabStore: di.inject(createResourceTabStoreInjectable),
     createResourceTemplates: await di.inject(createResourceTemplatesInjectable),
     apiManager: di.inject(apiManagerInjectable),
-    logger: di.inject(loggerInjectable),
+    
     getDetailsUrl: di.inject(getDetailsUrlInjectable),
     navigate: di.inject(navigateInjectable),
     requestKubeObjectCreation: di.inject(requestKubeObjectCreationInjectable),

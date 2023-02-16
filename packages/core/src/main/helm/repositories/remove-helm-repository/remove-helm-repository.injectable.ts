@@ -13,7 +13,7 @@ const removeHelmRepositoryInjectable = getInjectable({
 
   instantiate: (di) => {
     const execHelm = di.inject(execHelmInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return async (repo: HelmRepo): Promise<AsyncResult<void, string>> => {
       logger.info(`[HELM]: removing repo ${repo.name} (${repo.url})`);

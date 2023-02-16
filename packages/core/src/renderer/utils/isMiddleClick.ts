@@ -6,7 +6,7 @@
 import type React from "react";
 
 // Helper for inlining middleClick checks
-// <form onAuxClick={isMiddleClick(() => console.log('do some action'))}>
+// <form onAuxClick={isMiddleClick(() => console.info('do some action'))}>
 //    <input name="text"/>
 //    <button type="submit">Action</button>
 // </form>

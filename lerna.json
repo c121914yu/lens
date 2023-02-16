@@ -7,6 +7,6 @@
   "version": "6.4.0-beta.13",
   "npmClient": "yarn",
   "npmClientArgs": [
-    "--network-timeout=100000"
+    "--network-timeout=1000000"
   ]
 }

@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import { ipcRenderer } from "electron";
 import { EventEmitter } from "events";
 import { makeObservable, observable, reaction, when } from "mobx";
 import { broadcastMessage, ipcMainHandle, ipcRendererOn } from "../../common/ipc";
@@ -372,7 +371,7 @@ export class ExtensionDiscovery {
     } catch (error) {
       if (isErrnoException(error) && error.code === "ENOTDIR") {
         // ignore this error, probably from .DS_Store file
-        this.dependencies.logger.debug(`${logModule}: failed to load extension manifest through a not-dir-like at ${manifestPath}`);
+        console.info(`${logModule}: failed to load extension manifest through a not-dir-like at ${manifestPath}`);
       } else {
         this.dependencies.logger.error(`${logModule}: can't load extension manifest at ${manifestPath}: ${error}`);
       }
@@ -416,7 +415,7 @@ export class ExtensionDiscovery {
       }
     }
 
-    this.dependencies.logger.debug(`${logModule}: ${extensions.length} extensions loaded`, { folderPath, extensions });
+    console.info(`${logModule}: ${extensions.length} extensions loaded`, { folderPath, extensions });
 
     return extensions;
   }

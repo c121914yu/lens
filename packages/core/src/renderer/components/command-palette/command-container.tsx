@@ -36,38 +36,6 @@ interface Dependencies {
 @observer
 class NonInjectedCommandContainer extends React.Component<Dependencies> {
   componentDidMount() {
-    const { clusterId, addWindowEventListener, commandOverlay, matchedClusterId, isMac } = this.props;
-
-    const action = clusterId
-      ? () => commandOverlay.open(<CommandDialog />)
-      : () => {
-        const matchedId = matchedClusterId.get();
-
-        if (matchedId) {
-          broadcastMessage(`command-palette:${matchedClusterId}:open`);
-        } else {
-          commandOverlay.open(<CommandDialog />);
-        }
-      };
-    const ipcChannel = clusterId
-      ? `command-palette:${clusterId}:open`
-      : "command-palette:open";
-
-    disposeOnUnmount(this, [
-      this.props.legacyOnChannelListen(ipcChannel, action),
-      addWindowEventListener("keydown", onKeyboardShortcut(
-        isMac
-          ? "Shift+Cmd+P"
-          : "Shift+Ctrl+P",
-        action,
-      )),
-      addWindowEventListener("keydown", (event) => {
-        if (event.code === "Escape") {
-          event.stopPropagation();
-          this.props.commandOverlay.close();
-        }
-      }),
-    ]);
   }
 
   render() {

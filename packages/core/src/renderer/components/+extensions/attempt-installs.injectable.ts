@@ -4,7 +4,7 @@
  */
 import { getInjectable } from "@ogre-tools/injectable";
 import attemptInstallInjectable from "./attempt-install/attempt-install.injectable";
-import path from "path";
+
 import readFileNotifyInjectable from "./read-file-notify/read-file-notify.injectable";
 
 export type AttemptInstalls = (filePaths: string[]) => Promise<void>;

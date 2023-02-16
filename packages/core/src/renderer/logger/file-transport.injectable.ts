@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import { transports } from "winston";
 import directoryForLogsInjectable from "../../common/app-paths/directory-for-logs.injectable";
 import { loggerTransportInjectionToken } from "../../common/logger/transports";
 import windowLocationInjectable from "../../common/k8s-api/window-location.injectable";

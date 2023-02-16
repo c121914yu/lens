@@ -7,14 +7,14 @@ import type React from "react";
 
 // Helper for preventing default event action and performing custom callback
 // 1)
-// <form onSubmit={prevDefault(() => console.log('do some action'))}>
+// <form onSubmit={prevDefault(() => console.info('do some action'))}>
 //    <input name="text"/>
 //    <button type="submit">Action</button>
 // </form>
 // 2)
 // <a href="/some-page-url">
 //  <span>Link text</span>
-//  <Icon onClick={prevDefault(() => console.log('stay on the page and open dialog'))}/>
+//  <Icon onClick={prevDefault(() => console.info('stay on the page and open dialog'))}/>
 // </a>
 
 export function prevDefault<E extends React.SyntheticEvent | Event, R>(callback: (evt: E) => R): (event: E) => R {

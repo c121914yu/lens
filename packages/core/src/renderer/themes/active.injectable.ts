@@ -3,7 +3,7 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import assert from "assert";
+
 import { computed } from "mobx";
 import lensColorThemePreferenceInjectable from "../../common/user-store/lens-color-theme.injectable";
 import { lensThemeDeclarationInjectionToken } from "./declaration";
@@ -27,7 +27,7 @@ const activeThemeInjectable = getInjectable({
         const systemThemeType = systemThemeConfiguration.get();
         const matchingTheme = themeDecls.find(theme => theme.type === systemThemeType);
 
-        assert(matchingTheme, `Missing theme declaration for system theme "${systemThemeType}"`);
+        console.info(matchingTheme, `Missing theme declaration for system theme "${systemThemeType}"`);
 
         return matchingTheme;
       }

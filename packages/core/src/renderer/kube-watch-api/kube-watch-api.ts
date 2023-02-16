@@ -138,7 +138,7 @@ export class KubeWatchApi {
             return console.debug(`[KUBE-WATCH-API]: Not changing watch for ${store.api.apiBase} because a new namespace was ${action} but all namespaces are selected`);
           }
 
-          console.log(`[KUBE-WATCH-API]: changing watch ${store.api.apiBase}`, namespaces);
+          console.info(`[KUBE-WATCH-API]: changing watch ${store.api.apiBase}`, namespaces);
           childController.abort();
           unsubscribe();
           childController = new WrappedAbortController(parent);
@@ -181,7 +181,7 @@ export class KubeWatchApi {
   protected log(message: any, meta: any) {
     const log = message instanceof Error
       ? this.dependencies.logger.error
-      : this.dependencies.logger.debug;
+      : console.info;
 
     log("[KUBE-WATCH-API]:", message, {
       time: new Date().toLocaleString(),

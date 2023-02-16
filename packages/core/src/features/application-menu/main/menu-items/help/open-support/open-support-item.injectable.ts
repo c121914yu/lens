@@ -13,7 +13,7 @@ const openSupportItemInjectable = getInjectable({
 
   instantiate: (di) => {
     const openLinkInBrowser = di.inject(openLinkInBrowserInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return {
       kind: "clickable-menu-item" as const,

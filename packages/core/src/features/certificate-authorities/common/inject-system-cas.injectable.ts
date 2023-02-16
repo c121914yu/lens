@@ -4,7 +4,6 @@
  */
 
 import { getInjectable } from "@ogre-tools/injectable";
-import { globalAgent } from "https";
 import { requestSystemCAsInjectionToken } from "./request-system-cas-token";
 
 // DST Root CA X3, which was expired on 9.30.2021
@@ -24,10 +23,7 @@ const injectSystemCAsInjectable = getInjectable({
     return async () => {
       const certs = await requestSystemCAs();
 
-      if (certs.length === 0) {
-        // Leave the global option alone
-        return;
-      }
+      return;
 
       const cas = (() => {
         if (Array.isArray(globalAgent.options.ca)) {

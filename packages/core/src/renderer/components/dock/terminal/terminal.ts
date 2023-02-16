@@ -12,10 +12,9 @@ import type { TabId } from "../dock/store";
 import type { TerminalApi } from "../../../api/terminal-api";
 import { disposer } from "../../../utils";
 import { once } from "lodash";
-import { clipboard } from "electron";
 import type { Logger } from "../../../../common/logger";
 import type { TerminalConfig } from "../../../../common/user-store/preferences-helpers";
-import assert from "assert";
+
 import { TerminalChannels } from "../../../../common/terminal/channels";
 import { LinkProvider } from "xterm-link-provider";
 import type { OpenLinkInBrowser } from "../../../../common/utils/open-link-in-browser.injectable";
@@ -54,7 +53,7 @@ export class Terminal {
   }
 
   attachTo(parentElem: HTMLElement) {
-    assert(this.elem, "Terminal should always be mounted somewhere");
+    console.info(this.elem, "Terminal should always be mounted somewhere");
     parentElem.appendChild(this.elem);
     this.onActivate();
   }

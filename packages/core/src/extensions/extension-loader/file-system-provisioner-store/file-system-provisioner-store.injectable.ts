@@ -28,7 +28,7 @@ const fileSystemProvisionerStoreInjectable = getInjectable({
     randomBytes: di.inject(randomBytesInjectable),
     directoryForUserData: di.inject(directoryForUserDataInjectable),
     getConfigurationFileModel: di.inject(getConfigurationFileModelInjectable),
-    logger: di.inject(loggerInjectable),
+    
     storeMigrationVersion: di.inject(storeMigrationVersionInjectable),
     migrations: {},
     getBasenameOfPath: di.inject(getBasenameOfPathInjectable),

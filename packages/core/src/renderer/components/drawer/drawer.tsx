@@ -6,7 +6,6 @@
 import "./drawer.scss";
 
 import React from "react";
-import { clipboard } from "electron";
 import { createPortal } from "react-dom";
 import type { SingleOrMany, StorageLayer } from "../../utils";
 import { cssNames, noop } from "../../utils";

@@ -20,7 +20,7 @@ const openKubeconfigDialogInjectable = getInjectable({
   instantiate: (di): OpenKubeconfigDialog => {
     const state = di.inject(kubeconfigDialogStateInjectable);
     const showCheckedErrorNotification = di.inject(showCheckedErrorNotificationInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return ({ title, loader }) => {
       (async () => {

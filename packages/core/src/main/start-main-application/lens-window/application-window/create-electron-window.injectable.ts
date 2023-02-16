@@ -6,7 +6,6 @@ import { getInjectable } from "@ogre-tools/injectable";
 import { timingSafeEqual, X509Certificate } from "crypto";
 import loggerInjectable from "../../../../common/logger.injectable";
 import applicationWindowStateInjectable from "./application-window-state.injectable";
-import { BrowserWindow } from "electron";
 import type { ElectronWindow } from "./create-lens-window.injectable";
 import type { RequireExactlyOne } from "type-fest";
 import openLinkInBrowserInjectable from "../../../../common/utils/open-link-in-browser.injectable";
@@ -56,7 +55,7 @@ const createElectronWindowInjectable = getInjectable({
   id: "create-electron-window",
 
   instantiate: (di): CreateElectronWindow => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const openLinkInBrowser = di.inject(openLinkInBrowserInjectable);
     const getAbsolutePath = di.inject(getAbsolutePathInjectable);
     const lensResourcesDir = di.inject(lensResourcesDirInjectable);

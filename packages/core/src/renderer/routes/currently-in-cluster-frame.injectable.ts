@@ -6,7 +6,7 @@ import { getInjectable } from "@ogre-tools/injectable";
 
 const currentlyInClusterFrameInjectable = getInjectable({
   id: "currently-in-cluster-frame",
-  instantiate: () => !process.isMainFrame,
+  instantiate: () => false,
   causesSideEffects: true,
 });
 

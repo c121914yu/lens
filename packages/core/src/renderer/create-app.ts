@@ -10,12 +10,12 @@ import { getInjectable } from "@ogre-tools/injectable";
 import nodeEnvInjectionToken from "../common/vars/node-env-injection-token";
 import { runInAction } from "mobx";
 import { registerInjectables } from "./register-injectables";
-
-interface AppConfig {
-  di: DiContainer;
-  mode: string;
-}
-
+ 
+ interface AppConfig {
+   di: DiContainer;
+   mode: string;
+ }
+ 
 export function createApp(conf: AppConfig) {
   const { di, mode } = conf;
 
@@ -25,10 +25,12 @@ export function createApp(conf: AppConfig) {
       instantiate: () => mode,
       injectionToken: nodeEnvInjectionToken,
     }));
+    // 注册所有的 injectable 文件
     registerInjectables(di);
   });
-  
+   
   return {
-    start: () => bootstrap(di),
+    start: () => bootstrap(di)
   };
 }
+ 

@@ -3,8 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import { watch } from "chokidar";
-import type { Stats } from "fs";
 import type TypedEventEmitter from "typed-emitter";
 import type { SingleOrMany } from "../../utils";
 
@@ -157,7 +155,7 @@ export type Watch = <AlwaysStat extends boolean = false>(path: string, options?:
 // TODO: Introduce wrapper to allow simpler API
 const watchInjectable = getInjectable({
   id: "watch",
-  instantiate: () => watch as Watch,
+  instantiate: () => () => {},
   causesSideEffects: true,
 });
 

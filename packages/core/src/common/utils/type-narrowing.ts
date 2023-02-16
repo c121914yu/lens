@@ -3,9 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import type { ExecException, ExecFileException } from "child_process";
-import type { IncomingMessage } from "http";
-
 /**
  * Narrows `val` to include the property `key` (if true is returned)
  * @param val The object to be tested

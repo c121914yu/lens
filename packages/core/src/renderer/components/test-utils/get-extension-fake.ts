@@ -50,7 +50,7 @@ export const getExtensionFakeForMain = (di: DiContainer, id: string, name: strin
     fileSystemProvisionerStore: di.inject(fileSystemProvisionerStoreInjectable),
     entityRegistry: di.inject(catalogEntityRegistryForMainInjectable),
     navigate: di.inject(navigateForExtensionInjectable),
-    logger: di.inject(loggerInjectable),
+    
   };
 
   return instance;
@@ -82,7 +82,7 @@ export const getExtensionFakeForRenderer = (di: DiContainer, id: string, name: s
     getExtensionPageParameters: di.inject(getExtensionPageParametersInjectable),
     navigateToRoute: di.inject(navigateToRouteInjectable),
     routes: di.inject(routesInjectable),
-    logger: di.inject(loggerInjectable),
+    
   };
 
   return instance;

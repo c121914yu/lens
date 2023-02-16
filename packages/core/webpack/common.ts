@@ -4,7 +4,7 @@
  */
 
 import type webpack from "webpack";
-import path from "path";
+import path from "path"
 import ForkTsCheckerPlugin from "fork-ts-checker-webpack-plugin";
 import webpackLensMain from "./main";
 import { buildDir } from "./vars";

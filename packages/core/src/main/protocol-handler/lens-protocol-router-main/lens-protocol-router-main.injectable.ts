@@ -19,7 +19,7 @@ const lensProtocolRouterMainInjectable = getInjectable({
       extensionsStore: di.inject(extensionsStoreInjectable),
       showApplicationWindow: di.inject(showApplicationWindowInjectable),
       broadcastMessage: di.inject(broadcastMessageInjectable),
-      logger: di.inject(loggerInjectable),
+      
     }),
 });
 

@@ -7,14 +7,13 @@
 // https://www.electronjs.org/docs/api/ipc-main
 // https://www.electronjs.org/docs/api/ipc-renderer
 
-import { ipcMain, ipcRenderer, webContents } from "electron";
 import { toJS } from "../utils/toJS";
 import type { ClusterFrameInfo } from "../cluster-frames";
 import { clusterFrameMap } from "../cluster-frames";
 import type { Disposer } from "../utils";
 import { getLegacyGlobalDiForExtensionApi } from "../../extensions/as-legacy-globals-for-extension-api/legacy-global-di-for-extension-api";
 import ipcRendererInjectable from "../../renderer/utils/channel/ipc-renderer.injectable";
-import loggerInjectable from "../logger.injectable";
+
 import ipcMainInjectionToken from "./ipc-main-injection-token";
 
 export const broadcastMainChannel = "ipc:broadcast-main";
@@ -43,7 +42,7 @@ export async function broadcastMessage(channel: string, ...args: any[]): Promise
   }
 
   const di = getLegacyGlobalDiForExtensionApi();
-  const logger = di.inject(loggerInjectable);
+  const logger = console.info;
 
   ipcMain.listeners(channel).forEach((func) => func({
     processId: undefined, frameId: undefined, sender: undefined, senderFrame: undefined,
@@ -90,21 +89,21 @@ export async function broadcastMessage(channel: string, ...args: any[]): Promise
 export function ipcMainOn(channel: string, listener: (event: Electron.IpcMainEvent, ...args: any[]) => any): Disposer {
   const di = getLegacyGlobalDiForExtensionApi();
 
-  const ipcMain = di.inject(ipcMainInjectionToken);
+  // const ipcMain = di.inject(ipcMainInjectionToken);
 
-  ipcMain.on(channel, listener);
+  // ipcMain.on(channel, listener);
 
-  return () => ipcMain.off(channel, listener);
+  // return () => ipcMain.off(channel, listener);
 }
 
 export function ipcRendererOn(channel: string, listener: (event: Electron.IpcRendererEvent, ...args: any[]) => any): Disposer {
-  const di = getLegacyGlobalDiForExtensionApi();
+  // const di = getLegacyGlobalDiForExtensionApi();
 
-  const ipcRenderer = di.inject(ipcRendererInjectable);
+  // const ipcRenderer = di.inject(ipcRendererInjectable);
 
-  ipcRenderer.on(channel, listener);
+  // ipcRenderer.on(channel, listener);
 
-  return () => ipcRenderer.off(channel, listener);
+  // return () => ipcRenderer.off(channel, listener);
 }
 
 /**

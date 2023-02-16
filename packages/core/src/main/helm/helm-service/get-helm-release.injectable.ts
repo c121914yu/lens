@@ -13,14 +13,14 @@ const getHelmReleaseInjectable = getInjectable({
   id: "get-helm-release",
 
   instantiate: (di) => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const execHelm = di.inject(execHelmInjectable);
     const getHelmReleaseResources = di.inject(getHelmReleaseResourcesInjectable);
 
     return async (cluster: Cluster, releaseName: string, namespace: string) => {
       const kubeconfigPath = await cluster.getProxyKubeconfigPath();
 
-      logger.debug("Fetch release");
+      console.info("Fetch release");
 
       const result = await execHelm([
         "status",

@@ -7,7 +7,7 @@ import type { ClusterDependencies } from "../../common/cluster/cluster";
 import { Cluster } from "../../common/cluster/cluster";
 import directoryForKubeConfigsInjectable from "../../common/app-paths/directory-for-kube-configs/directory-for-kube-configs.injectable";
 import { createClusterInjectionToken } from "../../common/cluster/create-cluster-injection-token";
-import loggerInjectable from "../../common/logger.injectable";
+
 import broadcastMessageInjectable from "../../common/ipc/broadcast-message.injectable";
 import loadConfigfromFileInjectable from "../../common/kube-helpers/load-config-from-file.injectable";
 
@@ -17,7 +17,7 @@ const createClusterInjectable = getInjectable({
   instantiate: (di) => {
     const dependencies: ClusterDependencies = {
       directoryForKubeConfigs: di.inject(directoryForKubeConfigsInjectable),
-      logger: di.inject(loggerInjectable),
+      
       broadcastMessage: di.inject(broadcastMessageInjectable),
       loadConfigfromFile: di.inject(loadConfigfromFileInjectable),
 

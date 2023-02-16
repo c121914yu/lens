@@ -37,7 +37,7 @@ const openNodeShellSessionInjectable = getInjectable({
     const dependencies: NodeShellSessionDependencies = {
       isMac: di.inject(isMacInjectable),
       isWindows: di.inject(isWindowsInjectable),
-      logger: di.inject(loggerInjectable),
+      
       userShellSetting: di.inject(userShellSettingInjectable),
       appName: di.inject(appNameInjectable),
       buildVersion: di.inject(buildVersionInjectable),

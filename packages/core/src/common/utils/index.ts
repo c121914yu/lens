@@ -1,7 +1,7 @@
-/**
- * Copyright (c) OpenLens Authors. All rights reserved.
- * Licensed under MIT License. See LICENSE in root directory for more information.
- */
+// /**
+//  * Copyright (c) OpenLens Authors. All rights reserved.
+//  * Licensed under MIT License. See LICENSE in root directory for more information.
+//  */
 
 export * from "./abort-controller";
 export * from "./autobind";

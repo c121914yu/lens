@@ -17,7 +17,7 @@ const setupDeepLinkingInjectable = getInjectable({
 
   instantiate: (di) => {
     const app = di.inject(electronAppInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const openDeepLinkForUrl = di.inject(openDeepLinkInjectable);
     const showApplicationWindow = di.inject(showApplicationWindowInjectable);
 

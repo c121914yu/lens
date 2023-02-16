@@ -79,7 +79,7 @@ export class ClusterManager {
 
   @action
   protected updateCatalog(clusters: Cluster[]) {
-    this.dependencies.logger.debug("[CLUSTER-MANAGER]: updating catalog from cluster store");
+    console.info("[CLUSTER-MANAGER]: updating catalog from cluster store");
 
     for (const cluster of clusters) {
       this.updateEntityFromCluster(cluster);

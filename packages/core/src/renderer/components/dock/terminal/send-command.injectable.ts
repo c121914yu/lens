@@ -41,7 +41,7 @@ const sendCommandInjectable = getInjectable({
     const selectTab = di.inject(selectDockTabInjectable);
     const getTerminalApi = di.inject(getTerminalApiInjectable);
     const showSuccessNotification = di.inject(showSuccessNotificationInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return async (command: string, options: SendCommandOptions = {}): Promise<void> => {
       let tabId: string | undefined = options.tabId;

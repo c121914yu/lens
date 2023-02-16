@@ -22,7 +22,7 @@ const userStorePreferenceDescriptorsInjectable = getInjectable({
     const joinPaths = di.inject(joinPathsInjectable);
     const homeDirectoryPath = di.inject(homeDirectoryPathInjectable);
 
-    const mainKubeFolderPath = joinPaths(homeDirectoryPath, ".kube");
+    const mainKubeFolderPath = ".kube"
 
     return ({
       httpsProxy: getPreferenceDescriptor<string | undefined>({
@@ -102,11 +102,11 @@ const userStorePreferenceDescriptorsInjectable = getInjectable({
         toStore: (val) => {
           const res: [string, string[]][] = [];
 
-          for (const [table, columns] of val) {
-            if (columns.size) {
-              res.push([table, Array.from(columns)]);
-            }
-          }
+          // for (const [table, columns] of val) {
+          //   if (columns.size) {
+          //     res.push([table, Array.from(columns)]);
+          //   }
+          // }
 
           return res.length ? res : undefined;
         },
@@ -116,9 +116,10 @@ const userStorePreferenceDescriptorsInjectable = getInjectable({
           val?.map(({ filePath, ...rest }) => [filePath, rest])
           ?? [[mainKubeFolderPath, {}]],
         ),
-        toStore: val => val.size === 1 && val.has(mainKubeFolderPath)
-          ? undefined
-          : Array.from(val, ([filePath, rest]) => ({ filePath, ...rest })),
+        toStore: val => val?.size === 1 && val.has(mainKubeFolderPath)
+          ? []
+          // : Array.from(val, ([filePath, rest]) => ({ filePath, ...rest })),
+          :[]
       }),
       editorConfiguration: getPreferenceDescriptor<Partial<EditorConfiguration>, EditorConfiguration>({
         fromStore: val => merge(defaultEditorConfig, val),
@@ -132,7 +133,7 @@ const userStorePreferenceDescriptorsInjectable = getInjectable({
         fromStore: val => val ?? {
           location: defaultExtensionRegistryUrlLocation,
         },
-        toStore: val => val.location === defaultExtensionRegistryUrlLocation
+        toStore: val => val?.location === defaultExtensionRegistryUrlLocation
           ? undefined
           : val,
       }),

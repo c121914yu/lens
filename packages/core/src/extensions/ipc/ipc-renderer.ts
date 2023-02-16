@@ -2,7 +2,6 @@
  * Copyright (c) OpenLens Authors. All rights reserved.
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
-import { ipcRenderer } from "electron";
 import { IpcPrefix, IpcRegistrar } from "./ipc-registrar";
 import { Disposers } from "../lens-extension";
 import type { LensRendererExtension } from "../lens-renderer-extension";

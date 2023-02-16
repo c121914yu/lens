@@ -7,7 +7,7 @@ import { iter } from "../../../common/utils";
 import clusterFramesInjectable from "../../../common/cluster-frames.injectable";
 import showApplicationWindowInjectable from "./show-application-window.injectable";
 import getCurrentApplicationWindowInjectable from "./application-window/get-current-application-window.injectable";
-import assert from "assert";
+
 import type { NavigateForExtensionArgs } from "../../../features/extensions/navigate/common/channel";
 import { navigateForExtensionChannel } from "../../../features/extensions/navigate/common/channel";
 
@@ -36,7 +36,7 @@ const navigateForExtensionInjectable = getInjectable({
 
       const applicationWindow = getApplicationWindow();
 
-      assert(applicationWindow);
+      console.info(applicationWindow);
 
       const frameInfo = iter.find(
         clusterFrames.values(),

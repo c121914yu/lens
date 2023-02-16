@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectionToken } from "@ogre-tools/injectable";
-import type { BrowserWindow, KeyboardEvent, MenuItemConstructorOptions, MenuItem as ElectronMenuItem } from "electron";
 import type { SetOptional } from "type-fest";
 import type { ChildOfParentComposite, ParentOfChildComposite } from "../../../../common/utils/composite/interfaces";
 import type { MaybeShowable } from "../../../../common/utils/composable-responsibilities/showable/showable";
@@ -16,7 +15,7 @@ export interface MayHaveKeyboardShortcut {
 
 export interface ElectronClickable {
   // TODO: This leaky abstraction is exposed in Extension API, therefore cannot be updated
-  onClick: (menuItem: ElectronMenuItem, browserWindow: (BrowserWindow) | (undefined), event: KeyboardEvent) => void;
+  onClick: () => void;
 }
 
 export interface Labeled {
@@ -44,7 +43,7 @@ interface MayHaveElectronRole {
   role?: ElectronRoles;
 }
 
-type ElectronRoles = Exclude<MenuItemConstructorOptions["role"], undefined>;
+type ElectronRoles = Exclude<null, undefined>;
 
 export type SubMenu =
   & ApplicationMenuItemType<"sub-menu">

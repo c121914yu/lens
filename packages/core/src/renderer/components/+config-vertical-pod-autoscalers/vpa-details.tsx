@@ -215,6 +215,6 @@ export const VpaDetails = withInjectables<Dependencies, VpaDetailsProps>(NonInje
     ...props,
     apiManager: di.inject(apiManagerInjectable),
     getDetailsUrl: di.inject(getDetailsUrlInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

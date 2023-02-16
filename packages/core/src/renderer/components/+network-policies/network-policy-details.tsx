@@ -214,6 +214,6 @@ class NonInjectedNetworkPolicyDetails extends React.Component<NetworkPolicyDetai
 export const NetworkPolicyDetails = withInjectables<Dependencies, NetworkPolicyDetailsProps>(NonInjectedNetworkPolicyDetails, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

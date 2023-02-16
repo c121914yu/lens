@@ -19,8 +19,6 @@ import { Button } from "../../button";
 import type { ExtensionLoader } from "../../../../extensions/extension-loader";
 import type { LensExtensionId } from "../../../../extensions/lens-extension";
 import React from "react";
-import { remove as removeDir } from "fs-extra";
-import { shell } from "electron";
 import type { ExtensionInstallationStateStore } from "../../../../extensions/extension-installation-state-store/extension-installation-state-store";
 import { ExtensionInstallationState } from "../../../../extensions/extension-installation-state-store/extension-installation-state-store";
 import showErrorNotificationInjectable from "../../notifications/show-error-notification.injectable";

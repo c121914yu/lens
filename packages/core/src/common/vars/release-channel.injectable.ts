@@ -10,7 +10,7 @@ const releaseChannelInjectable = createInitializableState({
   id: "release-channel",
   init: (di): ReleaseChannel => {
     const buildSemanticVersion = di.inject(buildSemanticVersionInjectable);
-    const currentReleaseChannel = buildSemanticVersion.get().prerelease[0];
+    const currentReleaseChannel = "latest";
 
     switch (currentReleaseChannel) {
       case "latest":

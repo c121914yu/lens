@@ -121,6 +121,6 @@ export const KubeObjectMeta = withInjectables<Dependencies, KubeObjectMetaProps>
     ...props,
     getDetailsUrl: di.inject(getDetailsUrlInjectable),
     apiManager: di.inject(apiManagerInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

@@ -6,7 +6,7 @@ import { getInjectable } from "@ogre-tools/injectable";
 import type { AsyncResult } from "../../../../../../common/utils/async-result";
 import nonPromiseExecFileInjectable from "./non-promise-exec-file.injectable";
 import { isNumber } from "../../../../../../common/utils";
-import assert from "assert";
+
 import type { ChildProcess } from "child_process";
 
 export type ExecFileWithInput = (options: {
@@ -35,9 +35,9 @@ const execFileWithInputInjectable = getInjectable({
           return;
         }
 
-        assert(execution.stdout, "stdout is not defined");
-        assert(execution.stderr, "stderr is not defined");
-        assert(execution.stdin, "stdin is not defined");
+        console.info(execution.stdout, "stdout is not defined");
+        console.info(execution.stderr, "stderr is not defined");
+        console.info(execution.stdin, "stdin is not defined");
 
         let stdout = "";
         let stderr = "";

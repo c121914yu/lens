@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import semver, { coerce } from "semver";
 
 export enum Ordering {
   LESS = -1,

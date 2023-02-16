@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import { powerMonitor } from "electron";
 
 const powerMonitorInjectable = getInjectable({
   id: "power-monitor",

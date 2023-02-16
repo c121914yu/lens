@@ -8,7 +8,7 @@ import type { Cluster } from "../../common/cluster/cluster";
 import removePathInjectable from "../../common/fs/remove.injectable";
 import execFileInjectable from "../../common/fs/exec-file.injectable";
 import writeFileInjectable from "../../common/fs/write-file.injectable";
-import loggerInjectable from "../../common/logger.injectable";
+
 import joinPathsInjectable from "../../common/path/join-paths.injectable";
 import type { ResourceApplierDependencies } from "./resource-applier";
 import { ResourceApplier } from "./resource-applier";
@@ -23,7 +23,7 @@ const createResourceApplierInjectable = getInjectable({
       emitAppEvent: di.inject(emitAppEventInjectable),
       execFile: di.inject(execFileInjectable),
       joinPaths: di.inject(joinPathsInjectable),
-      logger: di.inject(loggerInjectable),
+      
       writeFile: di.inject(writeFileInjectable),
     };
 

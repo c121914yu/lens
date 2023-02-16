@@ -111,6 +111,6 @@ export const DaemonSetDetails = withInjectables<Dependencies, DaemonSetDetailsPr
     podStore: di.inject(podStoreInjectable),
     getActiveClusterEntity: di.inject(getActiveClusterEntityInjectable),
     requestPodMetricsForDaemonSets: di.inject(requestPodMetricsForDaemonSetsInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

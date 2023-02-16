@@ -8,7 +8,7 @@ import type { BrowserOptions } from "@sentry/electron/renderer";
 import isProductionInjectable from "../vars/is-production.injectable";
 import sentryDataSourceNameInjectable from "../vars/sentry-dsn-url.injectable";
 import { Dedupe, Offline } from "@sentry/integrations";
-import { inspect } from "util";
+
 import userStoreInjectable from "../user-store/user-store.injectable";
 
 export type InitializeSentryReportingWith = (initSentry: (opts: BrowserOptions | ElectronMainOptions) => void) => void;
@@ -37,7 +37,7 @@ const initializeSentryReportingWithInjectable = getInjectable({
          */
         process.stdout.write(`🔒  [SENTRY-BEFORE-SEND-HOOK]: Sentry event is caught but not sent to server.`);
         process.stdout.write("🔒  [SENTRY-BEFORE-SEND-HOOK]: === START OF SENTRY EVENT ===");
-        process.stdout.write(inspect(event, false, null, true));
+        process.stdout.write(JSON.stringify(event, false, null, true));
         process.stdout.write("🔒  [SENTRY-BEFORE-SEND-HOOK]: ===  END OF SENTRY EVENT  ===");
 
         // if return null, the event won't be sent

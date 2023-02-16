@@ -16,7 +16,7 @@ const downloadAllLogsInjectable = getInjectable({
   instantiate: (di) => {
     const callForLogs = di.inject(callForLogsInjectable);
     const openSaveFileDialog = di.inject(openSaveFileDialogInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const showErrorNotification = di.inject(showErrorNotificationInjectable);
     
     return async (params: ResourceDescriptor, query: PodLogsQuery) => {

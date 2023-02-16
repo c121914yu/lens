@@ -23,7 +23,7 @@ const startFrameInjectable = getInjectable({
 
     return async () => {
       await beforeFrameStartsFirst();
-
+      
       if (currentlyInClusterFrame) {
         await beforeClusterFrameStartsFirst();
       } else {

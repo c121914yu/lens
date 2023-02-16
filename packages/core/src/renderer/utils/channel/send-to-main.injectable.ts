@@ -12,7 +12,6 @@ const sendToMainInjectable = getInjectable({
     const ipcRenderer = di.inject(ipcRendererInjectable);
 
     return (channelId: string, message: any) => {
-      ipcRenderer.send(channelId, message);
     };
   },
 });

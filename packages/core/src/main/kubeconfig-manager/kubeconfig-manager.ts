@@ -3,7 +3,7 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import type { KubeConfig } from "@kubernetes/client-node";
+// import type { KubeConfig } from "@kubernetes/client-node";
 import type { Cluster } from "../../common/cluster/cluster";
 import type { ClusterContextHandler } from "../context-handler/context-handler";
 import { dumpConfigYaml } from "../../common/kube-helpers";
@@ -130,7 +130,7 @@ export class KubeconfigManager {
     const configYaml = dumpConfigYaml(proxyConfig);
 
     await this.dependencies.writeFile(tempFile, configYaml, { mode: 0o600 });
-    this.dependencies.logger.debug(`[KUBECONFIG-MANAGER]: Created temp kubeconfig "${contextName}" at "${tempFile}": \n${configYaml}`);
+    console.info(`[KUBECONFIG-MANAGER]: Created temp kubeconfig "${contextName}" at "${tempFile}": \n${configYaml}`);
 
     return tempFile;
   }

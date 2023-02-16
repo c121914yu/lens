@@ -4,7 +4,7 @@
  */
 import { getInjectable } from "@ogre-tools/injectable";
 import type { Cluster } from "../common/cluster/cluster";
-import { FormData } from "@k8slens/node-fetch";
+// import { FormData } from "@k8slens/node-fetch";
 import type { RequestMetricsParams } from "../common/k8s-api/endpoints/metrics.api/request-metrics.injectable";
 import { object } from "../common/utils";
 import k8sRequestInjectable from "./k8s-request.injectable";

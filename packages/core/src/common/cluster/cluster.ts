@@ -5,8 +5,8 @@
 
 import { action, comparer, computed, makeObservable, observable, reaction, runInAction, when } from "mobx";
 import type { ClusterContextHandler } from "../../main/context-handler/context-handler";
-import type { KubeConfig } from "@kubernetes/client-node";
-import { HttpError } from "@kubernetes/client-node";
+// import type { KubeConfig } from "@kubernetes/client-node";
+// import { HttpError } from "@kubernetes/client-node";
 import type { Kubectl } from "../../main/kubectl/kubectl";
 import type { KubeconfigManager } from "../../main/kubeconfig-manager/kubeconfig-manager";
 import type { KubeApiResource, KubeApiResourceDescriptor } from "../rbac";
@@ -18,7 +18,7 @@ import { disposer, isDefined, isRequestError, toJS } from "../utils";
 import { clusterListNamespaceForbiddenChannel } from "../ipc/cluster";
 import type { CanI } from "./authorization-review.injectable";
 import type { ListNamespaces } from "./list-namespaces.injectable";
-import assert from "assert";
+
 import type { Logger } from "../logger";
 import type { BroadcastMessage } from "../ipc/broadcast-message.injectable";
 import type { LoadConfigfromFile } from "../kube-helpers/load-config-from-file.injectable";
@@ -64,14 +64,12 @@ export class Cluster implements ClusterModel {
 
   public get contextHandler() {
     // TODO: remove these once main/renderer are seperate classes
-    assert(this._contextHandler, "contextHandler is only defined in the main environment");
 
     return this._contextHandler;
   }
 
   protected get proxyKubeconfigManager() {
     // TODO: remove these once main/renderer are seperate classes
-    assert(this._proxyKubeconfigManager, "proxyKubeconfigManager is only defined in the main environment");
 
     return this._proxyKubeconfigManager;
   }
@@ -252,7 +250,7 @@ export class Cluster implements ClusterModel {
     // for the time being, until renderer gets its own cluster type
     this._contextHandler = this.dependencies.createContextHandler(this);
     this._proxyKubeconfigManager = this.dependencies.createKubeconfigManager(this);
-    this.dependencies.logger.debug(`[CLUSTER]: Cluster init success`, {
+    console.info(`[CLUSTER]: Cluster init success`, {
       id: this.id,
       context: this.contextName,
       apiUrl: this.apiUrl,
@@ -416,7 +414,7 @@ export class Cluster implements ClusterModel {
    */
   @action disconnect(): void {
     if (this.disconnected) {
-      return void this.dependencies.logger.debug("[CLUSTER]: already disconnected", { id: this.id });
+      return void console.info("[CLUSTER]: already disconnected", { id: this.id });
     }
 
     this.dependencies.logger.info(`[CLUSTER]: disconnecting`, { id: this.id });
@@ -650,7 +648,7 @@ export class Cluster implements ClusterModel {
   broadcastConnectUpdate(message: string, level: KubeAuthUpdate["level"] = "info"): void {
     const update: KubeAuthUpdate = { message, level };
 
-    this.dependencies.logger.debug(`[CLUSTER]: broadcasting connection update`, { ...update, meta: this.getMeta() });
+    console.info(`[CLUSTER]: broadcasting connection update`, { ...update, meta: this.getMeta() });
     this.dependencies.broadcastMessage(`cluster:${this.id}:connection-update`, update);
   }
 

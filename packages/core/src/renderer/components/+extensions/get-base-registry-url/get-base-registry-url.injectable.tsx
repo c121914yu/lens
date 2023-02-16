@@ -17,7 +17,7 @@ const getBaseRegistryUrlInjectable = getInjectable({
   instantiate: (di) => {
     const { extensionRegistryUrl } = di.inject(userStoreInjectable);
     const showErrorNotification = di.inject(showErrorNotificationInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const execFile = di.inject(execFileInjectable);
 
     return async () => {

@@ -6,7 +6,6 @@ import { getInjectable } from "@ogre-tools/injectable";
 import navigateToEntitySettingsInjectable from "../../common/front-end-routing/routes/entity-settings/navigate-to-entity-settings.injectable";
 import type { ListNamespaceForbiddenArgs } from "../../common/ipc/cluster";
 import { Button } from "../components/button";
-import type { IpcRendererEvent } from "electron";
 import React from "react";
 import notificationsStoreInjectable from "../components/notifications/notifications-store.injectable";
 import { getMillisecondsFromUnixEpoch } from "../../common/utils/date/get-current-date-time";
@@ -26,7 +25,7 @@ const listNamespacesForbiddenHandlerInjectable = getInjectable({
     const showSuccessNotification = di.inject(showSuccessNotificationInjectable);
 
     return (
-      event: IpcRendererEvent,
+      event: any,
       ...[clusterId]: ListNamespaceForbiddenArgs
     ): void => {
       const lastDisplayedAt = notificationLastDisplayedAt.get(clusterId);

@@ -130,7 +130,7 @@ export const DeploymentDetails = withInjectables<Dependencies, DeploymentDetails
     subscribeStores: di.inject(subscribeStoresInjectable),
     replicaSetStore: di.inject(replicaSetStoreInjectable),
     deploymentStore: di.inject(deploymentStoreInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });
 

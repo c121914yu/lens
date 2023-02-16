@@ -6,7 +6,6 @@
 import type { CatalogEntityActionContext, CatalogEntityContextMenuContext, CatalogEntityMetadata, CatalogEntityStatus, CatalogCategorySpec } from "../catalog";
 import { CatalogEntity, CatalogCategory, categoryVersion } from "../catalog/catalog-entity";
 import { broadcastMessage } from "../ipc";
-import { app } from "electron";
 import type { CatalogEntityConstructor, CatalogEntitySpec } from "../catalog/catalog-entity";
 import { IpcRendererNavigationEvents } from "../ipc/navigation-events";
 import { requestClusterActivation, requestClusterDisconnection } from "../../renderer/ipc";

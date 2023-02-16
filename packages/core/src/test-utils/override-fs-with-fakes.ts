@@ -5,11 +5,7 @@
 import type { DiContainer } from "@ogre-tools/injectable";
 import fsInjectable from "../common/fs/fs.injectable";
 import { createFsFromVolume, Volume } from "memfs";
-import type {
-  ensureDirSync as ensureDirSyncImpl,
-  readJsonSync as readJsonSyncImpl,
-  writeJsonSync as writeJsonSyncImpl,
-} from "fs-extra";
+
 
 export const getOverrideFsWithFakes = () => {
   const root = createFsFromVolume(Volume.fromJSON({}));

@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import type { WriteFileOptions } from "fs-extra";
 import getDirnameOfPathInjectable from "../path/get-dirname.injectable";
 import fsInjectable from "./fs.injectable";
 

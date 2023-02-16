@@ -8,7 +8,7 @@ import clusterFramesInjectable from "../../../common/cluster-frames.injectable";
 import { IpcRendererNavigationEvents } from "../../../common/ipc/navigation-events";
 import showApplicationWindowInjectable from "./show-application-window.injectable";
 import getCurrentApplicationWindowInjectable from "./application-window/get-current-application-window.injectable";
-import assert from "assert";
+
 
 const navigateInjectable = getInjectable({
   id: "navigate",
@@ -23,7 +23,7 @@ const navigateInjectable = getInjectable({
 
       const applicationWindow = getApplicationWindow();
 
-      assert(applicationWindow);
+      console.info(applicationWindow);
 
       const frameInfo = iter.find(
         clusterFrames.values(),

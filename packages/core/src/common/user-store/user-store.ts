@@ -118,7 +118,7 @@ export class UserStore extends BaseStore<UserStoreModel> /* implements UserStore
 
   @action
   protected fromStore({ preferences }: Partial<UserStoreModel> = {}) {
-    this.dependencies.logger.debug("UserStore.fromStore()", { preferences });
+    console.info("UserStore.fromStore()", { preferences });
 
     for (const [key, { fromStore }] of object.entries(this.dependencies.preferenceDescriptors)) {
       const curVal = this[key];

@@ -4,7 +4,6 @@
  */
 
 import type { ClusterModel, ClusterPreferences, ClusterPrometheusPreferences } from "../../../common/cluster-types";
-import { moveSync, removeSync } from "fs-extra";
 import directoryForUserDataInjectable from "../../../common/app-paths/directory-for-user-data/directory-for-user-data.injectable";
 import { isDefined } from "../../../common/utils";
 import joinPathsInjectable from "../../../common/path/join-paths.injectable";
@@ -84,7 +83,7 @@ const v500Beta13ClusterStoreMigrationInjectable = getInjectable({
   instantiate: (di) => {
     const userDataPath = di.inject(directoryForUserDataInjectable);
     const joinPaths = di.inject(joinPathsInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     const moveStorageFolder = ({ folder, newId, oldId }: { folder: string; newId: string; oldId: string }): void => {
       const oldPath = joinPaths(folder, `${oldId}.json`);

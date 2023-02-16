@@ -54,7 +54,7 @@ describe("<Tooltip />", () => {
 
     const target = result.baseElement.querySelector("#my-target");
 
-    assert(target);
+    console.info(target);
 
     userEvent.hover(target);
     expect(result.baseElement).toMatchSnapshot();

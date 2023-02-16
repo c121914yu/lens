@@ -3,7 +3,7 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import assert from "assert";
+
 import { storesAndApisCanBeCreatedInjectionToken } from "../../../../common/k8s-api/stores-apis-can-be-created.token";
 import clusterRoleBindingApiInjectable from "../../../../common/k8s-api/endpoints/cluster-role-binding.api.injectable";
 import { kubeObjectStoreInjectionToken } from "../../../../common/k8s-api/api-manager/kube-object-store-token";
@@ -14,13 +14,13 @@ import loggerInjectable from "../../../../common/logger.injectable";
 const clusterRoleBindingStoreInjectable = getInjectable({
   id: "cluster-role-binding-store",
   instantiate: (di) => {
-    assert(di.inject(storesAndApisCanBeCreatedInjectionToken), "clusterRoleBindingStore is only accessible in certain environments");
+    console.info(di.inject(storesAndApisCanBeCreatedInjectionToken), "clusterRoleBindingStore is only accessible in certain environments");
 
     const api = di.inject(clusterRoleBindingApiInjectable);
 
     return new ClusterRoleBindingStore({
       context: di.inject(clusterFrameContextForClusterScopedResourcesInjectable),
-      logger: di.inject(loggerInjectable),
+      
     }, api);
   },
   injectionToken: kubeObjectStoreInjectionToken,

@@ -18,7 +18,7 @@ const shellApiRequestInjectable = getInjectable({
     const openShellSession = di.inject(openShellSessionInjectable);
     const authenticateRequest = di.inject(shellRequestAuthenticatorInjectable).authenticate;
     const getClusterForRequest = di.inject(getClusterForRequestInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return ({ req, socket, head }) => {
       const cluster = getClusterForRequest(req);

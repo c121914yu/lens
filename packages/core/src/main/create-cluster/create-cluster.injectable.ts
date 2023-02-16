@@ -13,7 +13,7 @@ import { createClusterInjectionToken } from "../../common/cluster/create-cluster
 import authorizationReviewInjectable from "../../common/cluster/authorization-review.injectable";
 import listNamespacesInjectable from "../../common/cluster/list-namespaces.injectable";
 import createListApiResourcesInjectable from "../cluster/request-api-resources.injectable";
-import loggerInjectable from "../../common/logger.injectable";
+
 import broadcastMessageInjectable from "../../common/ipc/broadcast-message.injectable";
 import loadConfigfromFileInjectable from "../../common/kube-helpers/load-config-from-file.injectable";
 import requestNamespaceListPermissionsForInjectable from "../../common/cluster/request-namespace-list-permissions.injectable";
@@ -26,7 +26,7 @@ const createClusterInjectable = getInjectable({
   instantiate: (di) => {
     const dependencies: ClusterDependencies = {
       directoryForKubeConfigs: di.inject(directoryForKubeConfigsInjectable),
-      logger: di.inject(loggerInjectable),
+      
       clusterVersionDetector: di.inject(clusterVersionDetectorInjectable),
       createKubeconfigManager: di.inject(createKubeconfigManagerInjectable),
       createKubectl: di.inject(createKubectlInjectable),

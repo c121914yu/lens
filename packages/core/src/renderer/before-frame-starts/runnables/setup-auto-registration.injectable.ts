@@ -25,12 +25,12 @@ const setupAutoRegistrationInjectable = getInjectable({
       const beforeApiManagerInitializationCrds: CustomResourceDefinition[] = [];
       const beforeApiManagerInitializationApis: KubeApi[] = [];
       const kubeApiDependencies: KubeApiDependencies = {
-        logger: di.inject(loggerInjectable),
+        
         maybeKubeApi: di.inject(maybeKubeApiInjectable),
       };
       const kubeObjectStoreDependencies: KubeObjectStoreDependencies = {
         context: di.inject(clusterFrameContextForNamespacedResourcesInjectable),
-        logger: di.inject(loggerInjectable),
+        
       };
       let initialized = false;
 

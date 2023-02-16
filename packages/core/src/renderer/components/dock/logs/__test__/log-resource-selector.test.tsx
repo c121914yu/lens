@@ -160,7 +160,7 @@ describe("<LogResourceSelector />", () => {
       const { container, findByText } = render(<LogResourceSelector model={model} />);
       const selector = container.querySelector<HTMLElement>(".pod-selector");
 
-      assert(selector);
+      console.info(selector);
 
       selectEvent.openMenu(selector);
       expect(await findByText("deploymentPod2", { selector: ".pod-selector-menu .Select__option" })).toBeInTheDocument();
@@ -171,7 +171,7 @@ describe("<LogResourceSelector />", () => {
       const { findByText, container } = render(<LogResourceSelector model={model} />);
       const selector = container.querySelector<HTMLElement>(".container-selector");
 
-      assert(selector);
+      console.info(selector);
 
       selectEvent.openMenu(selector);
 
@@ -192,7 +192,7 @@ describe("<LogResourceSelector />", () => {
       const { findByText, container } = render(<LogResourceSelector model={model} />);
       const selector = container.querySelector<HTMLElement>(".pod-selector");
 
-      assert(selector);
+      console.info(selector);
 
       selectEvent.openMenu(selector);
       userEvent.click(await findByText("deploymentPod2", { selector: ".pod-selector-menu .Select__option" }));

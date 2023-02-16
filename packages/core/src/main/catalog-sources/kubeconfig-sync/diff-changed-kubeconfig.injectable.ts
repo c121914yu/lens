@@ -6,7 +6,6 @@ import { getInjectable } from "@ogre-tools/injectable";
 import type { Stats } from "fs";
 import { constants } from "fs";
 import type { ObservableMap } from "mobx";
-import type { Readable } from "stream";
 import type { CatalogEntity } from "../../../common/catalog";
 import type { Cluster } from "../../../common/cluster/cluster";
 import createReadFileStreamInjectable from "../../../common/fs/create-read-file-stream.injectable";
@@ -31,7 +30,7 @@ const diffChangedKubeconfigInjectable = getInjectable({
     const createReadFileStream = di.inject(createReadFileStreamInjectable);
 
     return ({ filePath, maxAllowedFileReadSize, source, stats }) => {
-      logger.debug(`file changed`, { filePath });
+      console.info(`file changed`, { filePath });
 
       if (stats.size >= maxAllowedFileReadSize) {
         logger.warn(`skipping ${filePath}: size=${bytesToUnits(stats.size)} is larger than maxSize=${bytesToUnits(maxAllowedFileReadSize)}`);

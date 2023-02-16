@@ -4,9 +4,7 @@
  */
 import type { InjectionToken } from "@ogre-tools/injectable";
 import { lifecycleEnum, getInjectable } from "@ogre-tools/injectable";
-import type Conf from "conf/dist/source";
-import type { Migrations } from "conf/dist/source/types";
-import loggerInjectable from "../logger.injectable";
+
 import { getOrInsert, iter } from "../utils";
 
 export interface MigrationDeclaration {
@@ -17,7 +15,7 @@ export interface MigrationDeclaration {
 const storeMigrationsInjectable = getInjectable({
   id: "store-migrations",
   instantiate: (di, token): Migrations<Record<string, unknown>> => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const declarations = di.injectMany(token);
     const migrations = new Map<string, MigrationDeclaration["run"][]>();
 

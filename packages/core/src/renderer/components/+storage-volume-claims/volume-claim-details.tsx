@@ -109,6 +109,6 @@ export const PersistentVolumeClaimDetails = withInjectables<Dependencies, Persis
     getDetailsUrl: di.inject(getDetailsUrlInjectable),
     podStore: di.inject(podStoreInjectable),
     storageClassApi: di.inject(storageClassApiInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

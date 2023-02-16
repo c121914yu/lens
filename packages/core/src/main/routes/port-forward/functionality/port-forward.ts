@@ -4,8 +4,6 @@
  */
 import type { GetPortFromStream } from "../../../utils/get-port-from-stream.injectable";
 import type { ChildProcessWithoutNullStreams } from "child_process";
-import { spawn } from "child_process";
-import * as tcpPortUsed from "tcp-port-used";
 import { TypedRegEx } from "typed-regex";
 import type { Logger } from "../../../../common/logger";
 
@@ -82,7 +80,7 @@ export class PortForward {
     });
 
     this.process.stderr.on("data", (data) => {
-      this.dependencies.logger.debug(`[PORT-FORWARD-ROUTE]: kubectl port-forward process stderr: ${data}`);
+      console.info(`[PORT-FORWARD-ROUTE]: kubectl port-forward process stderr: ${data}`);
     });
 
     const internalPort = await this.dependencies.getPortFromStream(this.process.stdout, {

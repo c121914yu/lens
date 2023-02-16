@@ -14,7 +14,7 @@ import { defaultHotbarCells, getEmptyHotbar } from "./types";
 import { hotbarTooManyItemsChannel } from "../ipc/hotbar";
 import type { GeneralEntity } from "../catalog-entities";
 import type { Logger } from "../logger";
-import assert from "assert";
+
 
 export interface HotbarStoreModel {
   hotbars: Hotbar[];
@@ -114,7 +114,7 @@ export class HotbarStore extends BaseStore<HotbarStoreModel> {
   getActive(): Hotbar {
     const hotbar = this.findById(this.activeHotbarId);
 
-    assert(hotbar, "There MUST always be an active hotbar");
+    console.info(hotbar, "There MUST always be an active hotbar");
 
     return hotbar;
   }
@@ -154,7 +154,7 @@ export class HotbarStore extends BaseStore<HotbarStoreModel> {
 
   @action
   remove(hotbar: Hotbar) {
-    assert(this.hotbars.length >= 2, "Cannot remove the last hotbar");
+    console.info(this.hotbars.length >= 2, "Cannot remove the last hotbar");
 
     this.hotbars = this.hotbars.filter((h) => h !== hotbar);
 

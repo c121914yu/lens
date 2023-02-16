@@ -104,6 +104,6 @@ export const EventDetails = withInjectables<Dependencies, EventDetailsProps>(Non
     ...props,
     apiManager: di.inject(apiManagerInjectable),
     getDetailsUrl: di.inject(getDetailsUrlInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

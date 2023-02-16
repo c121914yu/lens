@@ -10,7 +10,7 @@ import createStorageInjectable from "../../../utils/create-storage/create-storag
 import { kubeObjectStoreInjectionToken } from "../../../../common/k8s-api/api-manager/kube-object-store-token";
 import clusterApiInjectable from "../../../../common/k8s-api/endpoints/cluster.api.injectable";
 import storesAndApisCanBeCreatedInjectable from "../../../stores-apis-can-be-created.injectable";
-import assert from "assert";
+
 import nodeStoreInjectable from "../../+nodes/store.injectable";
 import requestClusterMetricsByNodeNamesInjectable from "../../../../common/k8s-api/endpoints/metrics.api/request-cluster-metrics-by-node-names.injectable";
 import clusterFrameContextForNamespacedResourcesInjectable from "../../../cluster-frame-context/for-namespaced-resources.injectable";
@@ -20,7 +20,7 @@ const clusterOverviewStoreInjectable = getInjectable({
   id: "cluster-overview-store",
 
   instantiate: (di) => {
-    assert(di.inject(storesAndApisCanBeCreatedInjectable), "clusterOverviewStore is only available in certain environments");
+    console.info(di.inject(storesAndApisCanBeCreatedInjectable), "clusterOverviewStore is only available in certain environments");
     const createStorage = di.inject(createStorageInjectable);
     const clusterApi = di.inject(clusterApiInjectable);
 
@@ -35,7 +35,7 @@ const clusterOverviewStoreInjectable = getInjectable({
       nodeStore: di.inject(nodeStoreInjectable),
       requestClusterMetricsByNodeNames: di.inject(requestClusterMetricsByNodeNamesInjectable),
       context: di.inject(clusterFrameContextForNamespacedResourcesInjectable),
-      logger: di.inject(loggerInjectable),
+      
     }, clusterApi);
   },
   injectionToken: kubeObjectStoreInjectionToken,

@@ -7,21 +7,18 @@
  import type webpack from "webpack";
  import HtmlWebpackPlugin from "html-webpack-plugin";
  import MiniCssExtractPlugin from "mini-css-extract-plugin";
- import ForkTsCheckerPlugin from "fork-ts-checker-webpack-plugin";
  import MonacoWebpackPlugin from "monaco-editor-webpack-plugin";
  import CircularDependencyPlugin from "circular-dependency-plugin";
- import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
  import CopyPlugin from "copy-webpack-plugin";
  import type { WebpackPluginInstance } from "webpack";
  import { DefinePlugin } from "webpack";
- import { assetsFolderName, isDevelopment, rendererDir, buildDir, htmlTemplate, publicPath, sassCommonVars } from "./vars";
+ import { assetsFolderName, isDevelopment, rendererDir, buildDir, htmlTemplate, publicPath } from "./vars";
  import { platform } from "process";
 
  const renderer: webpack.Configuration = {
-  target: "electron-renderer",
+  target: "web",
   name: "lens-app-renderer",
   mode: isDevelopment ? "development" : "production",
-  // https://webpack.js.org/configuration/devtool/ (see description of each option)
   devtool: isDevelopment ? "cheap-module-source-map" : "source-map",
   cache: isDevelopment ? { type: "filesystem" } : false,
   entry: {
@@ -84,7 +81,6 @@
       CONTEXT_MATCHER_FOR_NON_FEATURES: `/\\.injectable(\\.${platform})?\\.tsx?$/`,
       CONTEXT_MATCHER_FOR_FEATURES: `/\\/(renderer|common)\\/.+\\.injectable(\\.${platform})?\\.tsx?$/`,
     }),
-    new ForkTsCheckerPlugin(),
 
     // see also: https://github.com/Microsoft/monaco-editor-webpack-plugin#options
     new MonacoWebpackPlugin({
@@ -122,12 +118,6 @@
         },
       ],
     }),
-
-    ...(
-      isDevelopment
-        ? [new ReactRefreshWebpackPlugin()]
-        : []
-    ),
   ],
 };
 

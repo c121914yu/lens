@@ -9,7 +9,7 @@ import type { Cluster } from "../../common/cluster/cluster";
 import type { GetPortFromStream } from "../utils/get-port-from-stream.injectable";
 import { makeObservable, observable, when } from "mobx";
 import type { SelfSignedCert } from "selfsigned";
-import assert from "assert";
+
 import { TypedRegEx } from "typed-regex";
 import type { Spawn } from "../child-process/spawn.injectable";
 import type { Logger } from "../../common/logger";
@@ -37,7 +37,7 @@ export class KubeAuthProxy {
   public get port(): number {
     const port = this._port;
 
-    assert(port, "port has not yet been initialized");
+    console.info(port, "port has not yet been initialized");
 
     return port;
   }
@@ -88,8 +88,8 @@ export class KubeAuthProxy {
       this.exit();
     });
 
-    assert(this.proxyProcess.stderr);
-    assert(this.proxyProcess.stdout);
+    console.info(this.proxyProcess.stderr);
+    console.info(this.proxyProcess.stdout);
 
     this.proxyProcess.stderr.on("data", (data: Buffer) => {
       if (data.includes("http: TLS handshake error")) {
@@ -128,7 +128,7 @@ export class KubeAuthProxy {
     this.ready = false;
 
     if (this.proxyProcess) {
-      this.dependencies.logger.debug("[KUBE-AUTH]: stopping local proxy", this.cluster.getMeta());
+      console.info("[KUBE-AUTH]: stopping local proxy", this.cluster.getMeta());
       this.proxyProcess.removeAllListeners();
       this.proxyProcess.stderr?.removeAllListeners();
       this.proxyProcess.stdout?.removeAllListeners();

@@ -31,7 +31,7 @@ const v360Beta1ClusterStoreMigrationInjectable = getInjectable({
     const readFileSync = di.inject(readFileSyncInjectable);
     const readFileBufferSync = di.inject(readFileBufferSyncInjectable);
     const joinPaths = di.inject(joinPathsInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const writeFileSync = di.inject(writeFileSyncInjectable);
 
     return {
@@ -80,7 +80,7 @@ const v360Beta1ClusterStoreMigrationInjectable = getInjectable({
               delete clusterModel.preferences?.icon;
             }
           } catch (error) {
-            console.log(error);
+            console.info(error);
             logger.info(`Failed to migrate cluster icon for cluster "${clusterModel.id}"`, error);
             delete clusterModel.preferences?.icon;
           }

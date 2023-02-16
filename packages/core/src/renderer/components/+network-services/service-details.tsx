@@ -157,6 +157,6 @@ export const ServiceDetails = withInjectables<Dependencies, ServiceDetailsProps>
     subscribeStores: di.inject(subscribeStoresInjectable),
     portForwardStore: di.inject(portForwardStoreInjectable),
     endpointsStore: di.inject(endpointsStoreInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

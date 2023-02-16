@@ -3,15 +3,12 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import assert from "assert";
-import path from "path";
+
 import { getGlobalOverride } from "../test-utils/get-global-override";
 import getConfigurationFileModelInjectable from "./get-configuration-file-model.injectable";
-import type Config from "conf";
 import readJsonSyncInjectable from "../fs/read-json-sync.injectable";
 import writeJsonSyncInjectable from "../fs/write-json-sync.injectable";
 import { get, set } from "lodash";
-import semver from "semver";
 
 const MIGRATION_KEY = `__internal__.migrations.version`;
 
@@ -44,9 +41,9 @@ export default getGlobalOverride(getConfigurationFileModelInjectable, (di) => {
   const writeJsonSync = di.inject(writeJsonSyncInjectable);
 
   return (options) => {
-    assert(options.cwd, "Missing options.cwd");
-    assert(options.configName, "Missing options.configName");
-    assert(options.projectVersion, "Missing options.projectVersion");
+    console.info(options.cwd, "Missing options.cwd");
+    console.info(options.configName, "Missing options.configName");
+    console.info(options.projectVersion, "Missing options.projectVersion");
 
     const configFilePath = path.posix.join(options.cwd, `${options.configName}.json`);
     let store: object = {};

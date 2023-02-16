@@ -3,7 +3,7 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import assert from "assert";
+
 import { kubeObjectStoreInjectionToken } from "../../../common/k8s-api/api-manager/kube-object-store-token";
 import podDisruptionBudgetApiInjectable from "../../../common/k8s-api/endpoints/pod-disruption-budget.api.injectable";
 import loggerInjectable from "../../../common/logger.injectable";
@@ -14,13 +14,13 @@ import { PodDisruptionBudgetStore } from "./store";
 const podDisruptionBudgetStoreInjectable = getInjectable({
   id: "pod-disruption-budget-store",
   instantiate: (di) => {
-    assert(di.inject(storesAndApisCanBeCreatedInjectable), "podDisruptionBudgetStore is only available in certain environments");
+    console.info(di.inject(storesAndApisCanBeCreatedInjectable), "podDisruptionBudgetStore is only available in certain environments");
 
     const api = di.inject(podDisruptionBudgetApiInjectable);
 
     return new PodDisruptionBudgetStore({
       context: di.inject(clusterFrameContextForNamespacedResourcesInjectable),
-      logger: di.inject(loggerInjectable),
+      
     }, api);
   },
   injectionToken: kubeObjectStoreInjectionToken,

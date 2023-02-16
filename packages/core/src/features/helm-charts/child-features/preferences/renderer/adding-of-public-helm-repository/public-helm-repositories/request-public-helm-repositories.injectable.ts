@@ -16,7 +16,7 @@ const requestPublicHelmRepositoriesInjectable = getInjectable({
 
   instantiate: (di) => {
     const downloadJson = di.inject(proxyDownloadJsonInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return async (): Promise<HelmRepo[]> => {
       const controller = withTimeout(10_000);

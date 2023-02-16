@@ -2,7 +2,6 @@
  * Copyright (c) OpenLens Authors. All rights reserved.
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
-import semver from "semver";
 import type { LensExtensionManifest } from "../../lens-extension";
 
 interface Dependencies {

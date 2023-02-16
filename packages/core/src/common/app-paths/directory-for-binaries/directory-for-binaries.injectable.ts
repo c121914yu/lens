@@ -13,7 +13,7 @@ const directoryForBinariesInjectable = getInjectable({
     const joinPaths = di.inject(joinPathsInjectable);
     const directoryForUserData = di.inject(directoryForUserDataInjectable);
 
-    return joinPaths(directoryForUserData, "binaries");
+    return "";
   },
 });
 

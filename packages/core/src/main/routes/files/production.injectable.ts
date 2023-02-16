@@ -7,7 +7,7 @@ import readFileBufferInjectable from "../../../common/fs/read-file-buffer.inject
 import joinPathsInjectable from "../../../common/path/join-paths.injectable";
 import staticFilesDirectoryInjectable from "../../../common/vars/static-files-directory.injectable";
 import type { LensApiRequest } from "../../router/route";
-import path from "path";
+
 import type { SupportedFileExtension } from "../../router/router-content-types";
 import { contentTypes } from "../../router/router-content-types";
 import loggerInjectable from "../../../common/logger.injectable";
@@ -19,7 +19,7 @@ const prodStaticFileRouteHandlerInjectable = getInjectable({
     const readFileBuffer = di.inject(readFileBufferInjectable);
     const joinPaths = di.inject(joinPathsInjectable);
     const staticFilesDirectory = di.inject(staticFilesDirectoryInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return async ({ params }: LensApiRequest<"/{path*}">) => {
       let filePath = params.path;

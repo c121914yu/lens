@@ -17,7 +17,7 @@ const clusterStoreSnapMigrationInjectable = getInjectable({
   id: "cluster-store-snap-migration",
   instantiate: (di) => {
     const { version } = di.inject(applicationInformationToken);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const isSnapPackage = di.inject(isSnapPackageInjectable);
     const pathExistsSync = di.inject(pathExistsSyncInjectable);
 

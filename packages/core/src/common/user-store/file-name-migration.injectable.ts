@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import fse from "fs-extra";
 import directoryForUserDataInjectable from "../app-paths/directory-for-user-data/directory-for-user-data.injectable";
 import { isErrnoException } from "../utils";
 import { getInjectable } from "@ogre-tools/injectable";

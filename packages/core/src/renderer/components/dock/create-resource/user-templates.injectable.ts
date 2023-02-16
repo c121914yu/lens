@@ -5,7 +5,6 @@
 import { getInjectable } from "@ogre-tools/injectable";
 import { computed, observable } from "mobx";
 import { delay, getOrInsert, isErrnoException, waitForPath } from "../../../utils";
-import { readFile } from "fs/promises";
 import { hasCorrectExtension } from "./has-correct-extension";
 import type { RawTemplates } from "./create-resource-templates.injectable";
 import joinPathsInjectable from "../../../../common/path/join-paths.injectable";
@@ -24,7 +23,7 @@ const userCreateResourceTemplatesInjectable = getInjectable({
     const getRelativePath = di.inject(getRelativePathInjectable);
     const homeDirectoryPath = di.inject(homeDirectoryPathInjectable);
     const getDirnameOfPath = di.inject(getDirnameOfPathInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const parsePath = di.inject(parsePathInjectable);
 
     const userTemplatesFolder = joinPaths(homeDirectoryPath, ".k8slens", "templates");

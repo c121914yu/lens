@@ -102,7 +102,7 @@ export const StorageClassDetails = withInjectables<Dependencies, StorageClassDet
     subscribeStores: di.inject(subscribeStoresInjectable),
     storageClassStore: di.inject(storageClassStoreInjectable),
     persistentVolumeStore: di.inject(persistentVolumeStoreInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });
 

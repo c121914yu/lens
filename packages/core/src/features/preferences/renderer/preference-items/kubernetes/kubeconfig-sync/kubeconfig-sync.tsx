@@ -179,7 +179,7 @@ export const KubeconfigSync = withInjectables<Dependencies>(NonInjectedKubeconfi
   getProps: (di) => ({
     userStore: di.inject(userStoreInjectable),
     isWindows: di.inject(isWindowsInjectable),
-    logger: di.inject(loggerInjectable),
+    
     discoverAllKubeconfigSyncKinds: di.inject(discoverAllKubeconfigSyncKindsInjectable),
     discoverKubeconfigSyncKind: di.inject(discoverKubeconfigSyncKindInjectable),
   }),

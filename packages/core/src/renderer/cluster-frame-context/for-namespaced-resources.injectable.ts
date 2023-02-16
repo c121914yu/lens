@@ -6,7 +6,7 @@ import { getInjectable } from "@ogre-tools/injectable";
 import type { ClusterContext } from "./cluster-frame-context";
 import namespaceStoreInjectable from "../components/+namespaces/store.injectable";
 import hostedClusterInjectable from "./hosted-cluster.injectable";
-import assert from "assert";
+
 import { computed } from "mobx";
 
 const clusterFrameContextForNamespacedResourcesInjectable = getInjectable({
@@ -16,7 +16,7 @@ const clusterFrameContextForNamespacedResourcesInjectable = getInjectable({
     const cluster = di.inject(hostedClusterInjectable);
     const namespaceStore = di.inject(namespaceStoreInjectable);
 
-    assert(cluster, "This can only be injected within a cluster frame");
+    console.info(cluster, "This can only be injected within a cluster frame");
 
     const allNamespaces = computed(() => {
       // user given list of namespaces

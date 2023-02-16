@@ -28,7 +28,7 @@ const createTerminalInjectable = getInjectable({
       isMac: di.inject(isMacInjectable),
       openLinkInBrowser: di.inject(openLinkInBrowserInjectable),
       xtermColorTheme: di.inject(xtermColorThemeInjectable),
-      logger: di.inject(loggerInjectable),
+      
     };
 
     return (tabId, api) => new Terminal(dependencies, { tabId, api });

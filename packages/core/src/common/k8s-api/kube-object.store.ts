@@ -12,10 +12,10 @@ import type { IKubeWatchEvent } from "./kube-watch-event";
 import { ItemStore } from "../item.store";
 import type { KubeApiQueryParams, KubeApi, KubeApiWatchCallback } from "./kube-api";
 import { parseKubeApi } from "./kube-api-parse";
-import type { RequestInit } from "@k8slens/node-fetch";
+// import type { RequestInit } from "@k8slens/node-fetch";
 import type { Patch } from "rfc6902";
 import type { Logger } from "../logger";
-import assert from "assert";
+
 import type { PartialDeep } from "type-fest";
 import { entries } from "../utils/objects";
 import AbortController from "abort-controller";
@@ -314,7 +314,7 @@ export abstract class KubeObjectStore<
 
     if (!item) {
       item = await this.loadItem(params);
-      assert(item, "Failed to load item from kube");
+      console.info(item, "Failed to load item from kube");
       const newItems = this.sortItems([...this.items, item]);
 
       this.items.replace(newItems);
@@ -327,7 +327,7 @@ export abstract class KubeObjectStore<
   async loadFromPath(resourcePath: string) {
     const { namespace, name } = parseKubeApi(resourcePath);
 
-    assert(name, "name must be part of resourcePath");
+    console.info(name, "name must be part of resourcePath");
 
     return this.load({ name, namespace });
   }
@@ -339,7 +339,7 @@ export abstract class KubeObjectStore<
   async create(params: { name: string; namespace?: string }, data?: PartialDeep<K>): Promise<K> {
     const newItem = await this.createItem(params, data);
 
-    assert(newItem, "Failed to create item from kube");
+    console.info(newItem, "Failed to create item from kube");
     const items = this.sortItems([...this.items, newItem]);
 
     this.items.replace(items);
@@ -368,7 +368,7 @@ export abstract class KubeObjectStore<
       "json",
     );
 
-    assert(rawItem, `Failed to patch ${item.getScopedName()} of ${item.kind} ${item.apiVersion}`);
+    console.info(rawItem, `Failed to patch ${item.getScopedName()} of ${item.kind} ${item.apiVersion}`);
 
     return this.postUpdate(rawItem);
   }
@@ -382,7 +382,7 @@ export abstract class KubeObjectStore<
       data,
     );
 
-    assert(rawItem, `Failed to update ${item.getScopedName()} of ${item.kind} ${item.apiVersion}`);
+    console.info(rawItem, `Failed to update ${item.getScopedName()} of ${item.kind} ${item.apiVersion}`);
 
     return this.postUpdate(rawItem);
   }

@@ -15,7 +15,7 @@ const showCheckedErrorNotificationInjectable = getInjectable({
   id: "show-checked-error-notififcation",
   instantiate: (di): ShowCheckedErrorNotification => {
     const showErrorNotification = di.inject(showErrorNotificationInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return (message, fallback, opts) => {
       if (typeof message === "string" || message instanceof Error || message instanceof JsonApiErrorParsed) {

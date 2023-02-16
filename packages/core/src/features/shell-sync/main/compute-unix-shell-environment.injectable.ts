@@ -56,7 +56,7 @@ const computeUnixShellEnvironmentInjectable = getInjectable({
 
     const getBasenameOfPath = di.inject(getBasenameOfPathInjectable);
     const spawn = di.inject(spawnInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const randomUUID = di.inject(randomUUIDInjectable);
     const processExecPath = di.inject(processExecPathInjectable);
     const processEnv = di.inject(processEnvInjectable);
@@ -150,7 +150,7 @@ const computeUnixShellEnvironmentInjectable = getInjectable({
           try {
             const rawOutput = Buffer.concat(stdout).toString("utf-8");
 
-            logger.debug(`[UNIX-SHELL-ENV]: got the following output`, { rawOutput });
+            console.info(`[UNIX-SHELL-ENV]: got the following output`, { rawOutput });
 
             const matchedOutput = regex.exec(rawOutput)?.[1];
 

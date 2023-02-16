@@ -2,7 +2,7 @@
  * Copyright (c) OpenLens Authors. All rights reserved.
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
-import type { KubeConfig } from "@kubernetes/client-node";
+// import type { KubeConfig } from "@kubernetes/client-node";
 import { getInjectable } from "@ogre-tools/injectable";
 import type { ClusterConfigData, UpdateClusterModel } from "../../../common/cluster-types";
 import { splitConfig } from "../../../common/kube-helpers";
@@ -20,7 +20,7 @@ const configToModelsInjectable = getInjectable({
 
       for (const { config, validationResult } of splitConfig(rootConfig)) {
         if (validationResult.error) {
-          logger.debug(`context failed validation: ${validationResult.error}`, { context: config.currentContext, filePath });
+          console.info(`context failed validation: ${validationResult.error}`, { context: config.currentContext, filePath });
         } else {
           validConfigs.push([
             {

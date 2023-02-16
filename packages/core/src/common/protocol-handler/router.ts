@@ -15,7 +15,6 @@ import type { ExtensionLoader } from "../../extensions/extension-loader";
 import type { LensExtension } from "../../extensions/lens-extension";
 import type { RouteHandler, RouteParams } from "./registration";
 import { when } from "mobx";
-import { ipcRenderer } from "electron";
 import type { Logger } from "../logger";
 
 // IPC channel for protocol actions. Main broadcasts the open-url events to this channel.

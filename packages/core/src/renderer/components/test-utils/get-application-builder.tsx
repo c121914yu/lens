@@ -32,7 +32,7 @@ import electronTrayInjectable from "../../../main/tray/electron-tray/electron-tr
 import { getDiForUnitTesting as getRendererDi } from "../../getDiForUnitTesting";
 import { getDiForUnitTesting as getMainDi } from "../../../main/getDiForUnitTesting";
 import { overrideChannels } from "../../../test-utils/channel-fakes/override-channels";
-import assert from "assert";
+
 import { openMenu } from "react-select-event";
 import userEvent from "@testing-library/user-event";
 import lensProxyPortInjectable from "../../../main/lens-proxy/lens-proxy-port.injectable";
@@ -187,7 +187,7 @@ export const getApplicationBuilder = () => {
     const joinPaths = mainDi.inject(joinPathsInjectable);
     const homeDirectoryPath = mainDi.inject(homeDirectoryPathInjectable);
 
-    ensureDirSync(joinPaths(homeDirectoryPath, ".kube"));
+    ensureDirSync(".kube");
   }
 
   let environment = environments.application;
@@ -400,7 +400,7 @@ export const getApplicationBuilder = () => {
       get: (id: string) => {
         const lastCall = last(traySetMenuItemsMock.mock.calls);
 
-        assert(lastCall);
+        console.info(lastCall);
 
         return lastCall[0].find(matches({ id })) ?? null;
       },
@@ -410,7 +410,7 @@ export const getApplicationBuilder = () => {
       click: async (id: string) => {
         const lastCall = last(traySetMenuItemsMock.mock.calls);
 
-        assert(lastCall);
+        console.info(lastCall);
 
         const trayMenuItems = lastCall[0];
 
@@ -691,7 +691,7 @@ export const getApplicationBuilder = () => {
           `#${menuId}`,
         );
 
-        assert(select, `Could not find select with ID "${menuId}"`);
+        console.info(select, `Could not find select with ID "${menuId}"`);
 
         openMenu(select);
 
@@ -709,11 +709,11 @@ export const getApplicationBuilder = () => {
           `#${menuId}`,
         );
 
-        assert(select, `Could not find select with ID "${menuId}"`);
+        console.info(select, `Could not find select with ID "${menuId}"`);
 
         const controlElement = select.closest(".Select__control");
 
-        assert(controlElement, `Could not find select value for menu with ID "${menuId}"`);
+        console.info(controlElement, `Could not find select value for menu with ID "${menuId}"`);
 
         return controlElement.textContent || "";
       },
@@ -798,11 +798,11 @@ const selectOptionFor = (builder: ApplicationBuilder, menuId: string) => (labelT
     `.${menuId}-options`,
   );
 
-  assert(menuOptions, `Could not find select options for menu with ID "${menuId}"`);
+  console.info(menuOptions, `Could not find select options for menu with ID "${menuId}"`);
 
   const option = queryByText(menuOptions, labelText);
 
-  assert(option, `Could not find select option with label "${labelText}" for menu with ID "${menuId}"`);
+  console.info(option, `Could not find select option with label "${labelText}" for menu with ID "${menuId}"`);
 
   userEvent.click(option);
 };

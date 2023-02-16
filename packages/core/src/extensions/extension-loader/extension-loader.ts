@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import { ipcMain, ipcRenderer } from "electron";
 import { isEqual } from "lodash";
 import type { ObservableMap } from "mobx";
 import { action, computed, makeObservable, observable, observe, reaction, when } from "mobx";
@@ -14,7 +13,7 @@ import type { LensExtension, LensExtensionConstructor, LensExtensionId } from ".
 import type { LensExtensionState } from "../extensions-store/extensions-store";
 import { extensionLoaderFromMainChannel, extensionLoaderFromRendererChannel } from "../../common/ipc/extension-handling";
 import { requestExtensionLoaderInitialState } from "../../renderer/ipc";
-import assert from "assert";
+
 import { EventEmitter } from "../../common/event-emitter";
 import type { CreateExtensionInstance } from "./create-extension-instance.token";
 import type { Extension } from "./extension/extension.injectable";
@@ -202,7 +201,7 @@ export class ExtensionLoader {
   setIsEnabled(lensExtensionId: LensExtensionId, isEnabled: boolean) {
     const extension = this.extensions.get(lensExtensionId);
 
-    assert(extension, `Must register extension ${lensExtensionId} with before enabling it`);
+    console.info(extension, `Must register extension ${lensExtensionId} with before enabling it`);
 
     extension.isEnabled = isEnabled;
   }

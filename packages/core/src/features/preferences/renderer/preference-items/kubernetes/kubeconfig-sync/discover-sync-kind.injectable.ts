@@ -16,7 +16,7 @@ const discoverKubeconfigSyncKindInjectable = getInjectable({
   id: "discover-kubeconfig-sync-kind",
   instantiate: (di): DiscoverKubeconfigSyncKind => {
     const stat = di.inject(statInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return async (path) => {
       try {

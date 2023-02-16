@@ -205,7 +205,7 @@ export const PodDetails = withInjectables<Dependencies, PodDetailsProps>(NonInje
     priorityClassApi: di.inject(priorityClassApiInjectable),
     runtimeClassApi: di.inject(runtimeClassApiInjectable),
     serviceAccountApi: di.inject(serviceAccountApiInjectable),
-    logger: di.inject(loggerInjectable),
+    
     containerMetrics: di.inject(podContainerMetricsInjectable, props.object),
   }),
 });

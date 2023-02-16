@@ -18,7 +18,7 @@ const createPortForwardInjectable = getInjectable({
     const dependencies: PortForwardDependencies = {
       getKubectlBinPath: di.inject(bundledKubectlInjectable).getPath,
       getPortFromStream: di.inject(getPortFromStreamInjectable),
-      logger: di.inject(loggerInjectable),
+      
     };
 
     return (pathToKubeConfig, args) => new PortForward(dependencies, pathToKubeConfig, args);

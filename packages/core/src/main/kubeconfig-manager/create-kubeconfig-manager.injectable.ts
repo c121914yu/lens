@@ -7,7 +7,7 @@ import type { Cluster } from "../../common/cluster/cluster";
 import directoryForTempInjectable from "../../common/app-paths/directory-for-temp/directory-for-temp.injectable";
 import type { KubeconfigManagerDependencies } from "./kubeconfig-manager";
 import { KubeconfigManager } from "./kubeconfig-manager";
-import loggerInjectable from "../../common/logger.injectable";
+
 import lensProxyPortInjectable from "../lens-proxy/lens-proxy-port.injectable";
 import joinPathsInjectable from "../../common/path/join-paths.injectable";
 import getDirnameOfPathInjectable from "../../common/path/get-dirname.injectable";
@@ -28,7 +28,7 @@ const createKubeconfigManagerInjectable = getInjectable({
   instantiate: (di): CreateKubeconfigManager => {
     const dependencies: KubeconfigManagerDependencies = {
       directoryForTemp: di.inject(directoryForTempInjectable),
-      logger: di.inject(loggerInjectable),
+      
       lensProxyPort: di.inject(lensProxyPortInjectable),
       joinPaths: di.inject(joinPathsInjectable),
       getDirnameOfPath: di.inject(getDirnameOfPathInjectable),

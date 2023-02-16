@@ -15,7 +15,7 @@ import { bytesToUnits, cssNames, isObject } from "../../utils";
 import { ZebraStripesPlugin } from "./zebra-stripes.plugin";
 import type { LensTheme } from "../../themes/lens-theme";
 import { NoMetrics } from "../resource-metrics/no-metrics";
-import assert from "assert";
+
 import { withInjectables } from "@ogre-tools/injectable-react";
 import type { IComputedValue } from "mobx";
 import activeThemeInjectable from "../../themes/active.injectable";
@@ -187,7 +187,7 @@ const tooltipCallbackWith = (precision: number): ChartTooltipCallback["label"] =
 
     const value = data[index];
 
-    assert(isObject(value) && !Array.isArray(value) && typeof value.y === "number");
+    console.info(isObject(value) && !Array.isArray(value) && typeof value.y === "number");
 
     return `${label}: ${bytesToUnits(parseInt(value.y.toString()), { precision })}`;
   }

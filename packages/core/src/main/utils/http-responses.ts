@@ -3,8 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import type http from "http";
-
 /**
  * Respond to a HTTP request with a body of JSON data
  * @param res The HTTP response to write data to

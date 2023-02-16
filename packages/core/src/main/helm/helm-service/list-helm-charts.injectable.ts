@@ -3,7 +3,7 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import assert from "assert";
+
 import { object } from "../../../common/utils";
 import getActiveHelmRepositoriesInjectable from "../repositories/get-active-helm-repositories/get-active-helm-repositories.injectable";
 import type { HelmRepo } from "../../../common/helm/helm-repo";
@@ -19,7 +19,7 @@ const listHelmChartsInjectable = getInjectable({
     return async () => {
       const result = await getActiveHelmRepositories();
 
-      assert(result.callWasSuccessful);
+      console.info(result.callWasSuccessful);
 
       const repositories = result.response;
 

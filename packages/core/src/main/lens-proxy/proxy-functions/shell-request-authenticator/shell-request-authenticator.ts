@@ -5,10 +5,9 @@
 import { getOrInsertMap } from "../../../../common/utils";
 import type { ClusterId } from "../../../../common/cluster-types";
 import { ipcMainHandle } from "../../../../common/ipc";
-import crypto from "crypto";
-import { promisify } from "util";
 
-const randomBytes = promisify(crypto.randomBytes);
+const randomBytes = () => {}
+// const randomBytes = promisify(crypto.randomBytes);
 
 export class ShellRequestAuthenticator {
   private tokens = new Map<ClusterId, Map<string, Uint8Array>>();

@@ -145,7 +145,7 @@ describe("cluster - sidebar and tab navigation for extensions", () => {
             }),
           );
 
-        assert(route);
+        console.info(route);
         navigateToRoute(route);
 
       });

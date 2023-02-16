@@ -5,7 +5,6 @@
 import { getInjectable } from "@ogre-tools/injectable";
 import type { AsyncResult } from "../utils/async-result";
 import { isErrnoException } from "../utils";
-import type { Stats } from "fs-extra";
 import { lowerFirst } from "lodash/fp";
 import statInjectable from "./stat.injectable";
 

@@ -143,6 +143,6 @@ export const ConfigMapDetails = withInjectables<Dependencies, ConfigMapDetailsPr
     configMapStore: di.inject(configMapStoreInjectable),
     showSuccessNotification: di.inject(showSuccessNotificationInjectable),
     showErrorNotification: di.inject(showErrorNotificationInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

@@ -9,7 +9,7 @@ import { shouldBaseStoreDisableSyncInIpcListenerInjectionToken } from "../base-s
 import storeMigrationsInjectable from "../base-store/migrations.injectable";
 import { persistStateToConfigInjectionToken } from "../base-store/save-to-file";
 import getConfigurationFileModelInjectable from "../get-configuration-file-model/get-configuration-file-model.injectable";
-import loggerInjectable from "../logger.injectable";
+
 import getBasenameOfPathInjectable from "../path/get-basename.injectable";
 import { enlistMessageChannelListenerInjectionToken } from "../utils/channel/enlist-message-channel-listener-injection-token";
 import storeMigrationVersionInjectable from "../vars/store-migration-version.injectable";
@@ -21,7 +21,7 @@ const weblinkStoreInjectable = getInjectable({
   instantiate: (di) => new WeblinkStore({
     directoryForUserData: di.inject(directoryForUserDataInjectable),
     getConfigurationFileModel: di.inject(getConfigurationFileModelInjectable),
-    logger: di.inject(loggerInjectable),
+    
     storeMigrationVersion: di.inject(storeMigrationVersionInjectable),
     migrations: di.inject(storeMigrationsInjectable, weblinkStoreMigrationInjectionToken),
     getBasenameOfPath: di.inject(getBasenameOfPathInjectable),

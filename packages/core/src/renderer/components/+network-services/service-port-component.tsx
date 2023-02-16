@@ -208,7 +208,7 @@ export const ServicePortComponent = withInjectables<Dependencies, ServicePortCom
     aboutPortForwarding: di.inject(aboutPortForwardingInjectable),
     notifyErrorPortForwarding: di.inject(notifyErrorPortForwardingInjectable),
     openPortForward: di.inject(openPortForwardInjectable),
-    logger: di.inject(loggerInjectable),
+    
     showErrorNotification: di.inject(showErrorNotificationInjectable),
   }),
 });

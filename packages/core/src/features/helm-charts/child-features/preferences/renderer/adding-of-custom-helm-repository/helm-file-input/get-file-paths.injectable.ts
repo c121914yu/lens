@@ -3,12 +3,10 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import type { FileFilter } from "electron";
 import type { PathPickOpts } from "../../../../../../../renderer/components/path-picker";
 import openPathPickingDialogInjectable from "../../../../../../path-picking-dialog/renderer/pick-paths.injectable";
 
 export interface RequestFilePathOptions extends Pick<PathPickOpts, "onCancel" | "onPick"> {
-  filter: FileFilter;
 }
 
 export type RequestFilePaths = (options: RequestFilePathOptions) => Promise<void>;

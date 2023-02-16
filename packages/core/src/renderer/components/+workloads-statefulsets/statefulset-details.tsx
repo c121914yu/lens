@@ -105,7 +105,7 @@ export const StatefulSetDetails = withInjectables<Dependencies, StatefulSetDetai
     subscribeStores: di.inject(subscribeStoresInjectable),
     podStore: di.inject(podStoreInjectable),
     statefulSetStore: di.inject(statefulSetStoreInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });
 

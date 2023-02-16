@@ -8,7 +8,7 @@ import { baseStoreIpcChannelPrefixesInjectionToken } from "../../common/base-sto
 import { shouldBaseStoreDisableSyncInIpcListenerInjectionToken } from "../../common/base-store/disable-sync";
 import { persistStateToConfigInjectionToken } from "../../common/base-store/save-to-file";
 import getConfigurationFileModelInjectable from "../../common/get-configuration-file-model/get-configuration-file-model.injectable";
-import loggerInjectable from "../../common/logger.injectable";
+
 import getBasenameOfPathInjectable from "../../common/path/get-basename.injectable";
 import { enlistMessageChannelListenerInjectionToken } from "../../common/utils/channel/enlist-message-channel-listener-injection-token";
 import storeMigrationVersionInjectable from "../../common/vars/store-migration-version.injectable";
@@ -19,7 +19,7 @@ const extensionsStoreInjectable = getInjectable({
   instantiate: (di) => new ExtensionsStore({
     directoryForUserData: di.inject(directoryForUserDataInjectable),
     getConfigurationFileModel: di.inject(getConfigurationFileModelInjectable),
-    logger: di.inject(loggerInjectable),
+    
     storeMigrationVersion: di.inject(storeMigrationVersionInjectable),
     migrations: {},
     getBasenameOfPath: di.inject(getBasenameOfPathInjectable),

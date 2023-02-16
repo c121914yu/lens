@@ -21,7 +21,7 @@ const updateHelmReleaseInjectable = getInjectable({
   id: "update-helm-release",
 
   instantiate: (di) => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const getHelmRelease = di.inject(getHelmReleaseInjectable);
     const writeFile = di.inject(writeFileInjectable);
     const removePath = di.inject(removePathInjectable);
@@ -31,7 +31,7 @@ const updateHelmReleaseInjectable = getInjectable({
       const proxyKubeconfig = await cluster.getProxyKubeconfigPath();
       const valuesFilePath = tempy.file({ name: "values.yaml" });
 
-      logger.debug(`[HELM]: upgrading "${releaseName}" in "${namespace}" to ${data.version}`);
+      console.info(`[HELM]: upgrading "${releaseName}" in "${namespace}" to ${data.version}`);
 
       try {
         await writeFile(valuesFilePath, data.values);

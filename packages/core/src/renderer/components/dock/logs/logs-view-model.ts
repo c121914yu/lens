@@ -9,7 +9,7 @@ import type { TabId } from "../dock/store";
 import type { SearchStore } from "../../../search-store/search-store";
 import type { Pod, PodLogsQuery } from "../../../../common/k8s-api/endpoints";
 import { isDefined } from "../../../utils";
-import assert from "assert";
+
 import type { GetPodById } from "../../+workloads-pods/get-pod-by-id.injectable";
 import type { GetPodsByOwnerId } from "../../+workloads-pods/get-pods-by-owner-id.injectable";
 import type { LoadLogs } from "./load-logs.injectable";
@@ -71,7 +71,7 @@ export class LogTabViewModel {
   updateLogTabData = (partialData: Partial<LogTabData>) => {
     const data = this.logTabData.get();
 
-    assert(data, "Can only update data once it is set");
+    console.info(data, "Can only update data once it is set");
 
     this.dependencies.setLogTabData(this.tabId, { ...data, ...partialData });
   };

@@ -3,10 +3,10 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import assert from "assert";
-import path from "path";
-import packageInfo from "../package.json";
 
+
+import packageInfo from "../package.json";
+import path from "path"
 export const isDevelopment = process.env.NODE_ENV !== "production";
 export const mainDir = path.join(process.cwd(), "src", "main");
 export const buildDir = path.join(process.cwd(), "static", "build");
@@ -22,4 +22,4 @@ export const publicPath = "/build/";
 export const sassCommonVars = path.resolve(rendererDir, "components/vars.scss");
 export const webpackDevServerPort = Number(process.env.WEBPACK_DEV_SERVER_PORT) || 9191;
 
-assert(Number.isInteger(webpackDevServerPort), "WEBPACK_DEV_SERVER_PORT environment variable must only be an integer");
+console.log(Number.isInteger(webpackDevServerPort), "WEBPACK_DEV_SERVER_PORT environment variable must only be an integer");

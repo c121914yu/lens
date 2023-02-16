@@ -369,7 +369,7 @@ export const Catalog = withInjectables<Dependencies>(NonInjectedCatalog, {
     visitEntityContextMenu: di.inject(visitEntityContextMenuInjectable),
     navigate: di.inject(navigateInjectable),
     normalizeMenuItem: di.inject(normalizeCatalogEntityContextMenuInjectable),
-    logger: di.inject(loggerInjectable),
+    
     showErrorNotification: di.inject(showErrorNotificationInjectable),
   }),
 });

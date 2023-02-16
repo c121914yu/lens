@@ -38,7 +38,7 @@ const v500Beta10HotbarStoreMigrationInjectable = getInjectable({
     const joinPaths = di.inject(joinPathsInjectable);
     const readJsonSync = di.inject(readJsonSyncInjectable);
     const catalogCatalogEntity = di.inject(catalogCatalogEntityInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return {
       version: "5.0.0-beta.10",

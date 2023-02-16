@@ -16,7 +16,7 @@ const setupIpcMainHandlersInjectable = getInjectable({
   id: "setup-ipc-main-handlers",
 
   instantiate: (di) => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const applicationMenuItemComposite = di.inject(applicationMenuItemCompositeInjectable);
     const pushCatalogToRenderer = di.inject(pushCatalogToRendererInjectable);
     const clusterStore = di.inject(clusterStoreInjectable);
@@ -26,7 +26,7 @@ const setupIpcMainHandlersInjectable = getInjectable({
     return {
       id: "setup-ipc-main-handlers",
       run: () => {
-        logger.debug("[APP-MAIN] initializing ipc main handlers");
+        console.info("[APP-MAIN] initializing ipc main handlers");
 
         setupIpcMainHandlers({
           applicationMenuItemComposite,

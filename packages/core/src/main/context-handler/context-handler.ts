@@ -6,10 +6,7 @@
 import type { PrometheusProvider, PrometheusService } from "../prometheus/provider";
 import type { ClusterPrometheusPreferences } from "../../common/cluster-types";
 import type { Cluster } from "../../common/cluster/cluster";
-import type httpProxy from "http-proxy";
-import type { UrlWithStringQuery } from "url";
-import url from "url";
-import { CoreV1Api } from "@kubernetes/client-node";
+// import { CoreV1Api } from "@kubernetes/client-node";
 import type { KubeAuthProxy } from "../kube-auth-proxy/kube-auth-proxy";
 import type { CreateKubeAuthProxy } from "../kube-auth-proxy/create-kube-auth-proxy.injectable";
 import type { GetPrometheusProviderByKind } from "../prometheus/get-by-kind.injectable";

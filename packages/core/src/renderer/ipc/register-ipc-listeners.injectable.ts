@@ -19,10 +19,10 @@ const registerIpcListenersInjectable = getInjectable({
     const showErrorNotification = di.inject(showErrorNotificationInjectable);
 
     return () => {
-      ipcRenderer.on(clusterListNamespaceForbiddenChannel, listNamespacesForbiddenHandler);
-      ipcRenderer.on(hotbarTooManyItemsChannel, () => {
-        showErrorNotification(`Cannot have more than ${defaultHotbarCells} items pinned to a hotbar`);
-      });
+      // ipcRenderer.on(clusterListNamespaceForbiddenChannel, listNamespacesForbiddenHandler);
+      // ipcRenderer.on(hotbarTooManyItemsChannel, () => {
+      //   showErrorNotification(`Cannot have more than ${defaultHotbarCells} items pinned to a hotbar`);
+      // });
     };
   },
 });

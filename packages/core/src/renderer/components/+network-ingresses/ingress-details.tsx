@@ -138,6 +138,6 @@ class NonInjectedIngressDetails extends React.Component<IngressDetailsProps & De
 export const IngressDetails = withInjectables<Dependencies, IngressDetailsProps>(NonInjectedIngressDetails, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

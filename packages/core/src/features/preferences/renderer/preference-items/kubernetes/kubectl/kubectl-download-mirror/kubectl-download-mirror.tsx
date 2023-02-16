@@ -20,7 +20,7 @@ const downloadMirrorOptions = Array.from(packageMirrors, ([name, mirror]) => ({
   label: mirror.label,
 
   // TODO: Side-effect
-  isDisabled: !mirror.platforms.has(process.platform),
+  isDisabled: !mirror.platforms.has('web'),
 }));
 
 

@@ -4,7 +4,6 @@
  */
 import { isObject } from "../../../common/utils";
 import React from "react";
-import { SemVer } from "semver";
 import URLParse from "url-parse";
 import { getInjectable } from "@ogre-tools/injectable";
 import attemptInstallInjectable from "./attempt-install/attempt-install.injectable";
@@ -52,7 +51,7 @@ const attemptInstallByInfoInjectable = getInjectable({
     const downloadJson = di.inject(downloadJsonInjectable);
     const downloadBinary = di.inject(downloadBinaryInjectable);
     const showErrorNotification = di.inject(showErrorNotificationInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return async (info) => {
       const { name, version: versionOrTagName, requireConfirmation = false } = info;
@@ -141,17 +140,17 @@ const attemptInstallByInfoInjectable = getInjectable({
         }
       } else {
         const versions = Object.keys(json.versions)
-          .map(version => new SemVer(version, { loose: true }))
+          // .map(version => new SemVer(version, { loose: true }))
           // ignore pre-releases for auto picking the version
-          .filter(version => version.prerelease.length === 0);
+          // .filter(version => version.prerelease.length === 0);
 
-        const latestVersion = reduce(versions, (prev, curr) => prev.compareMain(curr) === -1 ? curr : prev);
+        // const latestVersion = reduce(versions, (prev, curr) => prev.compareMain(curr) === -1 ? curr : prev);
 
-        version = latestVersion?.format();
+        version = '1.0.0'
       }
 
       if (!version) {
-        logger.error("No versions supplied for extension", { name });
+        console.info("No versions supplied for extension", { name });
         showErrorNotification(`No versions found for ${name}`);
 
         return disposer();

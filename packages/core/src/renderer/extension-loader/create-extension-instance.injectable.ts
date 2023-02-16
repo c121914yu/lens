@@ -5,7 +5,7 @@
 import { getInjectable } from "@ogre-tools/injectable";
 import type { Writable } from "type-fest";
 import catalogCategoryRegistryInjectable from "../../common/catalog/category-registry.injectable";
-import loggerInjectable from "../../common/logger.injectable";
+
 import { createExtensionInstanceInjectionToken } from "../../extensions/extension-loader/create-extension-instance.token";
 import fileSystemProvisionerStoreInjectable from "../../extensions/extension-loader/file-system-provisioner-store/file-system-provisioner-store.injectable";
 import { lensExtensionDependencies } from "../../extensions/lens-extension";
@@ -26,7 +26,7 @@ const createExtensionInstanceInjectable = getInjectable({
       getExtensionPageParameters: di.inject(getExtensionPageParametersInjectable),
       navigateToRoute: di.inject(navigateToRouteInjectable),
       routes: di.inject(routesInjectable),
-      logger: di.inject(loggerInjectable),
+      
     };
 
     return (ExtensionClass, extension) => {

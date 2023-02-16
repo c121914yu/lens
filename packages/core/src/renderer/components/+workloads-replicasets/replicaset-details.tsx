@@ -105,6 +105,6 @@ export const ReplicaSetDetails = withInjectables<Dependencies, ReplicaSetDetails
     subscribeStores: di.inject(subscribeStoresInjectable),
     podStore: di.inject(podStoreInjectable),
     replicaSetStore: di.inject(replicaSetStoreInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

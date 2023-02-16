@@ -27,7 +27,7 @@ import createUpgradeChartTabInjectable from "../../../dock/upgrade-chart/create-
 import type { HelmRelease } from "../../../../../common/k8s-api/endpoints/helm-releases.api";
 import type { NavigateToHelmReleases } from "../../../../../common/front-end-routing/routes/cluster/helm/releases/navigate-to-helm-releases.injectable";
 import navigateToHelmReleasesInjectable from "../../../../../common/front-end-routing/routes/cluster/helm/releases/navigate-to-helm-releases.injectable";
-import assert from "assert";
+
 import activeThemeInjectable from "../../../../themes/active.injectable";
 import type { ToHelmRelease } from "../../to-helm-release.injectable";
 import toHelmReleaseInjectable from "../../to-helm-release.injectable";
@@ -208,7 +208,7 @@ export class ReleaseDetailsModel {
   @computed get release() {
     const detailedRelease = this.detailedRelease.get();
 
-    assert(detailedRelease, "Tried to access release before load");
+    console.info(detailedRelease, "Tried to access release before load");
 
     return this.dependencies.toHelmRelease(detailedRelease.release);
   }
@@ -216,7 +216,7 @@ export class ReleaseDetailsModel {
   @computed private get details() {
     const detailedRelease = this.detailedRelease.get();
 
-    assert(detailedRelease, "Tried to access details before load");
+    console.info(detailedRelease, "Tried to access details before load");
 
     return detailedRelease.details;
   }

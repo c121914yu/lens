@@ -11,13 +11,13 @@ const listClusterHelmReleasesInjectable = getInjectable({
   id: "list-cluster-helm-releases",
 
   instantiate: (di) => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const listHelmReleases = di.inject(listHelmReleasesInjectable);
 
     return async (cluster: Cluster, namespace?: string) => {
       const proxyKubeconfig = await cluster.getProxyKubeconfigPath();
 
-      logger.debug(`[CLUSTER]: listing helm releases for clusterId=${cluster.id}`, { namespace });
+      console.info(`[CLUSTER]: listing helm releases for clusterId=${cluster.id}`, { namespace });
 
       return listHelmReleases(proxyKubeconfig, namespace);
     };

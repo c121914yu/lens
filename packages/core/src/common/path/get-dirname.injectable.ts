@@ -3,13 +3,13 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import path from "path";
+
 
 export type GetDirnameOfPath = (path: string) => string;
 
 const getDirnameOfPathInjectable = getInjectable({
   id: "get-dirname-of-path",
-  instantiate: (): GetDirnameOfPath => path.dirname,
+  instantiate: (): GetDirnameOfPath => () => "",
   causesSideEffects: true,
 });
 

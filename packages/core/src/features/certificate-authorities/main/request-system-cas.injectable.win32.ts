@@ -25,7 +25,7 @@ const requestSystemCAsInjectable = getInjectable({
   instantiate: (di) => {
     const wincaRootsExePath: string = __non_webpack_require__.resolve("win-ca/lib/roots.exe");
     const execFile = di.inject(execFileInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return async () => {
       /**

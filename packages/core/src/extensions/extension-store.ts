@@ -7,7 +7,7 @@ import type { BaseStoreParams } from "../common/base-store/base-store";
 import { BaseStore } from "../common/base-store/base-store";
 import * as path from "path";
 import type { LensExtension } from "./lens-extension";
-import assert from "assert";
+
 import type { StaticThis } from "../common/utils";
 import { getOrInsertWith } from "../common/utils";
 import { getLegacyGlobalDiForExtensionApi } from "./as-legacy-globals-for-extension-api/legacy-global-di-for-extension-api";
@@ -15,7 +15,6 @@ import directoryForUserDataInjectable from "../common/app-paths/directory-for-us
 import getConfigurationFileModelInjectable from "../common/get-configuration-file-model/get-configuration-file-model.injectable";
 import loggerInjectable from "../common/logger.injectable";
 import storeMigrationVersionInjectable from "../common/vars/store-migration-version.injectable";
-import type { Migrations } from "conf/dist/source/types";
 import { baseStoreIpcChannelPrefixesInjectionToken } from "../common/base-store/channel-prefix";
 import { shouldBaseStoreDisableSyncInIpcListenerInjectionToken } from "../common/base-store/disable-sync";
 import { persistStateToConfigInjectionToken } from "../common/base-store/save-to-file";
@@ -55,7 +54,7 @@ export abstract class ExtensionStore<T extends object> extends BaseStore<T> {
     super({
       directoryForUserData: di.inject(directoryForUserDataInjectable),
       getConfigurationFileModel: di.inject(getConfigurationFileModelInjectable),
-      logger: di.inject(loggerInjectable),
+      
       storeMigrationVersion: di.inject(storeMigrationVersionInjectable),
       migrations: migrations as Migrations<Record<string, unknown>>,
       getBasenameOfPath: di.inject(getBasenameOfPathInjectable),
@@ -90,7 +89,7 @@ export abstract class ExtensionStore<T extends object> extends BaseStore<T> {
   }
 
   protected cwd() {
-    assert(this.extension, "must call this.load() first");
+    console.info(this.extension, "must call this.load() first");
 
     return path.join(super.cwd(), "extension-store", this.extension.name);
   }

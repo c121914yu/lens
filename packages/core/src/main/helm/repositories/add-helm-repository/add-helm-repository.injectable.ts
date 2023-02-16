@@ -13,7 +13,7 @@ const addHelmRepositoryInjectable = getInjectable({
 
   instantiate: (di): RequestChannelHandler<AddHelmRepositoryChannel> => {
     const execHelm = di.inject(execHelmInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return async (repo) => {
       const {

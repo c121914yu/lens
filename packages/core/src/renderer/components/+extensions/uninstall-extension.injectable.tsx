@@ -22,7 +22,7 @@ const uninstallExtensionInjectable = getInjectable({
     const extensionLoader = di.inject(extensionLoaderInjectable);
     const extensionDiscovery = di.inject(extensionDiscoveryInjectable);
     const extensionInstallationStateStore = di.inject(extensionInstallationStateStoreInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const showSuccessNotification = di.inject(showSuccessNotificationInjectable);
     const showErrorNotification = di.inject(showErrorNotificationInjectable);
 
@@ -30,7 +30,7 @@ const uninstallExtensionInjectable = getInjectable({
       const ext = extensionLoader.getExtension(extensionId);
 
       if (!ext) {
-        logger.debug(`[EXTENSIONS]: cannot uninstall ${extensionId}, was not installed`);
+        console.info(`[EXTENSIONS]: cannot uninstall ${extensionId}, was not installed`);
 
         return true;
       }
@@ -39,7 +39,7 @@ const uninstallExtensionInjectable = getInjectable({
       const displayName = extensionDisplayName(manifest.name, manifest.version);
 
       try {
-        logger.debug(`[EXTENSIONS]: trying to uninstall ${extensionId}`);
+        console.info(`[EXTENSIONS]: trying to uninstall ${extensionId}`);
         extensionInstallationStateStore.setUninstalling(extensionId);
 
         await extensionDiscovery.uninstallExtension(extensionId);

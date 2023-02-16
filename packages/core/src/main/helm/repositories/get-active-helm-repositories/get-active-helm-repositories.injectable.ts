@@ -34,7 +34,7 @@ const getActiveHelmRepositoriesInjectable = getInjectable({
     const readYamlFile = di.inject(readYamlFileInjectable);
     const execHelm = di.inject(execHelmInjectable);
     const getHelmEnv = di.inject(getHelmEnvInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     const getRepositories = getRepositoriesFor(readYamlFile);
 

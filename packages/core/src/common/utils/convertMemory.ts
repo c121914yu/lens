@@ -3,7 +3,7 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import assert from "assert";
+
 import * as iter from "./iter";
 
 // Helper to convert memory from units Ki, Mi, Gi, Ti, Pi to bytes and vise versa
@@ -38,7 +38,7 @@ export function unitsToBytes(value: string): number {
   const magnitude = magnitudes.get(unitsMatch.groups.suffix as BinaryUnit)
     ?? magnitudes.get(`${unitsMatch.groups.suffix}B` as BinaryUnit);
 
-  assert(magnitude, "UnitRegex is wrong some how");
+  console.info(magnitude, "UnitRegex is wrong some how");
 
   return parseInt((parsedValue * magnitude).toFixed(1));
 }

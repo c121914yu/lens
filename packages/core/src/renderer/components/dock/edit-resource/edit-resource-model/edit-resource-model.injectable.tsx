@@ -11,7 +11,7 @@ import type { EditResourceTabStore } from "../store";
 import { action, computed, makeObservable, observable, runInAction } from "mobx";
 import type { KubeObject } from "../../../../../common/k8s-api/kube-object";
 import yaml from "js-yaml";
-import assert from "assert";
+
 import type { CallForPatchResource } from "./call-for-patch-resource/call-for-patch-resource.injectable";
 import callForPatchResourceInjectable from "./call-for-patch-resource/call-for-patch-resource.injectable";
 import { createPatch } from "rfc6902";
@@ -83,7 +83,7 @@ export class EditResourceModel {
   }
 
   @computed get resource() {
-    assert(this._resource, "Resource does not have data");
+    console.info(this._resource, "Resource does not have data");
 
     return this._resource;
   }
@@ -91,7 +91,7 @@ export class EditResourceModel {
   @computed get editingResource() {
     const resource = this.dependencies.store.getData(this.dependencies.tabId);
 
-    assert(resource, "Resource is not present in the store");
+    console.info(resource, "Resource is not present in the store");
 
     return resource;
   }

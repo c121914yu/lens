@@ -41,7 +41,7 @@ const computeKubeconfigDiffInjectable = getInjectable({
         const rawModels = configToModels(config, filePath);
         const models = new Map(rawModels.map(([model, configData]) => [model.contextName, [model, configData] as const]));
 
-        logger.debug(`File now has ${models.size} entries`, { filePath });
+        console.info(`File now has ${models.size} entries`, { filePath });
 
         for (const [contextName, value] of source) {
           const data = models.get(contextName);
@@ -53,7 +53,7 @@ const computeKubeconfigDiffInjectable = getInjectable({
 
             value[0].disconnect();
             source.delete(contextName);
-            logger.debug(`Removed old cluster from sync`, { filePath, contextName });
+            console.info(`Removed old cluster from sync`, { filePath, contextName });
             continue;
           }
 
@@ -64,7 +64,7 @@ const computeKubeconfigDiffInjectable = getInjectable({
           // or update the model and mark it as not needed to be added
           value[0].updateModel(data[0]);
           models.delete(contextName);
-          logger.debug(`Updated old cluster from sync`, { filePath, contextName });
+          console.info(`Updated old cluster from sync`, { filePath, contextName });
         }
 
         for (const [contextName, [model, configData]] of models) {
@@ -84,7 +84,7 @@ const computeKubeconfigDiffInjectable = getInjectable({
             }
             source.set(contextName, [cluster, entity]);
 
-            logger.debug(`Added new cluster from sync`, { filePath, contextName });
+            console.info(`Added new cluster from sync`, { filePath, contextName });
           } catch (error) {
             logger.warn(`Failed to create cluster from model: ${error}`, { filePath, contextName });
           }
@@ -94,7 +94,7 @@ const computeKubeconfigDiffInjectable = getInjectable({
         source.clear(); // clear source if we have failed so as to not show outdated information
       }
 
-      logger.debug("Finished computing diff", { filePath });
+      console.info("Finished computing diff", { filePath });
     });
   },
 });

@@ -9,23 +9,14 @@ const appPathsStateInjectable = getInjectable({
   id: "app-paths-state",
 
   instantiate: () => {
-    let state: AppPaths;
+    let state: AppPaths = {currentApp: ''};
 
     return {
       get: () =>{
-        if (!state) {
-          throw new Error("Tried to get app paths before state is setupped.");
-        }
-
         return state;
       },
 
       set: (newState: AppPaths) => {
-        if (state) {
-          throw new Error("Tried to overwrite existing state of app paths.");
-        }
-
-        state = newState;
       },
     };
   },

@@ -3,7 +3,7 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import assert from "assert";
+
 import { computed } from "mobx";
 import moment from "moment";
 import updateDownloadedDateTimeInjectable from "../../../../common/update-downloaded-date-time/update-downloaded-date-time.injectable";
@@ -20,7 +20,7 @@ const timeSinceUpdateWasDownloadedInjectable = getInjectable({
 
       const downloadedAt = updateDownloadedDateTime.value.get();
 
-      assert(downloadedAt);
+      console.info(downloadedAt);
 
       return currentTimestamp - (moment(downloadedAt).unix() * 1000);
     });

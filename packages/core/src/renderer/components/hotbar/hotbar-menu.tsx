@@ -43,7 +43,8 @@ class NonInjectedHotbarMenu extends React.Component<Dependencies & HotbarMenuPro
   }
 
   get hotbar() {
-    return this.props.hotbarStore.getActive();
+    return {items: []}
+    // return this.props.hotbarStore.getActive();
   }
 
   getEntity(item: HotbarItem | null) {

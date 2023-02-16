@@ -4,10 +4,7 @@
  */
 
 import type { Cluster } from "../../common/cluster/cluster";
-import type http from "http";
-import type httpProxy from "http-proxy";
 import type { LensApiResultContentType } from "./router-content-types";
-import type { URLSearchParams } from "url";
 import type Joi from "joi";
 
 export type InferParam<

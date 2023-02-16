@@ -3,14 +3,12 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import Config from "conf";
-import type { Options as ConfOptions } from "conf/dist/source/types";
 
-export type GetConfigurationFileModel = <T extends object>(content: ConfOptions<T>) => Config<T>;
+export type GetConfigurationFileModel = <T extends object>(content: any) => any;
 
 const getConfigurationFileModelInjectable = getInjectable({
   id: "get-configuration-file-model",
-  instantiate: (): GetConfigurationFileModel => (content) => new Config(content),
+  instantiate: (): GetConfigurationFileModel => (content) => {},
   causesSideEffects: true,
 });
 

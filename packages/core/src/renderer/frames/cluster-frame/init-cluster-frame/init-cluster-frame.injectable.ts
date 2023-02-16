@@ -7,7 +7,7 @@ import { initClusterFrame } from "./init-cluster-frame";
 import catalogEntityRegistryInjectable from "../../../api/catalog/entity/registry.injectable";
 import frameRoutingIdInjectable from "./frame-routing-id/frame-routing-id.injectable";
 import hostedClusterInjectable from "../../../cluster-frame-context/hosted-cluster.injectable";
-import assert from "assert";
+
 import emitAppEventInjectable from "../../../../common/app-event-bus/emit-event.injectable";
 import loadExtensionsInjectable from "../../load-extensions.injectable";
 import loggerInjectable from "../../../../common/logger.injectable";
@@ -20,7 +20,7 @@ const initClusterFrameInjectable = getInjectable({
   instantiate: (di) => {
     const hostedCluster = di.inject(hostedClusterInjectable);
 
-    assert(hostedCluster, "This can only be injected within a cluster frame");
+    console.info(hostedCluster, "This can only be injected within a cluster frame");
 
     return initClusterFrame({
       hostedCluster,
@@ -28,7 +28,7 @@ const initClusterFrameInjectable = getInjectable({
       catalogEntityRegistry: di.inject(catalogEntityRegistryInjectable),
       frameRoutingId: di.inject(frameRoutingIdInjectable),
       emitAppEvent: di.inject(emitAppEventInjectable),
-      logger: di.inject(loggerInjectable),
+      
       showErrorNotification: di.inject(showErrorNotificationInjectable),
       closeFileLogging: di.inject(closeRendererLogFileInjectable),
     });

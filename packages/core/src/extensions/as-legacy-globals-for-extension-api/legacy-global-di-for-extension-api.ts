@@ -24,7 +24,7 @@ export const getLegacyGlobalDiForExtensionApi = () => {
   }
 
   const [di] = [...legacyGlobalDis.values()];
-
+console.log(legacyGlobalDis.values(),'====');
   if (!di) {
     throw new Error("Tried to get DI container using legacy globals where there is no containers available.");
   }

@@ -29,7 +29,7 @@ const createTempFilesAndValidateInjectable = getInjectable({
   id: "create-temp-files-and-validate",
   instantiate: (di): CreateTempFilesAndValidate => {
     const extensionDiscovery = di.inject(extensionDiscoveryInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const writeFile = di.inject(writeFileInjectable);
     const joinPaths = di.inject(joinPathsInjectable);
     const showErrorNotification = di.inject(showErrorNotificationInjectable);

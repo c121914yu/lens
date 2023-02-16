@@ -22,7 +22,7 @@ import type { DerivedKubeApiOptions, KubeApiDependencies, KubeApiOptions } from 
 import { KubeApi as InternalKubeApi } from "../../common/k8s-api/kube-api";
 import clusterFrameContextForNamespacedResourcesInjectable from "../../renderer/cluster-frame-context/for-namespaced-resources.injectable";
 import type { ClusterContext } from "../../renderer/cluster-frame-context/cluster-frame-context";
-import loggerInjectable from "../../common/logger.injectable";
+
 import { getLegacyGlobalDiForExtensionApi } from "../as-legacy-globals-for-extension-api/legacy-global-di-for-extension-api";
 import maybeKubeApiInjectable from "../../common/k8s-api/maybe-kube-api.injectable";
 import { DeploymentApi as InternalDeploymentApi, IngressApi as InternalIngressApi, NodeApi, PersistentVolumeClaimApi, PodApi } from "../../common/k8s-api/endpoints";
@@ -30,7 +30,7 @@ import { storesAndApisCanBeCreatedInjectionToken } from "../../common/k8s-api/st
 import type { JsonApiConfig } from "../../common/k8s-api/json-api";
 import type { KubeJsonApi as InternalKubeJsonApi } from "../../common/k8s-api/kube-json-api";
 import createKubeJsonApiInjectable from "../../common/k8s-api/create-kube-json-api.injectable";
-import type { RequestInit } from "@k8slens/node-fetch";
+// import type { RequestInit } from "@k8slens/node-fetch";
 import createKubeJsonApiForClusterInjectable from "../../common/k8s-api/create-kube-json-api-for-cluster.injectable";
 
 export const apiManager = asLegacyGlobalForExtensionApi(apiManagerInjectable);
@@ -42,7 +42,7 @@ const getKubeApiDeps = (): KubeApiDependencies => {
   const di = getLegacyGlobalDiForExtensionApi();
 
   return {
-    logger: di.inject(loggerInjectable),
+    
     maybeKubeApi: di.inject(maybeKubeApiInjectable),
   };
 };
@@ -171,7 +171,7 @@ export abstract class KubeObjectStore<
     super(
       {
         context: di.inject(clusterFrameContextForNamespacedResourcesInjectable),
-        logger: di.inject(loggerInjectable),
+        
       },
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       api!,

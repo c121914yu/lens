@@ -11,7 +11,7 @@ import extensionInstallationStateStoreInjectable from "../extension-installation
 import installExtensionInjectable from "../extension-installer/install-extension/install-extension.injectable";
 import extensionPackageRootDirectoryInjectable from "../extension-installer/extension-package-root-directory/extension-package-root-directory.injectable";
 import readJsonFileInjectable from "../../common/fs/read-json-file.injectable";
-import loggerInjectable from "../../common/logger.injectable";
+
 import pathExistsInjectable from "../../common/fs/path-exists.injectable";
 import watchInjectable from "../../common/fs/watch/watch.injectable";
 import accessPathInjectable from "../../common/fs/access-path.injectable";
@@ -43,7 +43,7 @@ const extensionDiscoveryInjectable = getInjectable({
     readJsonFile: di.inject(readJsonFileInjectable),
     pathExists: di.inject(pathExistsInjectable),
     watch: di.inject(watchInjectable),
-    logger: di.inject(loggerInjectable),
+    
     accessPath: di.inject(accessPathInjectable),
     copy: di.inject(copyInjectable),
     removePath: di.inject(removePathInjectable),

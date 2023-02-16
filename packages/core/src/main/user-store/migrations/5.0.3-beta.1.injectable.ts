@@ -24,7 +24,7 @@ const v503Beta1UserStoreMigrationInjectable = getInjectable({
     const userDataPath = di.inject(directoryForUserDataInjectable);
     const kubeConfigsPath = di.inject(directoryForKubeConfigsInjectable);
     const joinPaths = di.inject(joinPathsInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const isLogicalChildPath = di.inject(isLogicalChildPathInjectable);
     const getDirnameOfPath = di.inject(getDirnameOfPathInjectable);
     const readJsonSync = di.inject(readJsonSyncInjectable);
@@ -40,7 +40,7 @@ const v503Beta1UserStoreMigrationInjectable = getInjectable({
           const extensionDataDir = joinPaths(userDataPath, "extension_data");
           const syncPaths = new Set(syncKubeconfigEntries.map(s => s.filePath));
 
-          syncPaths.add(joinPaths(homeDirectoryPath, ".kube"));
+          syncPaths.add(".kube");
 
           for (const cluster of clusters) {
             if (!cluster.kubeConfigPath) {

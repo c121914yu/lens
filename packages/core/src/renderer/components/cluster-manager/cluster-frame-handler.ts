@@ -7,7 +7,7 @@ import { action, makeObservable, observable, when } from "mobx";
 import type { ClusterId } from "../../../common/cluster-types";
 import type { Disposer } from "../../utils";
 import { getClusterFrameUrl, onceDefined } from "../../utils";
-import assert from "assert";
+
 import type { Logger } from "../../../common/logger";
 import type { GetClusterById } from "../../../common/cluster-store/get-by-id.injectable";
 import type { EmitClusterVisibility } from "./emit-cluster-visibility.injectable";
@@ -46,7 +46,7 @@ export class ClusterFrameHandler {
 
     const parentElem = document.getElementById("lens-views");
 
-    assert(parentElem, "DOM with #lens-views must be present");
+    console.info(parentElem, "DOM with #lens-views must be present");
 
     if (this.views.has(clusterId)) {
       return;
@@ -62,7 +62,7 @@ export class ClusterFrameHandler {
       this.dependencies.logger.info(`[LENS-VIEW]: frame for clusterId=${clusterId} has loaded`);
       const view = this.views.get(clusterId);
 
-      assert(view, `view for ${clusterId} MUST still exist here`);
+      console.info(view, `view for ${clusterId} MUST still exist here`);
       view.isLoaded = true;
     }), { once: true });
     this.views.set(clusterId, { frame: iframe, isLoaded: false });

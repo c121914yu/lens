@@ -58,7 +58,7 @@ const addMetricsRouteInjectable = getRouteInjectable({
   instantiate: (di) => {
     const getMetrics = di.inject(getMetricsInjectable);
     const loadMetrics = loadMetricsFor(getMetrics);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return clusterRoute({
       method: "post",

@@ -90,7 +90,7 @@ describe("Extensions", () => {
     const table = await screen.findByTestId("extensions-table");
     const menuTrigger = table.querySelector(".table div[role='rowgroup'] .actions .Icon");
 
-    assert(menuTrigger);
+    console.info(menuTrigger);
     fireEvent.click(menuTrigger);
 
     expect(await screen.findByText("Disable")).toHaveAttribute("aria-disabled", "false");

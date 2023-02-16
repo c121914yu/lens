@@ -5,13 +5,8 @@
 
 import fs from "fs";
 import { promiseExecFile } from "../../common/utils/promise-exec";
-import { ensureDir, pathExists } from "fs-extra";
-import * as lockFile from "proper-lockfile";
-import { SemVer, coerce } from "semver";
 import { defaultPackageMirror, packageMirrors } from "../../common/user-store/preferences-helpers";
 import got from "got/dist/source";
-import { promisify } from "util";
-import stream from "stream";
 import { noop } from "lodash/fp";
 import type { JoinPaths } from "../../common/path/join-paths.injectable";
 import type { GetDirnameOfPath } from "../../common/path/get-dirname.injectable";
@@ -51,16 +46,16 @@ export class Kubectl {
   public static invalidBundle = false;
 
   constructor(protected readonly dependencies: KubectlDependencies, clusterVersion: string) {
-    let version: SemVer;
-    const bundledVersion = new SemVer(this.dependencies.bundledKubectlVersion);
+    let version = '1.0.0';
+    // const bundledVersion = new SemVer(this.dependencies.bundledKubectlVersion);
 
-    try {
-      version = new SemVer(clusterVersion);
-    } catch {
-      version = bundledVersion;
-    }
+    // try {
+    //   version = new SemVer(clusterVersion);
+    // } catch {
+    //   version = bundledVersion;
+    // }
 
-    const fromMajorMinor = this.dependencies.kubectlVersionMap.get(`${version.major}.${version.minor}`);
+    const fromMajorMinor = this.dependencies.kubectlVersionMap.get(`1.0`);
 
     /**
      * minorVersion is the first two digits of kube server version if the version map includes that,
@@ -68,13 +63,13 @@ export class Kubectl {
      */
     if (fromMajorMinor) {
       this.kubectlVersion = fromMajorMinor;
-      this.dependencies.logger.debug(`Set kubectl version ${this.kubectlVersion} for cluster version ${clusterVersion} using version map`);
+      console.info(`Set kubectl version ${this.kubectlVersion} for cluster version ${clusterVersion} using version map`);
     } else {
       /* this is the version (without possible prelease tag) to get from the download mirror */
-      const ver = coerce(version.format()) ?? bundledVersion;
+      // const ver = coerce(version.format()) ?? bundledVersion;
 
-      this.kubectlVersion = ver.format();
-      this.dependencies.logger.debug(`Set kubectl version ${this.kubectlVersion} for cluster version ${clusterVersion} using fallback`);
+      // this.kubectlVersion = ver.format();
+      console.info(`Set kubectl version ${this.kubectlVersion} for cluster version ${clusterVersion} using fallback`);
     }
 
     this.url = `${this.getDownloadMirror()}/v${this.kubectlVersion}/bin/${this.dependencies.normalizedDownloadPlatform}/${this.dependencies.normalizedDownloadArch}/${this.dependencies.kubectlBinaryName}`;
@@ -165,7 +160,7 @@ export class Kubectl {
         }
 
         if (version === this.kubectlVersion) {
-          this.dependencies.logger.debug(`Local kubectl is version ${this.kubectlVersion}`);
+          console.info(`Local kubectl is version ${this.kubectlVersion}`);
 
           return true;
         }
@@ -216,7 +211,7 @@ export class Kubectl {
     try {
       const release = await lockFile.lock(this.dirname);
 
-      this.dependencies.logger.debug(`Acquired a lock for ${this.kubectlVersion}`);
+      console.info(`Acquired a lock for ${this.kubectlVersion}`);
       const bundled = await this.checkBundled();
       let isValid = await this.checkBinary(this.path, !bundled);
 
@@ -225,7 +220,7 @@ export class Kubectl {
           await this.downloadKubectl();
         } catch (error) {
           this.dependencies.logger.error(`[KUBECTL]: failed to download kubectl`, error);
-          this.dependencies.logger.debug(`[KUBECTL]: Releasing lock for ${this.kubectlVersion}`);
+          console.info(`[KUBECTL]: Releasing lock for ${this.kubectlVersion}`);
           await release();
 
           return false;
@@ -235,13 +230,13 @@ export class Kubectl {
       }
 
       if (!isValid) {
-        this.dependencies.logger.debug(`[KUBECTL]: Releasing lock for ${this.kubectlVersion}`);
+        console.info(`[KUBECTL]: Releasing lock for ${this.kubectlVersion}`);
         await release();
 
         return false;
       }
 
-      this.dependencies.logger.debug(`[KUBECTL]: Releasing lock for ${this.kubectlVersion}`);
+      console.info(`[KUBECTL]: Releasing lock for ${this.kubectlVersion}`);
       await release();
 
       return true;
@@ -264,7 +259,7 @@ export class Kubectl {
     try {
       await pipeline(downloadStream, fileWriteStream);
       await fs.promises.chmod(this.path, 0o755);
-      this.dependencies.logger.debug("kubectl binary download finished");
+      console.info("kubectl binary download finished");
     } catch (error) {
       await fs.promises.unlink(this.path).catch(noop);
       throw error;

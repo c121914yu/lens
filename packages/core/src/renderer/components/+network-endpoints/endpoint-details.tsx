@@ -57,6 +57,6 @@ class NonInjectedEndpointsDetails extends React.Component<EndpointsDetailsProps 
 export const EndpointsDetails = withInjectables<Dependencies, EndpointsDetailsProps>(NonInjectedEndpointsDetails, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

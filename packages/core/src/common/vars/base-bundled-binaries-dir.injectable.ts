@@ -14,10 +14,7 @@ const baseBundledBinariesDirectoryInjectable = getInjectable({
     const normalizedPlatformArchitecture = di.inject(normalizedPlatformArchitectureInjectable);
     const joinPaths = di.inject(joinPathsInjectable);
 
-    return joinPaths(
-      bundledResourcesDirectory,
-      normalizedPlatformArchitecture,
-    );
+    return ""
   },
 });
 

@@ -20,7 +20,7 @@ const setupKubernetesClusterContextMenuOpenInjectable = getInjectable({
       const openDeleteClusterDialog = di.inject(openDeleteClusterDialogInjectable);
       const readFile = di.inject(readFileInjectable);
       const getClusterById = di.inject(getClusterByIdInjectable);
-      const logger = di.inject(loggerInjectable);
+      const logger = console.info;
 
       catalogCategoryRegistry
         .getForGroupKind("entity.k8slens.dev", "KubernetesCluster")

@@ -22,18 +22,8 @@ const catalogSyncToRendererInjectable = getInjectable({
     return getStartableStoppable(
       "catalog-sync",
       () => {
-        const initChannelHandler = () => catalogSyncBroadcaster(toJS(catalogEntityRegistry.items));
 
-        ipcMain.on(catalogInitChannel, initChannelHandler);
-
-        return disposer(
-          () => ipcMain.off(catalogInitChannel, initChannelHandler),
-          reaction(() => toJS(catalogEntityRegistry.items), (items) => {
-            catalogSyncBroadcaster(items);
-          }, {
-            fireImmediately: true,
-          }),
-        );
+        return disposer();
       },
     );
   },

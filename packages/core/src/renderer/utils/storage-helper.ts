@@ -8,7 +8,7 @@ import { action, comparer, computed, makeObservable, observable, observe, toJS }
 import type { Draft } from "immer";
 import { produce, isDraft } from "immer";
 import { isEqual, isPlainObject } from "lodash";
-import assert from "assert";
+
 import type { Logger } from "../../common/logger";
 
 export interface StorageChange<T> {
@@ -120,7 +120,7 @@ export class StorageHelper<T> implements StorageLayer<T> {
   @action
   merge(value: T extends object ? Partial<T> | ((draft: Draft<T>) => Partial<T> | void) : never) {
     const nextValue = produce<T>(toJS(this.get()), (draft) => {
-      assert(typeof draft === "object" && draft);
+      console.info(typeof draft === "object" && draft);
 
       if (typeof value == "function") {
         const newValue = value(draft);

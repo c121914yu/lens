@@ -12,13 +12,13 @@ const getClusterHelmReleaseValuesInjectable = getInjectable({
   id: "get-cluster-helm-release-values",
 
   instantiate: (di) => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const getHelmReleaseValues = di.inject(getHelmReleaseValuesInjectable);
 
     return async (cluster: Cluster, data: GetHelmReleaseValuesData) => {
       const pathToKubeconfig = await cluster.getProxyKubeconfigPath();
 
-      logger.debug(`[CLUSTER]: getting helm release values`, data);
+      console.info(`[CLUSTER]: getting helm release values`, data);
 
       return getHelmReleaseValues(pathToKubeconfig, data);
     };

@@ -11,7 +11,7 @@ import maybeKubeApiInjectable from "../maybe-kube-api.injectable";
 const ingressClassApiInjectable = getInjectable({
   id: "ingress-class-api",
   instantiate: (di) => new IngressClassApi({
-    logger: di.inject(loggerInjectable),
+    
     maybeKubeApi: di.inject(maybeKubeApiInjectable),
   }),
 

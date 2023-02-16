@@ -12,7 +12,7 @@ import {
   getInjectable,
   instantiationDecoratorToken,
 } from "@ogre-tools/injectable";
-import assert from "assert";
+
 
 import { isFunction } from "lodash/fp";
 import emitTelemetryInjectable from "./emit-telemetry.injectable";
@@ -40,7 +40,7 @@ const telemetryDecoratorInjectable = getInjectable({
               return (...args: any[]) => {
                 const currentContext = di.context.at(-1);
 
-                assert(currentContext);
+                console.info(currentContext);
 
                 if (shouldEmitTelemetry(currentContext.injectable)) {
                   emitTelemetry({ action: currentContext.injectable.id, args });

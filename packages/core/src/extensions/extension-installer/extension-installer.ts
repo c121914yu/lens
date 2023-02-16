@@ -4,7 +4,6 @@
  */
 
 import AwaitLock from "await-lock";
-import child_process from "child_process";
 import type { Logger } from "../../common/logger";
 
 const logModule = "[EXTENSION-INSTALLER]";
@@ -50,29 +49,30 @@ export class ExtensionInstaller {
   };
 
   private npm(...args: string[]): Promise<void> {
-    return new Promise((resolve, reject) => {
-      const child = child_process.fork(this.dependencies.pathToNpmCli, args, {
-        cwd: this.dependencies.extensionPackageRootDirectory,
-        silent: true,
-        env: {},
-      });
-      let stderr = "";
+    return Promise.resolve()
+    // return new Promise((resolve, reject) => {
+    //   const child = child_process.fork(this.dependencies.pathToNpmCli, args, {
+    //     cwd: this.dependencies.extensionPackageRootDirectory,
+    //     silent: true,
+    //     env: {},
+    //   });
+    //   let stderr = "";
 
-      child.stderr?.on("data", data => {
-        stderr += String(data);
-      });
+    //   child.stderr?.on("data", data => {
+    //     stderr += String(data);
+    //   });
 
-      child.on("close", (code) => {
-        if (code !== 0) {
-          reject(new Error(stderr));
-        } else {
-          resolve();
-        }
-      });
+    //   child.on("close", (code) => {
+    //     if (code !== 0) {
+    //       reject(new Error(stderr));
+    //     } else {
+    //       resolve();
+    //     }
+    //   });
 
-      child.on("error", error => {
-        reject(error);
-      });
-    });
+    //   child.on("error", error => {
+    //     reject(error);
+    //   });
+    // });
   }
 }

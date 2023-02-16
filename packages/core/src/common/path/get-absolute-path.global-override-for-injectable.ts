@@ -3,7 +3,7 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import path from "path";
+
 import { getGlobalOverride } from "../test-utils/get-global-override";
 import getAbsolutePathInjectable from "./get-absolute-path.injectable";
 

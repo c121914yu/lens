@@ -11,9 +11,7 @@ import { iter } from "../../../utils";
 import type { Disposer } from "../../../utils";
 import { once } from "lodash";
 import { CatalogRunEvent } from "../../../../common/catalog/catalog-run-event";
-import { ipcRenderer } from "electron";
 import { catalogInitChannel, catalogItemsChannel, catalogEntityRunListener } from "../../../../common/ipc/catalog";
-import { isMainFrame } from "process";
 import type { Navigate } from "../../../navigation/navigate.injectable";
 import type { Logger } from "../../../../common/logger";
 
@@ -87,10 +85,7 @@ export class CatalogEntityRegistry {
       this.updateItems(items);
     });
 
-    // Make sure that we get items ASAP and not the next time one of them changes
-    ipcRenderer.send(catalogInitChannel);
-
-    if (isMainFrame) {
+    if (true) {
       ipcRendererOn(catalogEntityRunListener, (event, id: string) => {
         const entity = this.getById(id);
 
@@ -220,7 +215,7 @@ export class CatalogEntityRegistry {
    * @returns Whether the entities `onRun` method should be executed
    */
   async onBeforeRun(entity: CatalogEntity): Promise<boolean> {
-    this.dependencies.logger.debug(`[CATALOG-ENTITY-REGISTRY]: run onBeforeRun on ${entity.getId()}`);
+    console.info(`[CATALOG-ENTITY-REGISTRY]: run onBeforeRun on ${entity.getId()}`);
 
     const runEvent = new CatalogRunEvent({ target: entity });
 
@@ -254,7 +249,7 @@ export class CatalogEntityRegistry {
             },
           });
         } else {
-          this.dependencies.logger.debug(`onBeforeRun for ${entity.getId()} returned false`);
+          console.info(`onBeforeRun for ${entity.getId()} returned false`);
         }
       })
       .catch(error => this.dependencies.logger.error(`[CATALOG-ENTITY-REGISTRY]: entity ${entity.getId()} onRun threw an error`, error));

@@ -107,6 +107,6 @@ class NonInjectedLimitRangeDetails extends React.Component<LimitRangeDetailsProp
 export const LimitRangeDetails = withInjectables<Dependencies, LimitRangeDetailsProps>(NonInjectedLimitRangeDetails, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

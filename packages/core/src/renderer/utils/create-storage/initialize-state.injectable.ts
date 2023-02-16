@@ -22,50 +22,50 @@ const initializeStateInjectable = getInjectable({
   instantiate: (di) => ({
     id: "initialize-lens-local-storage-state",
     run: async () => {
-      const joinPaths = di.inject(joinPathsInjectable);
-      const directoryForLensLocalStorage = di.inject(directoryForLensLocalStorageInjectable);
-      const hostedClusterId = di.inject(hostedClusterIdInjectable);
-      const lensLocalStorageState = di.inject(lensLocalStorageStateInjectable);
-      const readJsonFile = di.inject(readJsonFileInjectable);
-      const writeJsonFile = di.inject(writeJsonFileInjectable);
-      const logger = di.inject(loggerInjectable);
-      const storageSaveDelay = di.inject(storageSaveDelayInjectable);
-      const lock = new AwaitLock();
+      // const joinPaths = di.inject(joinPathsInjectable);
+      // const directoryForLensLocalStorage = di.inject(directoryForLensLocalStorageInjectable);
+      // const hostedClusterId = di.inject(hostedClusterIdInjectable);
+      // const lensLocalStorageState = di.inject(lensLocalStorageStateInjectable);
+      // const readJsonFile = di.inject(readJsonFileInjectable);
+      // const writeJsonFile = di.inject(writeJsonFileInjectable);
+      // const logger = console.info;
+      // const storageSaveDelay = di.inject(storageSaveDelayInjectable);
+      // const lock = new AwaitLock();
 
-      const filePath = joinPaths(directoryForLensLocalStorage, `${hostedClusterId || "app"}.json`);
+      // const filePath = joinPaths(directoryForLensLocalStorage, `${hostedClusterId || "app"}.json`);
 
-      try {
-        const localFile = await readJsonFile(filePath);
+      // try {
+      //   const localFile = await readJsonFile(filePath);
 
-        if (typeof localFile === "object") {
-          runInAction(() => {
-            Object.assign(lensLocalStorageState, localFile);
-          });
-        }
-      } catch {
-        // do nothing
-      } finally {
-        logger.info(`${storageHelperLogPrefix} loading finished for ${filePath}`);
-      }
+      //   if (typeof localFile === "object") {
+      //     runInAction(() => {
+      //       Object.assign(lensLocalStorageState, localFile);
+      //     });
+      //   }
+      // } catch {
+      //   // do nothing
+      // } finally {
+      //   logger.info(`${storageHelperLogPrefix} loading finished for ${filePath}`);
+      // }
 
-      reaction(() => toJS(lensLocalStorageState), saveFile, {
-        delay: storageSaveDelay, // lazy, avoid excessive writes to fs
-        equals: comparer.structural, // save only when something really changed
-      });
+      // reaction(() => toJS(lensLocalStorageState), saveFile, {
+      //   delay: storageSaveDelay, // lazy, avoid excessive writes to fs
+      //   equals: comparer.structural, // save only when something really changed
+      // });
 
-      async function saveFile(state: Record<string, unknown>) {
-        try {
-          await lock.acquireAsync();
-          logger.info(`${storageHelperLogPrefix} saving ${filePath}`);
-          await writeJsonFile(filePath, state);
-        } catch (error) {
-          logger.error(`${storageHelperLogPrefix} saving failed: ${error}`, {
-            json: state, jsonFilePath: filePath,
-          });
-        } finally {
-          lock.release();
-        }
-      }
+      // async function saveFile(state: Record<string, unknown>) {
+      //   try {
+      //     await lock.acquireAsync();
+      //     logger.info(`${storageHelperLogPrefix} saving ${filePath}`);
+      //     await writeJsonFile(filePath, state);
+      //   } catch (error) {
+      //     logger.error(`${storageHelperLogPrefix} saving failed: ${error}`, {
+      //       json: state, jsonFilePath: filePath,
+      //     });
+      //   } finally {
+      //     lock.release();
+      //   }
+      // }
     },
     runAfter: di.inject(setupAppPathsInjectable),
   }),

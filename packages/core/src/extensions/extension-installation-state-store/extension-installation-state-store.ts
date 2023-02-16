@@ -8,7 +8,6 @@ import { disposer } from "../../renderer/utils";
 import type { ExtendableDisposer } from "../../renderer/utils";
 import * as uuid from "uuid";
 import { broadcastMessage } from "../../common/ipc";
-import { ipcRenderer } from "electron";
 import type { Logger } from "../../common/logger";
 
 export enum ExtensionInstallationState {
@@ -50,7 +49,7 @@ export class ExtensionInstallationStateStore {
    * @throws if state is not IDLE
    */
   @action setInstalling = (extId: string): void => {
-    this.dependencies.logger.debug(`${Prefix}: trying to set ${extId} as installing`);
+    console.info(`${Prefix}: trying to set ${extId} as installing`);
 
     const curState = this.getInstallationState(extId);
 
@@ -88,14 +87,14 @@ export class ExtensionInstallationStateStore {
   @action startPreInstall = (): ExtendableDisposer => {
     const preInstallStepId = uuid.v4();
 
-    this.dependencies.logger.debug(
+    console.info(
       `${Prefix}: starting a new preinstall phase: ${preInstallStepId}`,
     );
     this.preInstallIds.add(preInstallStepId);
 
     return disposer(() => {
       this.preInstallIds.delete(preInstallStepId);
-      this.dependencies.logger.debug(`${Prefix}: ending a preinstall phase: ${preInstallStepId}`);
+      console.info(`${Prefix}: ending a preinstall phase: ${preInstallStepId}`);
     });
   };
 
@@ -105,7 +104,7 @@ export class ExtensionInstallationStateStore {
    * @throws if state is not IDLE
    */
   @action setUninstalling = (extId: string): void => {
-    this.dependencies.logger.debug(`${Prefix}: trying to set ${extId} as uninstalling`);
+    console.info(`${Prefix}: trying to set ${extId} as uninstalling`);
 
     const curState = this.getInstallationState(extId);
 
@@ -124,7 +123,7 @@ export class ExtensionInstallationStateStore {
    * @throws if state is not INSTALLING
    */
   @action clearInstalling = (extId: string): void => {
-    this.dependencies.logger.debug(`${Prefix}: trying to clear ${extId} as installing`);
+    console.info(`${Prefix}: trying to clear ${extId} as installing`);
 
     const curState = this.getInstallationState(extId);
 
@@ -144,7 +143,7 @@ export class ExtensionInstallationStateStore {
    * @throws if state is not UNINSTALLING
    */
   @action clearUninstalling = (extId: string): void => {
-    this.dependencies.logger.debug(`${Prefix}: trying to clear ${extId} as uninstalling`);
+    console.info(`${Prefix}: trying to clear ${extId} as uninstalling`);
 
     const curState = this.getInstallationState(extId);
 

@@ -172,7 +172,7 @@ class NonInjectedSecretDetails extends React.Component<SecretDetailsProps & Depe
 export const SecretDetails = withInjectables<Dependencies, SecretDetailsProps>(NonInjectedSecretDetails, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
     secretStore: di.inject(secretStoreInjectable),
     showCheckedErrorNotification: di.inject(showCheckedErrorNotificationInjectable),
     showSuccessNotification: di.inject(showSuccessNotificationInjectable),

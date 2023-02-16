@@ -4,9 +4,7 @@
  */
 
 import { LEVEL, MESSAGE, SPLAT } from "triple-beam";
-import chalk from "chalk";
-import type { InspectOptions } from "util";
-import { inspect } from "util";
+
 import { omit } from "lodash";
 
 // The following license was copied from https://github.com/duccio/winston-console-format/blob/master/LICENSE
@@ -72,7 +70,7 @@ export class ConsoleFormat {
   }
 
   private getLines(value: unknown): string[] {
-    return inspect(value, this.inspectOptions).split("\n");
+    return JSON.stringify(value, this.inspectOptions).split("\n");
   }
 
   private message(info: TransformableInfo, chr: string, color: string): string {

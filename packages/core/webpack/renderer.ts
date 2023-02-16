@@ -3,20 +3,18 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import path from "path";
+import path from "path"
 import type webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CircularDependencyPlugin from "circular-dependency-plugin";
-import ForkTsCheckerPlugin from "fork-ts-checker-webpack-plugin";
 import type { WebpackPluginInstance } from "webpack";
 import { optimize, DefinePlugin } from "webpack";
 import nodeExternals from "webpack-node-externals";
 import { isDevelopment, buildDir, sassCommonVars } from "./vars";
-import { platform } from "process";
 
 export function webpackLensRenderer(): webpack.Configuration {
   return {
-    target: "electron-renderer",
+    target: "web",
     name: "lens-app-renderer",
     mode: isDevelopment ? "development" : "production",
     // https://webpack.js.org/configuration/devtool/ (see description of each option)
@@ -84,10 +82,9 @@ export function webpackLensRenderer(): webpack.Configuration {
 
     plugins: [
       new DefinePlugin({
-        CONTEXT_MATCHER_FOR_NON_FEATURES: `/\\.injectable(\\.${platform})?\\.tsx?$/`,
-        CONTEXT_MATCHER_FOR_FEATURES: `/\\/(renderer|common)\\/.+\\.injectable(\\.${platform})?\\.tsx?$/`,
+        CONTEXT_MATCHER_FOR_NON_FEATURES: `/\\.injectable(\\.web)?\\.tsx?$/`,
+        CONTEXT_MATCHER_FOR_FEATURES: `/\\/(renderer|common)\\/.+\\.injectable(\\.web)?\\.tsx?$/`,
       }),
-      new ForkTsCheckerPlugin({}),
 
       new CircularDependencyPlugin({
         cwd: __dirname,

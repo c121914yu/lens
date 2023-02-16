@@ -14,7 +14,7 @@ const readFileNotifyInjectable = getInjectable({
   id: "read-file-notify",
   instantiate: (di): ReadFileNotify => {
     const showErrorNotification = di.inject(showErrorNotificationInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const readFileBuffer = di.inject(readFileBufferInjectable);
 
     return async (filePath, showError = true) => {

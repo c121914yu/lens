@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import type { IpcMainInvokeEvent } from "electron";
 import type { Disposer } from "../../../../common/utils";
 import type { RequestChannel } from "../../../../common/utils/channel/request-channel-listener-injection-token";
 import type { RequestChannelListener } from "./listener-tokens";
@@ -18,7 +17,7 @@ const enlistRequestChannelListenerInjectable = getInjectable({
     const ipcMain = di.inject(ipcMainInjectionToken);
 
     return ({ channel, handler }) => {
-      const nativeHandleCallback = (_: IpcMainInvokeEvent, request: unknown) => handler(request);
+      const nativeHandleCallback = (_, request: unknown) => handler(request);
 
       ipcMain.handle(channel.id, nativeHandleCallback);
 

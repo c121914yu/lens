@@ -3,11 +3,11 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import type { KubeConfig, V1ResourceAttributes } from "@kubernetes/client-node";
-import { AuthorizationV1Api } from "@kubernetes/client-node";
+// import type { KubeConfig, V1ResourceAttributes } from "@kubernetes/client-node";
+// import { AuthorizationV1Api } from "@kubernetes/client-node";
 import { getInjectable } from "@ogre-tools/injectable";
 import type { Logger } from "../logger";
-import loggerInjectable from "../logger.injectable";
+
 
 /**
  * Requests the permissions for actions on the kube cluster
@@ -50,7 +50,7 @@ const authorizationReview = ({ logger }: Dependencies): AuthorizationReview => {
 const authorizationReviewInjectable = getInjectable({
   id: "authorization-review",
   instantiate: (di) => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return authorizationReview({ logger });
   },

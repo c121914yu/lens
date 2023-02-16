@@ -15,7 +15,7 @@ import type { DockTab, DockStore } from "../dock/store";
 import { withInjectables } from "@ogre-tools/injectable-react";
 import dockStoreInjectable from "../dock/store.injectable";
 import terminalStoreInjectable from "./store.injectable";
-import assert from "assert";
+
 import activeThemeInjectable from "../../../themes/active.injectable";
 import type { IComputedValue } from "mobx";
 
@@ -38,7 +38,7 @@ class NonInjectedTerminalWindow extends React.Component<TerminalWindowProps & De
     this.props.terminalStore.connect(this.props.tab);
     const terminal = this.props.terminalStore.getTerminal(this.props.tab.id);
 
-    assert(terminal, "Terminal must be created for tab before mounting");
+    console.info(terminal, "Terminal must be created for tab before mounting");
     this.terminal = terminal;
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.terminal.attachTo(this.elem!);
@@ -56,7 +56,7 @@ class NonInjectedTerminalWindow extends React.Component<TerminalWindowProps & De
     this.props.terminalStore.connect(this.props.tab);
     const terminal = this.props.terminalStore.getTerminal(this.props.tab.id);
 
-    assert(terminal, "Terminal must be created for tab before mounting");
+    console.info(terminal, "Terminal must be created for tab before mounting");
     this.terminal = terminal;
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.terminal.attachTo(this.elem!);

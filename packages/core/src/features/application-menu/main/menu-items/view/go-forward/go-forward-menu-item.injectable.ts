@@ -4,7 +4,6 @@
  */
 import { getInjectable } from "@ogre-tools/injectable";
 import applicationMenuItemInjectionToken from "../../application-menu-item-injection-token";
-import { webContents } from "electron";
 
 const goForwardMenuItemInjectable = getInjectable({
   id: "go-forward-menu-item",

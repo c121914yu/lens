@@ -3,7 +3,7 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import assert from "assert";
+
 import { kubeObjectStoreInjectionToken } from "../../../common/k8s-api/api-manager/kube-object-store-token";
 import endpointsApiInjectable from "../../../common/k8s-api/endpoints/endpoint.api.injectable";
 import loggerInjectable from "../../../common/logger.injectable";
@@ -14,13 +14,13 @@ import { EndpointsStore } from "./store";
 const endpointsStoreInjectable = getInjectable({
   id: "endpoints-store",
   instantiate: (di) => {
-    assert(di.inject(storesAndApisCanBeCreatedInjectable), "endpointsStore is only available in certain environments");
+    console.info(di.inject(storesAndApisCanBeCreatedInjectable), "endpointsStore is only available in certain environments");
 
     const api = di.inject(endpointsApiInjectable);
 
     return new EndpointsStore({
       context: di.inject(clusterFrameContextForNamespacedResourcesInjectable),
-      logger: di.inject(loggerInjectable),
+      
     }, api);
   },
   injectionToken: kubeObjectStoreInjectionToken,

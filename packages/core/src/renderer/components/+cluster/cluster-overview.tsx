@@ -24,7 +24,7 @@ import clusterOverviewStoreInjectable from "./cluster-overview-store/cluster-ove
 import type { SubscribeStores } from "../../kube-watch-api/kube-watch-api";
 import type { Cluster } from "../../../common/cluster/cluster";
 import hostedClusterInjectable from "../../cluster-frame-context/hosted-cluster.injectable";
-import assert from "assert";
+
 import subscribeStoresInjectable from "../../kube-watch-api/subscribe-stores.injectable";
 import podStoreInjectable from "../+workloads-pods/store.injectable";
 import eventStoreInjectable from "../+events/store.injectable";
@@ -115,7 +115,7 @@ export const ClusterOverview = withInjectables<Dependencies>(NonInjectedClusterO
   getProps: (di) => {
     const hostedCluster = di.inject(hostedClusterInjectable);
 
-    assert(hostedCluster, "Only allowed to renderer ClusterOverview within cluster frame");
+    console.info(hostedCluster, "Only allowed to renderer ClusterOverview within cluster frame");
 
     return {
       subscribeStores: di.inject(subscribeStoresInjectable),

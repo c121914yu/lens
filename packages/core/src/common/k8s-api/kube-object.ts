@@ -10,7 +10,7 @@ import type { KubeJsonApiData, KubeJsonApiDataList, KubeJsonApiListMetadata } fr
 import { autoBind, formatDuration, hasOptionalTypedProperty, hasTypedProperty, isObject, isString, isNumber, bindPredicate, isTypedArray, isRecord, json } from "../utils";
 import type { ItemObject } from "../item.store";
 import type { Patch } from "rfc6902";
-import assert from "assert";
+
 import type { JsonObject } from "type-fest";
 import requestKubeObjectPatchInjectable from "./endpoints/resource-applier.api/request-patch.injectable";
 import { apiKubeInjectionToken } from "./api-kube";
@@ -684,7 +684,7 @@ export class KubeObject<
    * @deprecated use KubeApi.delete instead
    */
   delete(params?: object) {
-    assert(this.selfLink, "selfLink must be present to delete self");
+    console.info(this.selfLink, "selfLink must be present to delete self");
 
     const di = getLegacyGlobalDiForExtensionApi();
     const apiKube = di.inject(apiKubeInjectionToken);

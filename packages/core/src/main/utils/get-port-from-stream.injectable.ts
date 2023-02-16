@@ -3,10 +3,9 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import type { Readable } from "stream";
 import URLParse from "url-parse";
 import { getInjectable } from "@ogre-tools/injectable";
-import loggerInjectable from "../../common/logger.injectable";
+
 
 export interface GetPortFromStreamArgs {
   /**
@@ -39,7 +38,7 @@ export type GetPortFromStream = (stream: Readable, args: GetPortFromStreamArgs) 
 const getPortFromStreamInjectable = getInjectable({
   id: "get-port-from-stream",
   instantiate: (di): GetPortFromStream => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return (stream, args) => {
       const logLines: string[] = [];

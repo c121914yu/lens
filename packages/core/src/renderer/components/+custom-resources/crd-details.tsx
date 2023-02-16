@@ -162,6 +162,6 @@ class NonInjectedCRDDetails extends React.Component<CRDDetailsProps & Dependenci
 export const CRDDetails = withInjectables<Dependencies, CRDDetailsProps>(NonInjectedCRDDetails, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

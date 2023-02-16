@@ -16,7 +16,7 @@ const setupShellInjectable = getInjectable({
   id: "setup-shell",
 
   instantiate: (di) => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const isSnapPackage = di.inject(isSnapPackageInjectable);
     const electronApp = di.inject(electronAppInjectable);
     const resolvedUserShellSetting = di.inject(userShellSettingInjectable);
@@ -40,7 +40,7 @@ const setupShellInjectable = getInjectable({
         const env = result.response;
 
         if (!env) {
-          return void logger.debug("[SHELL-SYNC]: nothing to do, env not special in shells");
+          return void console.info("[SHELL-SYNC]: nothing to do, env not special in shells");
         }
 
         if (!env.LANG) {
@@ -62,7 +62,7 @@ const setupShellInjectable = getInjectable({
         };
 
         logger.info(`[SHELL-SYNC]: Synced shell env`);
-        logger.debug(`[SHELL-SYNC]: updated env`, process.env);
+        console.info(`[SHELL-SYNC]: updated env`, process.env);
       },
     };
   },

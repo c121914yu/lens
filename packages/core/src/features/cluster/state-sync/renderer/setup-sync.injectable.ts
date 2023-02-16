@@ -17,9 +17,9 @@ const setupClusterStateSyncInjectable = getInjectable({
       const getClusterById = di.inject(getClusterByIdInjectable);
       const initalStates = await requestInitialClusterStates();
 
-      for (const { clusterId, state } of initalStates) {
-        getClusterById(clusterId)?.setState(state);
-      }
+      // for (const { clusterId, state } of initalStates) {
+      //   getClusterById(clusterId)?.setState(state);
+      // }
     },
     runAfter: di.inject(initClusterStoreInjectable),
   }),

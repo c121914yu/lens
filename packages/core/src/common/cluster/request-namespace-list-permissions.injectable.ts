@@ -3,10 +3,10 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import type { KubeConfig } from "@kubernetes/client-node";
-import { AuthorizationV1Api } from "@kubernetes/client-node";
+// import type { KubeConfig } from "@kubernetes/client-node";
+// import { AuthorizationV1Api } from "@kubernetes/client-node";
 import { getInjectable } from "@ogre-tools/injectable";
-import loggerInjectable from "../logger.injectable";
+
 import type { KubeApiResource } from "../rbac";
 
 export type CanListResource = (resource: KubeApiResource) => boolean;
@@ -25,7 +25,7 @@ export type RequestNamespaceListPermissionsFor = (proxyConfig: KubeConfig) => Re
 const requestNamespaceListPermissionsForInjectable = getInjectable({
   id: "request-namespace-list-permissions-for",
   instantiate: (di): RequestNamespaceListPermissionsFor => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return (proxyConfig) => {
       const api = proxyConfig.makeApiClient(AuthorizationV1Api);

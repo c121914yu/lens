@@ -3,10 +3,9 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import type { Settings } from "electron";
 import electronAppInjectable from "../electron-app.injectable";
 
-export type SetLoginItemSettings = (settings: Settings) => void;
+export type SetLoginItemSettings = (settings) => void;
 
 const setLoginItemSettingsInjectable = getInjectable({
   id: "set-login-item-settings",

@@ -7,7 +7,7 @@ import userInfoInjectable from "../user-store/user-info.injectable";
 
 const homeDirectoryPathInjectable = getInjectable({
   id: "home-directory-path",
-  instantiate: (di) => di.inject(userInfoInjectable).homedir,
+  instantiate: (di) => '/',
 });
 
 export default homeDirectoryPathInjectable;

@@ -14,7 +14,7 @@ const startPortForwardRouteInjectable = getRouteInjectable({
 
   instantiate: (di) => {
     const createPortForward = di.inject(createPortForwardInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return clusterRoute({
       method: "post",

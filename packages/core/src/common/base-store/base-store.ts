@@ -3,8 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import type Config from "conf";
-import type { Migrations, Options as ConfOptions } from "conf/dist/source/types";
 import type { IEqualsComparer } from "mobx";
 import { makeObservable, reaction } from "mobx";
 import { disposer, isPromiseLike, toJS } from "../utils";
@@ -34,7 +32,7 @@ export interface BaseStoreDependencies {
   readonly logger: Logger;
   readonly storeMigrationVersion: string;
   readonly directoryForUserData: string;
-  readonly migrations: Migrations<Record<string, unknown>>;
+  readonly migrations: any
   readonly ipcChannelPrefixes: IpcChannelPrefixes;
   readonly shouldDisableSyncInListener: boolean;
   getConfigurationFileModel: GetConfigurationFileModel;
@@ -68,32 +66,33 @@ export abstract class BaseStore<T extends object> {
    * This must be called after the last child's constructor is finished (or just before it finishes)
    */
   load() {
-    this.dependencies.logger.info(`[${this.displayName}]: LOADING ...`);
+    console.info(`[${this.displayName}]: LOADING ...`);
 
     const config = this.dependencies.getConfigurationFileModel({
       projectName: "lens",
       projectVersion: this.dependencies.storeMigrationVersion,
-      cwd: this.cwd(),
+      // cwd: this.cwd(),
       ...this.params,
-      migrations: this.dependencies.migrations as Migrations<T>,
+      // migrations: this.dependencies.migrations as Migrations<T>,
     });
 
-    const res = this.fromStore(config.store);
+    // const res = this.fromStore(config.store);
 
-    if (isPromiseLike(res)) {
-      this.dependencies.logger.error(`${this.displayName} extends BaseStore<T>'s fromStore method returns a Promise or promise-like object. This is an error and must be fixed.`);
-    }
+    // if (isPromiseLike(res)) {
+    //   this.dependencies.logger.error(`${this.displayName} extends BaseStore<T>'s fromStore method returns a Promise or promise-like object. This is an error and must be fixed.`);
+    // }
 
     this.startSyncing(config);
-    this.dependencies.logger.info(`[${this.displayName}]: LOADED from ${config.path}`);
+    console.info(`[${this.displayName}]: LOADED from`);
   }
 
   protected cwd() {
     return this.dependencies.directoryForUserData;
   }
 
-  private startSyncing(config: Config<T>) {
-    const name = this.dependencies.getBasenameOfPath(config.path);
+  private startSyncing(config) {
+    // const name = this.dependencies.getBasenameOfPath('');
+    const name = ""
 
     const disableSync = () => this.syncDisposers();
     const enableSync = () => {
@@ -102,13 +101,13 @@ export abstract class BaseStore<T extends object> {
           () => toJS(this.toJSON()), // unwrap possible observables and react to everything
           model => {
             this.dependencies.persistStateToConfig(config, model);
-            broadcastMessage(`${this.dependencies.ipcChannelPrefixes.remote}:${config.path}`, model);
+            broadcastMessage(`${this.dependencies.ipcChannelPrefixes.remote}:`, model);
           },
           this.params.syncOptions,
         ),
         this.dependencies.enlistMessageChannelListener({
           channel: {
-            id: `${this.dependencies.ipcChannelPrefixes.local}:${config.path}`,
+            id: `${this.dependencies.ipcChannelPrefixes.local}:`,
           },
           handler: (model) => {
             this.dependencies.logger.silly(`[${this.displayName}]: syncing ${name}`, { model });

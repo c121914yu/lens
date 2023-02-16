@@ -52,7 +52,6 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production yarn run webpack --config webpack/library-bundle.ts --progress",
     "clean": "rimraf dist static/build",
-    "prepare:dev": "cross-env NODE_ENV=development yarn run webpack --config webpack/library-bundle.ts --progress",
     "dev": "cross-env NODE_ENV=development yarn run webpack --config webpack/library-bundle.ts --watch",
     "test:unit": "jest --testPathIgnorePatterns integration",
     "test:watch": "func() { jest ${1} --watch --testPathIgnorePatterns integration; }; func",
@@ -254,7 +253,6 @@
     "@types/webpack-node-externals": "^2.5.3",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
-    "adr": "^1.4.3",
     "ansi_up": "^5.1.0",
     "chalk": "^4.1.2",
     "chart.js": "^2.9.4",

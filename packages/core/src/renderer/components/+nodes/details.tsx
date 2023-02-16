@@ -157,7 +157,7 @@ export const NodeDetails = withInjectables<Dependencies, NodeDetailsProps>(NonIn
     ...props,
     subscribeStores: di.inject(subscribeStoresInjectable),
     podStore: di.inject(podStoreInjectable),
-    logger: di.inject(loggerInjectable),
+    
     loadPodsFromAllNamespaces: di.inject(loadPodsFromAllNamespacesInjectable),
   }),
 });

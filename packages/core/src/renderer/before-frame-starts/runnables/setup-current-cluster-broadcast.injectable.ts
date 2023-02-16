@@ -15,11 +15,10 @@ const setupCurrentClusterBroadcastInjectable = getInjectable({
     id: "setup-current-cluster-broadcast",
     run: () => {
       const matchedClusterId = di.inject(matchedClusterIdInjectable);
-      const sendMessageToChannel = di.inject(sendMessageToChannelInjectionToken);
 
       reaction(
         () => matchedClusterId.get(),
-        clusterId => sendMessageToChannel(currentClusterMessageChannel, clusterId),
+        clusterId => {},
         {
           fireImmediately: true,
         },

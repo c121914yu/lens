@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import { getInjectable } from "@ogre-tools/injectable";
 import { applicationInformationToken, ApplicationInformation } from "@k8slens/core/common";

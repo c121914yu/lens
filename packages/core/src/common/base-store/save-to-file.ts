@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectionToken } from "@ogre-tools/injectable";
-import type Config from "conf";
 
 export type PersistStateToConfig = <T extends object>(config: Config<T>, state: T) => void;
 

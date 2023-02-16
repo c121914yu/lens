@@ -127,7 +127,7 @@ export const CronJobDetails = withInjectables<Dependencies, CronJobDetailsProps>
     subscribeStores: di.inject(subscribeStoresInjectable),
     cronJobStore: di.inject(cronJobStoreInjectable),
     jobStore: di.inject(jobStoreInjectable),
-    logger: di.inject(loggerInjectable),
+    
     getDetailsUrl: di.inject(getDetailsUrlInjectable),
   }),
 });

@@ -15,7 +15,7 @@ const stopServicesAndExitAppInjectable = getInjectable({
   instantiate: (di) => {
     const exitApp = di.inject(exitAppInjectable);
     const clusterManager = di.inject(clusterManagerInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const closeAllWindows = di.inject(closeAllWindowsInjectable);
     const emitAppEvent = di.inject(emitAppEventInjectable);
 

@@ -4,7 +4,6 @@
  */
 
 import { withInjectables } from "@ogre-tools/injectable-react";
-import type { FileFilter, OpenDialogOptions } from "electron";
 import { observer } from "mobx-react";
 import React from "react";
 import type { OpenPathPickingDialog } from "../../../features/path-picking-dialog/renderer/pick-paths.injectable";
@@ -18,8 +17,8 @@ export interface PathPickOpts {
   onCancel?: () => void | Promise<void>;
   defaultPath?: string;
   buttonLabel?: string;
-  filters?: FileFilter[];
-  properties?: OpenDialogOptions["properties"];
+  filters?: any[];
+  properties?: any;
   securityScopedBookmarks?: boolean;
 }
 

@@ -100,7 +100,7 @@ export const KubeEventDetails = withInjectables<Dependencies, KubeEventDetailsPr
     ...props,
     subscribeStores: di.inject(subscribeStoresInjectable),
     eventStore: di.inject(eventStoreInjectable),
-    logger: di.inject(loggerInjectable),
+    
   }),
 });
 

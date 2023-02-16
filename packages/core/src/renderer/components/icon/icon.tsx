@@ -277,7 +277,7 @@ const RawIcon = (props: IconProps & Dependencies) => {
 const InjectedIcon = withInjectables<Dependencies, IconProps>(RawIcon, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
   }),
 });
 

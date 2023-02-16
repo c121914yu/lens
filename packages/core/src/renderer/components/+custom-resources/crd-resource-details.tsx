@@ -144,6 +144,6 @@ class NonInjectedCustomResourceDetails extends React.Component<CustomResourceDet
 export const CustomResourceDetails = withInjectables<Dependencies, CustomResourceDetailsProps>(NonInjectedCustomResourceDetails, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

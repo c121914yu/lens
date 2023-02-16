@@ -108,7 +108,7 @@ class NonInjectedDropFileInput<T extends HTMLElement> extends React.Component<Dr
 const InjectedDropFileInput = withInjectables<Dependencies, DropFileInputProps<HTMLElement>>(NonInjectedDropFileInput, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
   }),
 });
 

@@ -135,6 +135,6 @@ class NonInjectedResourceQuotaDetails extends React.Component<ResourceQuotaDetai
 export const ResourceQuotaDetails = withInjectables<Dependencies, ResourceQuotaDetailsProps>(NonInjectedResourceQuotaDetails, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
   }),
 });

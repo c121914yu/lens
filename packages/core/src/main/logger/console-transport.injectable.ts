@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import { format, transports } from "winston";
 import { ConsoleFormat } from "./console-format";
 import { loggerTransportInjectionToken } from "../../common/logger/transports";
 import logLevelInjectable from "./level.injectable";

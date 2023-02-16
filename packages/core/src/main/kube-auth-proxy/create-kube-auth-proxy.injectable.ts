@@ -8,7 +8,7 @@ import { KubeAuthProxy } from "./kube-auth-proxy";
 import type { Cluster } from "../../common/cluster/cluster";
 import spawnInjectable from "../child-process/spawn.injectable";
 import kubeAuthProxyCertificateInjectable from "./kube-auth-proxy-certificate.injectable";
-import loggerInjectable from "../../common/logger.injectable";
+
 import waitUntilPortIsUsedInjectable from "./wait-until-port-is-used/wait-until-port-is-used.injectable";
 import lensK8sProxyPathInjectable from "./lens-k8s-proxy-path.injectable";
 import getPortFromStreamInjectable from "../utils/get-port-from-stream.injectable";
@@ -23,7 +23,7 @@ const createKubeAuthProxyInjectable = getInjectable({
     const dependencies: Omit<KubeAuthProxyDependencies, "proxyCert"> = {
       proxyBinPath: di.inject(lensK8sProxyPathInjectable),
       spawn: di.inject(spawnInjectable),
-      logger: di.inject(loggerInjectable),
+      
       waitUntilPortIsUsed: di.inject(waitUntilPortIsUsedInjectable),
       getPortFromStream: di.inject(getPortFromStreamInjectable),
       dirname: di.inject(getDirnameOfPathInjectable),

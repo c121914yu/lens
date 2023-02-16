@@ -15,7 +15,7 @@ const requestSystemCAsInjectable = getInjectable({
   id: "request-system-cas",
   instantiate: (di) => {
     const execFile = di.inject(execFileInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     const execSecurity = async (...args: string[]): Promise<AsyncResult<string[]>> => {
       const result = await execFile("/usr/bin/security", args);

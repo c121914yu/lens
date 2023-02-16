@@ -17,7 +17,7 @@ const requestActivePortForwardInjectable = getInjectable({
   id: "request-active-port-forward",
   instantiate: (di): RequestActivePortForward => {
     const apiBase = di.inject(apiBaseInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return async ({ port, forwardPort, namespace, kind, name, ...rest }) => {
       try {

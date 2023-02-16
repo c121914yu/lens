@@ -7,7 +7,7 @@ import type { Cluster } from "../../common/cluster/cluster";
 import * as yaml from "js-yaml";
 import tempy from "tempy";
 import type { Patch } from "rfc6902";
-import type { KubernetesObject } from "@kubernetes/client-node";
+// import type { KubernetesObject } from "@kubernetes/client-node";
 import type { EmitAppEvent } from "../../common/app-event-bus/emit-event.injectable";
 import type { Logger } from "../../common/logger";
 import type { WriteFile } from "../../common/fs/write-file.injectable";
@@ -85,7 +85,7 @@ export class ResourceApplier {
       "-f", fileName,
     ];
 
-    this.dependencies.logger.debug(`shooting manifests with ${kubectlPath}`, { args });
+    console.info(`shooting manifests with ${kubectlPath}`, { args });
 
     const execEnv = { ...process.env };
     const httpsProxy = this.cluster.preferences?.httpsProxy;

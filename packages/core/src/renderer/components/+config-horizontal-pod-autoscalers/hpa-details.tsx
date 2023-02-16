@@ -182,7 +182,7 @@ export const HpaDetails = withInjectables<Dependencies, HpaDetailsProps>(NonInje
     ...props,
     apiManager: di.inject(apiManagerInjectable),
     getDetailsUrl: di.inject(getDetailsUrlInjectable),
-    logger: di.inject(loggerInjectable),
+    
     getMetrics: di.inject(getHorizontalPodAutoscalerMetrics),
   }),
 });

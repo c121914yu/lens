@@ -144,7 +144,7 @@ class NonInjectedPersistentVolumeDetails extends React.Component<PersistentVolum
 export const PersistentVolumeDetails = withInjectables<Dependencies, PersistentVolumeDetailsProps>(NonInjectedPersistentVolumeDetails, {
   getProps: (di, props) => ({
     ...props,
-    logger: di.inject(loggerInjectable),
+    
     getDetailsUrl: di.inject(getDetailsUrlInjectable),
     persistentVolumeClaimApi: di.inject(persistentVolumeClaimApiInjectable),
     storageClassApi: di.inject(storageClassApiInjectable),

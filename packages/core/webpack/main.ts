@@ -3,31 +3,31 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import path from "path";
+
+ import path from "path"
 import type webpack from "webpack";
 import nodeExternals from "webpack-node-externals";
-import ForkTsCheckerPlugin from "fork-ts-checker-webpack-plugin";
 import { iconsAndImagesWebpackRules } from "./renderer";
 import { DefinePlugin } from "webpack";
 import { buildDir, isDevelopment } from "./vars";
-import { platform } from "process";
 
 const webpackLensMain = (): webpack.Configuration => {
   return {
     name: "lens-app-main",
     context: __dirname,
-    target: "electron-main",
+    target: "web",
     mode: isDevelopment ? "development" : "production",
     devtool: isDevelopment ? "cheap-module-source-map" : "source-map",
     cache: isDevelopment ? { type: "filesystem" } : false,
     entry: {
-      main: path.resolve(__dirname, "..", "src", "main", "library.ts"),
+    //   main: path.resolve(__dirname, "..", "src", "main", "library.ts"),
+      main: path.resolve(__dirname, "..", "src", "common", "library.ts"),
     },
     output: {
       library: {
         type: "commonjs2",
       },
-      path: path.resolve(buildDir, "library"),
+      path: path.resolve(buildDir, "test"),
     },
     optimization: {
       minimize: false,
@@ -67,18 +67,8 @@ const webpackLensMain = (): webpack.Configuration => {
     },
     plugins: [
       new DefinePlugin({
-        CONTEXT_MATCHER_FOR_NON_FEATURES: `/\\.injectable(\\.${platform})?\\.tsx?$/`,
-        CONTEXT_MATCHER_FOR_FEATURES: `/\\/(main|common)\\/.+\\.injectable(\\.${platform})?\\.tsx?$/`,
-      }),
-      new ForkTsCheckerPlugin({
-        typescript: {
-          mode: "write-dts",
-          configOverwrite: {
-            compilerOptions: {
-              declaration: true,
-            },
-          },
-        },
+        CONTEXT_MATCHER_FOR_NON_FEATURES: `/\\.injectable(\\.web)?\\.tsx?$/`,
+        CONTEXT_MATCHER_FOR_FEATURES: `/\\/(main|common)\\/.+\\.injectable(\\.web)?\\.tsx?$/`,
       }),
     ],
   };

@@ -6,7 +6,6 @@
 import { chunk } from "lodash";
 import type { ConnectionOptions } from "tls";
 import { connect } from "tls";
-import url from "url";
 import { apiKubePrefix } from "../../../common/vars";
 import type { ProxyApiRequestArgs } from "./types";
 

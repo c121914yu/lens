@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import BrowserConsole from "winston-transport-browserconsole";
 import { loggerTransportInjectionToken } from "../../common/logger/transports";
 
 const browserLoggerTransportInjectable = getInjectable({

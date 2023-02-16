@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 
-import { BrowserWindow, webContents } from "electron";
 import { broadcastMessage } from "../../common/ipc";
 import { WindowAction } from "../../common/ipc/window";
 

@@ -5,7 +5,7 @@
 import type { Injectable } from "@ogre-tools/injectable";
 import { asLegacyGlobalForExtensionApi } from "./as-legacy-global-object-for-extension-api";
 import { getLegacyGlobalDiForExtensionApi } from "./legacy-global-di-for-extension-api";
-import loggerInjectable from "../../common/logger.injectable";
+
 
 export interface LegacySingleton<T> {
   createInstance(): T;
@@ -32,9 +32,9 @@ export function asLegacyGlobalSingletonForExtensionApi<Instance, InstantiationPa
 
     resetInstance: () => {
       const di = getLegacyGlobalDiForExtensionApi();
-      const logger = di.inject(loggerInjectable);
+      const logger = console.info;
 
-      logger.warn(
+      logger(
         `resetInstance() for a legacy global singleton of "${injectable.id}" does nothing.`,
       );
     },

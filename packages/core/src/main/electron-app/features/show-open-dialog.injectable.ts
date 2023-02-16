@@ -3,10 +3,8 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import type { OpenDialogOptions } from "electron";
-import { dialog } from "electron";
 
-export type ShowOpenDialog = (options: OpenDialogOptions) => Promise<Electron.OpenDialogReturnValue>;
+export type ShowOpenDialog = (options) => Promise<any>;
 
 const showOpenDialogInjectable = getInjectable({
   id: "show-open-dialog",

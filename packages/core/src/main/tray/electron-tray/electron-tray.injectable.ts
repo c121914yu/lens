@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import { Menu, Tray } from "electron";
 import showApplicationWindowInjectable from "../../start-main-application/lens-window/show-application-window.injectable";
 import isWindowsInjectable from "../../../common/vars/is-windows.injectable";
 import loggerInjectable from "../../../common/logger.injectable";
@@ -37,7 +36,7 @@ const electronTrayInjectable = getInjectable({
     const applicationDescription = di.inject(applicationDescriptionInjectable);
     const showApplicationWindow = di.inject(showApplicationWindowInjectable);
     const isWindows = di.inject(isWindowsInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const trayIcon = di.inject(trayIconInjectable);
 
     let tray: Tray;

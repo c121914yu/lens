@@ -13,7 +13,7 @@ const directoryForKubectlBinariesInjectable = getInjectable({
     const joinPaths = di.inject(joinPathsInjectable);
     const directoryForBinaries = di.inject(directoryForBinariesInjectable);
 
-    return joinPaths(directoryForBinaries, "kubectl");
+    return "";
   },
 });
 

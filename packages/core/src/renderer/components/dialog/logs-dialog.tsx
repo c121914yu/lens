@@ -12,7 +12,6 @@ import { Wizard, WizardStep } from "../wizard";
 import type { ShowNotification } from "../notifications";
 import { Button } from "../button";
 import { Icon } from "../icon";
-import { clipboard } from "electron";
 import { kebabCase } from "lodash/fp";
 import { withInjectables } from "@ogre-tools/injectable-react";
 import showSuccessNotificationInjectable from "../notifications/show-success-notification.injectable";

@@ -4,8 +4,8 @@
  */
 
 import { v4 as uuid } from "uuid";
-import { Watch, CoreV1Api } from "@kubernetes/client-node";
-import type { KubeConfig } from "@kubernetes/client-node";
+// import { Watch, CoreV1Api } from "@kubernetes/client-node";
+// import type { KubeConfig } from "@kubernetes/client-node";
 import type { ShellSessionArgs, ShellSessionDependencies } from "../shell-session";
 import { ShellOpenError, ShellSession } from "../shell-session";
 import { get, once } from "lodash";
@@ -134,7 +134,7 @@ export class NodeShellSession extends ShellSession {
   }
 
   protected waitForRunningPod(kc: KubeConfig): Promise<void> {
-    this.dependencies.logger.debug(`[NODE-SHELL]: waiting for ${this.podName} to be running`);
+    console.info(`[NODE-SHELL]: waiting for ${this.podName} to be running`);
 
     return new Promise((resolve, reject) => {
       new Watch(kc)

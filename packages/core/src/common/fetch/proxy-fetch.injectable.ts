@@ -3,7 +3,6 @@
  * Licensed under MIT License. See LICENSE in root directory for more information.
  */
 import { getInjectable } from "@ogre-tools/injectable";
-import { HttpsProxyAgent } from "hpagent";
 import userStoreInjectable from "../user-store/user-store.injectable";
 import type { Fetch } from "./fetch.injectable";
 import fetchInjectable from "./fetch.injectable";

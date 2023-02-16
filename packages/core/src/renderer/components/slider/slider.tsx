@@ -11,7 +11,7 @@ import React, { Component } from "react";
 import { cssNames } from "../../utils";
 import type { SliderClassKey, SliderProps as MaterialSliderProps } from "@material-ui/core/Slider";
 import MaterialSlider from "@material-ui/core/Slider";
-import assert from "assert";
+
 
 export interface SliderProps extends Omit<MaterialSliderProps, "onChange"> {
   className?: string;
@@ -41,7 +41,7 @@ export class Slider extends Component<SliderProps> {
       <MaterialSlider
         {...sliderProps}
         onChange={(event, value) => {
-          assert(!Array.isArray(value));
+          console.info(!Array.isArray(value));
           onChange?.(event, value);
         }}
         classes={{

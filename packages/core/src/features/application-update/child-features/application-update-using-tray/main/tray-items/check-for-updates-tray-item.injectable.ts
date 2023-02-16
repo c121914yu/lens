@@ -11,7 +11,7 @@ import discoveredUpdateVersionInjectable from "../../../../common/discovered-upd
 import updateIsBeingDownloadedInjectable from "../../../../common/update-is-being-downloaded/update-is-being-downloaded.injectable";
 import updatesAreBeingDiscoveredInjectable from "../../../../common/updates-are-being-discovered/updates-are-being-discovered.injectable";
 import progressOfUpdateDownloadInjectable from "../../../../common/progress-of-update-download/progress-of-update-download.injectable";
-import assert from "assert";
+
 import processCheckingForUpdatesInjectable from "../../../../main/process-checking-for-updates.injectable";
 import { withErrorSuppression } from "../../../../../../common/utils/with-error-suppression/with-error-suppression";
 import { pipeline } from "@ogre-tools/fp";
@@ -39,7 +39,7 @@ const checkForUpdatesTrayItemInjectable = getInjectable({
         if (downloadingUpdateState.value.get()) {
           const discoveredVersion = discoveredVersionState.value.get();
 
-          assert(discoveredVersion);
+          console.info(discoveredVersion);
 
           const roundedPercentage = Math.round(progressOfUpdateDownload.value.get().percentage);
 

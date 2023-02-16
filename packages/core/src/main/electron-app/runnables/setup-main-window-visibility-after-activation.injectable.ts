@@ -14,7 +14,7 @@ const setupMainWindowVisibilityAfterActivationInjectable = getInjectable({
   instantiate: (di) => {
     const app = di.inject(electronAppInjectable);
     const showApplicationWindow = di.inject(showApplicationWindowInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return {
       id: "setup-main-window-visibility-after-activation",

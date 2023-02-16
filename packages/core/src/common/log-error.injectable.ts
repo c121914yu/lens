@@ -7,7 +7,7 @@ import loggerInjectable from "./logger.injectable";
 
 const logErrorInjectable = getInjectable({
   id: "log-error",
-  instantiate: (di) => di.inject(loggerInjectable).error,
+  instantiate: (di) => console.error,
 });
 
 export default logErrorInjectable;

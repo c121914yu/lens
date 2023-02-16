@@ -84,7 +84,7 @@ export class KubeconfigSyncManager {
   protected startNewSync(filePath: string): void {
     if (this.sources.has(filePath)) {
       // don't start a new sync if we already have one
-      return this.dependencies.logger.debug(`already syncing file/folder`, { filePath });
+      return console.info(`already syncing file/folder`, { filePath });
     }
 
     this.sources.set(
@@ -93,17 +93,17 @@ export class KubeconfigSyncManager {
     );
 
     this.dependencies.logger.info(`starting sync of file/folder`, { filePath });
-    this.dependencies.logger.debug(`${this.sources.size} files/folders watched`, { files: Array.from(this.sources.keys()) });
+    console.info(`${this.sources.size} files/folders watched`, { files: Array.from(this.sources.keys()) });
   }
 
   @action
   protected stopOldSync(filePath: string): void {
     if (!this.sources.delete(filePath)) {
       // already stopped
-      return this.dependencies.logger.debug(`no syncing file/folder to stop`, { filePath });
+      return console.info(`no syncing file/folder to stop`, { filePath });
     }
 
     this.dependencies.logger.info(`stopping sync of file/folder`, { filePath });
-    this.dependencies.logger.debug(`${this.sources.size} files/folders watched`, { files: Array.from(this.sources.keys()) });
+    console.info(`${this.sources.size} files/folders watched`, { files: Array.from(this.sources.keys()) });
   }
 }

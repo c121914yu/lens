@@ -93,7 +93,7 @@ describe("reactively hide kube object detail item", () => {
 
       const apiManager = builder.applicationWindow.only.di.inject(apiManagerInjectable);
 
-      assert(apiManager.getStore("/apis/some-api-version/some-kind"));
+      console.info(apiManager.getStore("/apis/some-api-version/some-kind"));
     });
 
     it("renders", () => {

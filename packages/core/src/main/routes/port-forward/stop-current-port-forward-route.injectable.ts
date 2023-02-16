@@ -12,7 +12,7 @@ const stopCurrentPortForwardRouteInjectable = getRouteInjectable({
   id: "stop-current-port-forward-route",
 
   instantiate: (di) => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return clusterRoute({
       method: "delete",

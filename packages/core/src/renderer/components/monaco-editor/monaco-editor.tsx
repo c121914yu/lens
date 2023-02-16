@@ -332,7 +332,7 @@ export const MonacoEditor = withInjectables<Dependencies, MonacoEditorProps, Mon
       userStore: di.inject(userStoreInjectable),
       activeTheme: di.inject(activeThemeInjectable),
       getEditorHeightFromLinesCount: di.inject(getEditorHeightFromLinesCountInjectable),
-      logger: di.inject(loggerInjectable),
+      
     }),
   },
 );

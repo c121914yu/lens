@@ -6,18 +6,16 @@
 // Base class for building all kubernetes apis
 
 import { merge } from "lodash";
-import { stringify } from "querystring";
 import { createKubeApiURL, parseKubeApi } from "./kube-api-parse";
 import type { KubeObjectConstructor, KubeJsonApiDataFor, KubeObjectMetadata } from "./kube-object";
 import { KubeObject, KubeStatus, isKubeStatusData } from "./kube-object";
-import byline from "byline";
 import type { IKubeWatchEvent } from "./kube-watch-event";
 import type { KubeJsonApiData, KubeJsonApi } from "./kube-json-api";
 import type { Disposer } from "../utils";
 import { isDefined, noop, WrappedAbortController } from "../utils";
-import type { RequestInit, Response } from "@k8slens/node-fetch";
+// import type { RequestInit, Response } from "@k8slens/node-fetch";
 import type { Patch } from "rfc6902";
-import assert from "assert";
+
 import type { PartialDeep } from "type-fest";
 import type { Logger } from "../logger";
 import type AbortController from "abort-controller";
@@ -265,13 +263,13 @@ export class KubeApi<
       allowedUsableVersions,
     } = opts;
 
-    assert(fullApiPathname, "apiBase MUST be provied either via KubeApiOptions.apiBase or KubeApiOptions.objectConstructor.apiBase");
-    assert(request, "request MUST be provided if not in a cluster page frame context");
+    console.info(fullApiPathname, "apiBase MUST be provied either via KubeApiOptions.apiBase or KubeApiOptions.objectConstructor.apiBase");
+    console.info(request, "request MUST be provided if not in a cluster page frame context");
 
     const { apiBase, apiPrefix, apiGroup, apiVersion, resource } = parseKubeApi(fullApiPathname);
 
-    assert(kind, "kind MUST be provied either via KubeApiOptions.kind or KubeApiOptions.objectConstructor.kind");
-    assert(apiPrefix, "apiBase MUST be parsable as a kubeApi selfLink style string");
+    console.info(kind, "kind MUST be provied either via KubeApiOptions.kind or KubeApiOptions.objectConstructor.kind");
+    console.info(apiPrefix, "apiBase MUST be parsable as a kubeApi selfLink style string");
 
     this.doCheckPreferredVersion = doCheckPreferredVersion;
     this.fallbackApiBases = fallbackApiBases;
@@ -734,7 +732,7 @@ export class KubeApi<
 
     const { namespace, resourceVersion } = event.object.metadata;
 
-    assert(resourceVersion, "watch events failed to return resourceVersion from kube api");
+    console.info(resourceVersion, "watch events failed to return resourceVersion from kube api");
 
     this.setResourceVersion(namespace, resourceVersion);
     this.setResourceVersion("", resourceVersion);

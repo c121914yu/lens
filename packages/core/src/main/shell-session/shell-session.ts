@@ -7,7 +7,7 @@ import type { Cluster } from "../../common/cluster/cluster";
 import type { Kubectl } from "../kubectl/kubectl";
 import type WebSocket from "ws";
 import { clearKubeconfigEnvVars } from "../utils/clear-kube-env-vars";
-import path from "path";
+
 import os from "os";
 import type * as pty from "node-pty";
 import { getOrInsertWith } from "../../common/utils";
@@ -258,7 +258,7 @@ export abstract class ShellSession {
     this.websocket
       .on("message", (rawData: unknown): void => {
         if (!this.running) {
-          return void this.dependencies.logger.debug(`[SHELL-SESSION]: received message from ${this.terminalId}, but shellProcess isn't running`);
+          return void console.info(`[SHELL-SESSION]: received message from ${this.terminalId}, but shellProcess isn't running`);
         }
 
         if (!(rawData instanceof Buffer)) {

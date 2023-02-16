@@ -42,7 +42,7 @@ const openLocalShellSessionInjectable = getInjectable({
       directoryForBinaries: di.inject(directoryForBinariesInjectable),
       isMac: di.inject(isMacInjectable),
       isWindows: di.inject(isWindowsInjectable),
-      logger: di.inject(loggerInjectable),
+      
       userStore: di.inject(userStoreInjectable),
       userShellSetting: di.inject(userShellSettingInjectable),
       appName: di.inject(appNameInjectable),

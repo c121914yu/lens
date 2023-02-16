@@ -22,7 +22,7 @@ const statusBarItemRegistratorInjectable = getInjectable({
   instantiate: (di) => (extension) => {
     const rendererExtension = extension as LensRendererExtension;
     const getRandomId = di.inject(getRandomIdInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return rendererExtension.statusBarItems.flatMap(
       toItemInjectableFor(rendererExtension, getRandomId, logger),

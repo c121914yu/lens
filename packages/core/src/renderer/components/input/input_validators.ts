@@ -5,7 +5,6 @@
 
 import type { InputProps } from "./input";
 import type React from "react";
-import fse from "fs-extra";
 import { TypedRegEx } from "typed-regex";
 import type { SetRequired } from "type-fest";
 

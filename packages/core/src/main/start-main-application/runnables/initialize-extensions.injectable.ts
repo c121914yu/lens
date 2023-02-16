@@ -15,7 +15,7 @@ const initializeExtensionsInjectable = getInjectable({
   id: "initialize-extensions",
 
   instantiate: (di) => {
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
     const extensionDiscovery = di.inject(extensionDiscoveryInjectable);
     const extensionLoader = di.inject(extensionLoaderInjectable);
     const showErrorPopup = di.inject(showErrorPopupInjectable);

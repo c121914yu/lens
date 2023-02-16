@@ -22,7 +22,7 @@ const checkForPlatformUpdatesInjectable = getInjectable({
 
   instantiate: (di): CheckForPlatformUpdates => {
     const electronUpdater = di.inject(electronUpdaterInjectable);
-    const logger = di.inject(loggerInjectable);
+    const logger = console.info;
 
     return async (updateChannel, { allowDowngrade }) => {
       electronUpdater.channel = updateChannel.id;

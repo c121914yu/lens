@@ -5,11 +5,8 @@
 
 // Base http-service / json-api class
 
-import { Agent as HttpAgent } from "http";
-import { Agent as HttpsAgent } from "https";
 import { merge } from "lodash";
-import type { Response, RequestInit } from "@k8slens/node-fetch";
-import { stringify } from "querystring";
+// import type { Response, RequestInit } from "@k8slens/node-fetch";
 import type { Patch } from "rfc6902";
 import type { PartialDeep, ValueOf } from "type-fest";
 import { EventEmitter } from "../../common/event-emitter";
@@ -47,8 +44,10 @@ export interface JsonApiConfig {
   getRequestOptions?: GetRequestOptions;
 }
 
-const httpAgent = new HttpAgent({ keepAlive: true });
-const httpsAgent = new HttpsAgent({ keepAlive: true });
+// const httpAgent = new HttpAgent({ keepAlive: true });
+// const httpsAgent = new HttpsAgent({ keepAlive: true });
+const httpAgent = {}
+const httpsAgent = {}
 
 export type QueryParam = string | number | boolean | null | undefined | readonly string[] | readonly  number[] | readonly boolean[];
 export type QueryParams = Partial<Record<string, QueryParam | undefined>>;
@@ -238,7 +237,7 @@ export class JsonApi<Data = JsonApiData, Params extends JsonApiParams<Data> = Js
   protected writeLog(log: JsonApiLog) {
     const { method, reqUrl, ...params } = log;
 
-    this.dependencies.logger.debug(`[JSON-API] request ${method} ${reqUrl}`, params);
+    console.info(`[JSON-API] request ${method} ${reqUrl}`, params);
   }
 }
 
